@@ -7,16 +7,16 @@
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
         <script src="redirect.js"></script>
     </head>
+
     <body class="home-page">
-        <div class="top-header">
-            <div class="main-logo">
-                <img id="apc-soe-logo" src="../home/SOELOGO.png" width="340px" height="93px">
-            </div>
+        <div class="top-bar">
+            Programs Offered Page
         </div>
+
         <div class="main-menu">
             <div class="side-panel">
                 <div class="home-btn-group">
-                     <div class="btn home-button" onclick="redirectToHome()">
+                    <div class="btn home-button" onclick="redirectToHome()">
                         <p class="home-text">Home</p>
                     </div>
                     <div class="btn new-user-files" onclick="redirectToUserFiles()">
@@ -40,6 +40,6 @@
 
             </div>
         </div>
-
     </body>
+
 </html>
