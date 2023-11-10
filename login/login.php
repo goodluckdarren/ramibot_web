@@ -10,7 +10,7 @@
     <body class="login-page">
         <div class="blur"></div>
         <div class="logo">
-            <img id="nu-apc-logo.png" src="../nu-apc-logo.png" width="300px" height="150px">
+            <img id="nu-apc-logo.png" src="../login/nu-apc-logo.png" width="300px" height="150px">
         </div>
         <div class="login-box" >
             <div class="justified-center">
