@@ -41,6 +41,7 @@
     width: 100%;
 }
 
+
 p{
     margin-top: 23.5px;
     text-align: center;
@@ -49,7 +50,7 @@ p{
 .home-text{
     margin: 0 auto;
     margin-top: 13.5px;
-    font-size: 50px;
+    font-size: 30px;
     font-weight: bold;
 }
 
@@ -65,10 +66,11 @@ p{
     transition-duration: 0.5s;
 }
 
-.main-panel{
+.main-panel {
     background-color: #ECEAE3;
-    width: 1500px;
-    height: 100%;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
 }
 
 .main-logo{
@@ -78,3 +80,12 @@ p{
     margin-top: 15px;
     margin-left: -720px;
 }
+
+.user-icon{
+    height: 100%;
+    width: 100%;
+}
+
+.image-with-space{
+    padding-top: 50px
+    ;}

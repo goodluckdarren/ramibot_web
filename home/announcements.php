@@ -9,15 +9,17 @@
     </head>
 
     <body class="home-page">
-        <div class="top-bar">
-            Announcements Page
+        <div class="top-header">
+            <div class="main-logo">
+                <img id="apc-soe-logo" src="../home/SOELOGO.png" width="340px" height="93px">
+            </div>
         </div>
 
         <div class="main-menu">
             <div class="side-panel">
                 <div class="home-btn-group">
                     <div class="btn home-button" onclick="redirectToHome()">
-                        <p class="home-text">Home</p>
+                        <p>Home</p>
                     </div>
                     <div class="btn new-user-files" onclick="redirectToUserFiles()">
                         <p>New User Files</p>
@@ -32,11 +34,12 @@
                         <p>Office Hours</p>
                     </div>
                     <div class="btn announcements" onclick="redirectToAnnouncements()">
-                        <p>Announcements</p>
+                        <p class="home-text">Announcements</p>
                     </div>
                 </div>
             </div>
             <div class="main-panel">
+                <img id="temp-announcements" src="..\home\homeannouncement.PNG" width= "90%" height="90%" alt="announcement image">
 
             </div>
         </div>

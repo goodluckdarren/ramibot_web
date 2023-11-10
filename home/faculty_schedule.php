@@ -9,21 +9,23 @@
     </head>
 
     <body class="home-page">
-        <div class="top-bar">
-            Faculty Schedule Page
+       <div class="top-header">
+            <div class="main-logo">
+                <img id="apc-soe-logo" src="../home/SOELOGO.png" width="340px" height="93px">
+            </div>
         </div>
 
         <div class="main-menu">
             <div class="side-panel">
                 <div class="home-btn-group">
                     <div class="btn home-button" onclick="redirectToHome()">
-                        <p class="home-text">Home</p>
+                        <p>Home</p>
                     </div>
                     <div class="btn new-user-files" onclick="redirectToUserFiles()">
                         <p>New User Files</p>
                     </div>
                     <div class="btn faculty-schedule" onclick="redirectToSchedule()">
-                        <p>Faculty Schedule</p>
+                        <p class="home-text">Faculty Schedule</p>
                     </div>
                     <div class="btn programs-offered" onclick="redirectToProgramsOffered()">
                         <p>Programs Offered</p>
@@ -37,6 +39,7 @@
                 </div>
             </div>
             <div class="main-panel">
+            <img id="temp-facschedule" src="..\home\facultyschedule.PNG" width= "70%" height="85%">
 
             </div>
         </div>

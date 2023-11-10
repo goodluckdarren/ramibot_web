@@ -9,18 +9,20 @@
     </head>
 
     <body class="home-page">
-        <div class="top-bar">
-            New User Files Page
+        <div class="top-header">
+            <div class="main-logo">
+                <img id="apc-soe-logo" src="../home/SOELOGO.png" width="340px" height="93px">
+            </div>
         </div>
 
         <div class="main-menu">
             <div class="side-panel">
                 <div class="home-btn-group">
                     <div class="btn home-button" onclick="redirectToHome()">
-                        <p class="home-text">Home</p>
+                        <p>Home</p>
                     </div>
                     <div class="btn new-user-files" onclick="redirectToUserFiles()">
-                        <p>New User Files</p>
+                        <p class="home-text">New User Files</p>
                     </div>
                     <div class="btn faculty-schedule" onclick="redirectToSchedule()">
                         <p>Faculty Schedule</p>
@@ -37,9 +39,9 @@
                 </div>
             </div>
             <div class="main-panel">
+            <img id="temp-userfiles" src="../home/userfiles.PNG" width="70%" height= "80%" class="image-with-space">
 
             </div>
         </div>
     </body>
-
 </html>

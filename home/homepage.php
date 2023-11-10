@@ -37,6 +37,7 @@
                 </div>
             </div>
             <div class="main-panel">
+            <img id="temp-announcements" src="..\home\homeannouncement.PNG" width= "90%" height="90%" alt="announcement image">
 
             </div>
         </div>
