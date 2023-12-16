@@ -1,51 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>ADMIBOT</title>
-        <link rel="stylesheet" href="../home/homepage.css">
-        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-        <script src="redirect.js"></script>
-    </head>
-
-    <body class="home-page">
-        <div class="top-header">
-            <div class="main-logo">
-                <img id="apc-soe-logo" src="../home/SOELOGO.png" width="340px" height="93px">
-            </div>
-            <div class="user-icon">
-                <img id="user-acc-icon" src="../home/UserIcon.png" width="100%"height="100%">
-            </div>
-        </div>
-
-        <div class="main-menu">
-            <div class="side-panel">
-                <div class="home-btn-group">
-                    <div class="btn home-button" onclick="redirectToHome()">
-                        <p>Home</p>
-                    </div>
-                    <div class="btn new-user-files" onclick="redirectToUserFiles()">
-                        <p>New User Files</p>
-                    </div>
-                    <div class="btn faculty-schedule" onclick="redirectToSchedule()">
-                        <p>Faculty Schedule</p>
-                    </div>
-                    <div class="btn programs-offered" onclick="redirectToProgramsOffered()">
-                        <p>Programs Offered</p>
-                    </div>
-                    <div class="btn office-hours" onclick="redirectToOfficeHours()">
-                        <p class="home-text">Office Hours</p>
-                    </div>
-                    <div class="btn announcements" onclick="redirectToAnnouncements()">
-                        <p>Announcements</p>
-                    </div>
+<head>
+    <meta charset="UTF-8">
+    <title>ADMIBOT</title>
+    <link rel="stylesheet" href="../home/homepage.css">
+    <link rel="stylesheet" href="../home/interactions.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
+    <script src="../home/redirect.js"></script>
+</head>
+<body class="home-page">
+    <div class="container">
+        <div class="side-panel" id="sidePanel">
+            <div class="home-btn-group">
+                <div class="btn new-user-files" onclick="redirectToUserFiles()">
+                    <p>User Files</p>  
+                </div>
+                <div class="btn faculty-schedule" onclick="redirectToSchedule()">
+                    <p>Faculty Schedule</p>
+                </div>
+                <div class="btn programs-offered" onclick="redirectToProgramsOffered()">
+                    <p>Programs Offered</p>
+                </div>
+                <div class="main-btn btn office-hours" onclick="redirectToOfficeHours()">
+                    <div class="main-btn-box"></div>
+                    <p>Office Hours</p>
+                </div>
+                <div class="btn announcements" onclick="redirectToAnnouncements()">
+                    <p>Announcements</p>
                 </div>
             </div>
-            <div class="main-panel">
-            <img id="temp-officehrs" src="../home/officehours.PNG" width="70%" height= "80%">
-
+        </div>
+        <div class="content">
+            <div class="top-header">
+                <div class="user-profile">
+                    <p class="user-name">BARACK OBAMA</p>
+                    <img class ="profile-picture" src="../images_home/obama sample.jpg" alt="Image of Admin" width="70px" height="70px">
+                </div>
+            </div>
+            <div class="main-menu">
+                <div class="main-panel">
+                    Lorem ipsum dorem
+                </div>
             </div>
         </div>
-    </body>
-
+    </div>
+</body>
 </html>

@@ -1,0 +1,27 @@
+/* Add this style for the smooth transition */
+.side-panel {
+    transition: width 0.5s ease; /* Adjust the duration and timing function as needed */
+}
+
+/* Add this style for the minimized state of the side-panel */
+.side-panel.minimized {
+    width: 0px; /* Set your desired width when minimized */
+}
+
+/* Add this style to hide the text in the minimized state */
+.side-panel.minimized .home-btn-group p {
+    display: none;
+}
+
+/* Add this style to give space for the toggle button in the minimized state */
+.side-panel.minimized .home-btn-group button {
+    width: 100%;
+    text-align: center;
+}
+
+/* Add this style to center the text in the toggle button */
+.toggle-btn {
+    text-align: center;
+}
+
+/* Rest of your existing styles */

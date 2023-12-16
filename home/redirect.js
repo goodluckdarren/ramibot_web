@@ -21,3 +21,8 @@ function redirectToHome(){
 function redirectToUserFiles(){
     window.location.href = '../home/new_user_files.php';
 }
+
+// function toggleSidePanel() {
+//     var sidePanel = document.getElementById("sidePanel");
+//     sidePanel.classList.toggle("minimized");
+// }

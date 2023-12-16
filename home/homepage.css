@@ -1,91 +1,133 @@
-*{
+* {
     font-family: 'Montserrat';
     overflow: hidden;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.side-panel {
+    background-color: #1F1F21;
+    width: 13vw;
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .home-page {
     background-color: #bbbbbb;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .top-header {
     background-color: #ffffff;
-    width: 1800px;
-    height: 130px;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.main-menu{
-    background-color: #ffffff;
-    width: 1800px;
-    height: 725px;
-    margin: 0 auto;
+    height: 8vh;
+    border-bottom: 10px solid #150095;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: right;
 }
 
-.side-panel{
-    background-color: #D9D5C7;
-    width: 300px;
-    height: 100%;
-}
-
-.home-btn-group{
+.user-profile{
     display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    margin-top: 50px;
-    height: 100%;
-    width: 100%;
+    align-items: center;
 }
 
-
-p{
-    margin-top: 23.5px;
-    text-align: center;
-}
-
-.home-text{
-    margin: 0 auto;
-    margin-top: 13.5px;
-    font-size: 30px;
+.user-name{
+    font-size: 1.5rem;
     font-weight: bold;
+    margin-right: 10px;
 }
 
-.btn{
-    height: 66px;
-    color: white;
-    background-color: #2B2B2B;
-    margin-bottom: 20px;
+.profile-picture{
+    border-radius: 50px;
+    margin-right: 10px;
 }
 
-.btn:hover{
-    background-color: #525252;
-    transition-duration: 0.5s;
+
+/* .toggle-btn{
+    display: inline-flex;
+    align-items: center;
+    margin-left: 1%;
+}
+
+.fa-bars{
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0, 0.5);
+}
+
+.fa-bars:hover{
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    transition: color 0.5s ease;
+} */
+
+.main-menu {
+    background-color: #ffffff;
+    flex: 1;
+    display: flex;
 }
 
 .main-panel {
-    background-color: #ECEAE3;
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
+    background-color: #232323;
+    flex: 1;
 }
 
-.main-logo{
+.home-btn-group {
+    display: flex;
+    flex-direction: column;
+    margin: 150px 0;
+}
+
+p{  
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 0;
+}
+
+.main-btn{
+    display: flex;
+    background-color: #333336;
+    position: relative;
+}
+
+.main-btn-box{
     height: 100%;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-left: -720px;
+    width: 10%;
+    background-color: #ffffff;    
+    position: absolute;
+    left: 0;
 }
 
-.user-icon{
-    height: 100%;
-    width: 100%;
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 66px;
+    color: white;
+    margin-bottom: 20px;
 }
 
-.image-with-space{
-    padding-top: 50px
-    ;}
+.btn:hover {
+    background-color: #525252;
+    transition-duration: 0.5s;
+    cursor: pointer;
+}
