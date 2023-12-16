@@ -35,7 +35,7 @@
             <div class="top-header">
                 <div class="user-profile">
                     <p class="user-name">BARACK OBAMA</p>
-                    <img class ="profile-picture" src="../images/obama sample.jpg" alt="Image of Admin" width="70px" height="70px">
+                    <img class ="profile-picture" src="../images_home/obama sample.jpg" alt="Image of Admin" width="70px" height="70px">
                 </div>
             </div>
             <div class="main-menu">
