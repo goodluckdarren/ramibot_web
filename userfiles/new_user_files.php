@@ -1,17 +1,17 @@
-<?php require_once('../home/database_connect.php');?>
+<?php require_once('../database_connect.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>ADMIBOT</title> 
-    <link rel="stylesheet" href="../home/homepage.css">
-    <link rel="stylesheet" href="../home/interactions.css">
-    <link rel="stylesheet" href="../home/info_user_files_table.css">
+    <link rel="stylesheet" href="../homepage.css">
+    <link rel="stylesheet" href="../interactions.css">
+    <link rel="stylesheet" href="../userfiles/info_user_files_table.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../home/redirect.js"></script>
+    <script src="../scripts/redirect.js"></script>
 </head>
 <body class="home-page">
     <div class="container">
@@ -38,11 +38,11 @@
         <div class="content">
             <div class="top-header">
                 <div class="page-title">
-                    <p class="page-name">NEW USER FILES</p>
+                    <p class="page-name">USER FILES</p>
                 </div>
                 <div class="user-profile">
                     <p class="user-name">BARACK OBAMA</p>
-                    <img class ="profile-picture" src="../images/obama sample.jpg" alt="Image of Admin" width="70px" height="70px">
+                    <img class ="profile-picture" src="../images_home/obama sample.jpg" alt="Image of Admin" width="70px" height="70px">
                 </div>
             </div>
             <div class="main-menu">
@@ -77,7 +77,7 @@
                             </tr>
                         </thead>
                         <tbody id="user-files-table-content">
-                        <?php include '../home/user_files_table.php'?>
+                        <?php include '../userfiles/user_files_table.php'?>
                         </tbody>
                     </table>
                     </div>

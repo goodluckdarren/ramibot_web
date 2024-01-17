@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>ADMIBOT</title>
-    <link rel="stylesheet" href="../home/homepage.css">
-    <link rel="stylesheet" href="../home/interactions.css">
+    <link rel="stylesheet" href="../homepage.css">
+    <link rel="stylesheet" href="../interactions.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
-    <script src="../home/redirect.js"></script>
+    <script src="../scripts/redirect.js"></script>
 </head>
 <body class="home-page">
     <div class="container">

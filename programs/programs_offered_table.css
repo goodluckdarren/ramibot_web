@@ -1,0 +1,23 @@
+th {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+tr {
+    background-color: rgb(46, 45, 45);
+
+}
+td {
+    color: white;
+    min-width: 50px;
+    max-width: 150px;
+    height: 37px;
+}
+.programs-table {
+
+    width: 75%;
+    height: 50%;
+    margin-left: 70px;
+    background-color: rgb(65, 59, 59);
+    align-items: center;
+}

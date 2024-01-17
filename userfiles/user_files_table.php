@@ -1,7 +1,7 @@
 <?php
-    require_once('../home/database_connect.php');
+    require_once('../database_connect.php');
 
-    $rows_per_page = 10;
+    $rows_per_page = 5;
 
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
@@ -77,7 +77,7 @@
 
     function loadTableContent() {
         $.ajax({
-            url: '../home/user_files_table.php',
+            url: '../userfiles/user_files_table.php',
             type: 'GET',
             data: { page: currentPage },
             success: function (data) {

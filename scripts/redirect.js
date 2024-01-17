@@ -1,25 +1,25 @@
 function redirectToSchedule(){
-    window.location.href = '../home/faculty_schedule.php';
+    window.location.href = '../facultysched/faculty_schedule.php';
 }
 
 function redirectToProgramsOffered(){
-    window.location.href = '../home/programs_offered.php';
+    window.location.href = '../programs/programs_offered.php';
 }
 
 function redirectToOfficeHours(){
-    window.location.href = '../home/office_hours.php';
+    window.location.href = '../officesched/office_hours.php';
 }
 
 function redirectToAnnouncements(){
-    window.location.href = '../home/announcements.php';
+    window.location.href = '../announcements/announcements.php';
 }
 
 function redirectToHome(){
-    window.location.href = '../home/homepage.php';
+    window.location.href = '../homepage.php';
 }
 
 function redirectToUserFiles(){
-    window.location.href = '../home/new_user_files.php';
+    window.location.href = '../userfiles/new_user_files.php';
 }
 
 // function toggleSidePanel() {
