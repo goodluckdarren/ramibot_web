@@ -19,7 +19,7 @@
             <div class="home-btn-group">
                 <div class="main-btn btn new-user-files" onclick="redirectToUserFiles()">
                     <div class="main-btn-box"></div>
-                    <p>New User Files</p>  
+                    <p>User Files</p>  
                 </div>
                 <div class="btn faculty-schedule" onclick="redirectToSchedule()">
                     <p>Faculty Schedule</p>

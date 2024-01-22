@@ -20,7 +20,7 @@ body {
 
 .side-panel {
     background-color: #1F1F21;
-    width: 13vw;
+    width: 14vw;
     height: 100%;
 }
 
@@ -129,7 +129,7 @@ p{
 
 .main-btn-box{
     height: 100%;
-    width: 10%;
+    width: 7.5%;
     background-color: #ffffff;    
     position: absolute;
     left: 0;
