@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     align-items: center; 
-
     margin-top: 15px;
     width: 100%;
     height: 70px;
@@ -11,26 +10,31 @@
 
 .upload-button {
     display: flex;
-    align-items: center; 
+    align-items: center;
+    justify-content: center;
     background-color: rgb(0, 131, 245);
-    padding: 0 20px; 
+    margin-left: 15px;
+    height: 35px;
+    width: 300px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 10px;
 }
 
 .upload-title {
     margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .upload-title i {
     vertical-align: middle;
 }
 
-.upload-button:hover{
+#fileInput:hover{
     cursor: pointer;
-    background-color: rgb(0, 131, 245);
-}
-.upload-title:hover{
-    cursor: pointer;
-    background-color: rgb(0, 131, 245);
 }
 
 
