@@ -29,6 +29,9 @@
                 <div class="btn announcements" onclick="redirectToAnnouncements()">
                     <p>Announcements</p>
                 </div>
+                <div class="btn status" onclick="redirectToStatus()">
+                    <p>Status</p>
+                </div>
             </div>
         </div>
         <div class="content">

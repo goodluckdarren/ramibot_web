@@ -33,6 +33,9 @@
                 <div class="btn announcements" onclick="redirectToAnnouncements()">
                     <p>Announcements</p>
                 </div>
+                <div class="btn status" onclick="redirectToStatus()">
+                    <p>Status</p>
+                </div>
             </div>
         </div>
         <div class="content">
@@ -62,6 +65,21 @@
                                 <option value="middle_initial">Middle Initial</option>
                                 <option value="nickname">Nickname</option>
                             </select>
+                        </div>
+                        <div class="add-container">
+                                <div class="add-button" onclick="toggleForm()">
+                                    <i class="fas fa-plus"></i> Add
+                                </div>
+                             <form id="addForm" style="display: none;">
+                                    <!-- Your form fields go here -->
+                                <input type="text" name="idInput" placeholder="ID Number" required>
+                                <input type="text" name="professionInput" placeholder="Profession" required>
+                                <input type="text" name="lastNameInput" placeholder="Last Name" required>
+                                <input type="text" name="givenNameInput" placeholder="Given Name" required>
+                                <input type="text" name="middleInitialInput" placeholder="Middle Initial" required>
+                                <input type="text" name="nicknameInput" placeholder="Nickname" required>
+                                <input type="submit" value="Add to Database">
+                             </form>
                         </div>
                     </div>
                     <div class = "table-container">

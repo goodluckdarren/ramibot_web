@@ -14,13 +14,19 @@ function redirectToAnnouncements(){
     window.location.href = '../announcements/announcements.php';
 }
 
-function redirectToHome(){
-    window.location.href = '../homepage.php';
-}
-
 function redirectToUserFiles(){
     window.location.href = '../userfiles/new_user_files.php';
 }
+
+function redirectToStatus(){
+    window.location.href = '../status/rami_status.php';
+}
+
+function toggleForm() {
+    var addForm = document.getElementById("addForm");
+    addForm.style.display = (addForm.style.display === "none" || addForm.style.display === "") ? "block" : "none";
+}
+
 
 // function toggleSidePanel() {
 //     var sidePanel = document.getElementById("sidePanel");
