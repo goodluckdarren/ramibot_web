@@ -7,7 +7,7 @@
     <title>ADMIBOT</title> 
     <link rel="stylesheet" href="../homepage.css">
     <link rel="stylesheet" href="../interactions.css">
-    <link rel="stylesheet" href="../status/rami_status_table.css">
+    <link rel="stylesheet" href="../status/lidar_status_style.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -54,12 +54,32 @@
                         <div class="lidar-header">
                             <p>LIDAR</p>
                         </div>
-                        <!-- Content for the rounded box goes here -->
-                        <p>This is the content of the rounded box.</p>
+                        <div class="lidar-status">
+                            <p>STATUS: <span id="lidar-status">OFF</span></p>
+                            <div class="lidar-btns">
+                                <button class="lidar-btn" id="prep-position" onclick="updatePositioningStatus()">POSITION</button>
+                                <button class="lidar-btn" id="lidar-start" data-confirmed="false" onclick="startScan()">START SCAN</button>
+                            </div>
+                        </div>
                     </div>
-                    <p>DO LIDAR UPDATING SYSTEM (BUTTON FOR START RETURNING TO POSITION FOR UPDATING, BUTTON TO START LIDAR SCAN, USE DATABASE FROM APC)</p>
+                    <div class="instruction-container" id="lidarForm" style="display: none;">
+                        <div class="instruction-popup-box">
+                            <div class="instruction-header">
+                                <p>POSITIONING RAMIBOT</p>
+                            </div>
+                            <div class="instruction-content">
+                                <p>Are you sure you want to update the status of the LIDAR?</p>
+                            </div>
+                            <div class="instruction-btn-group">
+                                <button class="instruction-btn" id="confirm-update" data-confirmed="false" onclick="confirmUpdate()">CONFIRM</button>
+                            </div>
+                        </div>
+
+                    </div>
+            
+                    
                 </div>
-            </div>
+             </div> 
         </div>
     </div>
 </body>
