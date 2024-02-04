@@ -1,0 +1,63 @@
+/* user table css */
+.user-files-table {
+    width: 77%;
+    height: 50%;
+    margin-left: 70px;
+    margin-top: 10px;
+    background-color: #ffffff;
+    align-items: center;
+    border-radius: 5px;
+}
+
+th {
+    background-color: #ffffff;
+    color: #001233;
+    height: 33px;
+    min-width: 50px;
+    font-weight: bold;
+
+}
+
+tr {
+    background-color: #001233;
+}
+
+td {
+    color: white;
+    min-width: 50px;
+    max-width: 150px;
+    height: 45px;
+}
+
+/* Pagination style */
+.pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.page-item {
+    width: 30px;
+    height: 30px;
+    background-color: #001233;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+/* Pagination text styling */
+.page-item a {
+    text-decoration: none;
+    color: #ffffff; /* Adjust the color as needed */
+}
+
+.page-item.disabled{
+    background-color: gray;
+    color: white;
+}
+
+.page-item.active {
+    background-color: #33415c; /* Adjust the color for the active page */
+    color: white; /* Adjust the text color for the active page */
+}

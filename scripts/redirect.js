@@ -22,11 +22,16 @@ function redirectToStatus(){
     window.location.href = '../status/rami_status.php';
 }
 
-function toggleForm() {
+function toggleAddForm() {
     var addForm = document.getElementById("addForm");
     addForm.style.display = (addForm.style.display === "none" || addForm.style.display === "") ? "block" : "none";
 }
 
+function toggleLidarForm() {
+    var lidarForm = document.getElementById("lidarForm");
+    lidarForm.style.display = (lidarForm.style.display === "none" || lidarForm.style.display === "") ? "block" : "none";
+
+}
 
 // function toggleSidePanel() {
 //     var sidePanel = document.getElementById("sidePanel");

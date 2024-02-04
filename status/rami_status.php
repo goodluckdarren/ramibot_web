@@ -50,7 +50,14 @@
             </div>
             <div class="main-menu">
                 <div class="main-panel">
-                
+                    <div class="lidar-box">
+                        <div class="lidar-header">
+                            <p>LIDAR</p>
+                        </div>
+                        <!-- Content for the rounded box goes here -->
+                        <p>This is the content of the rounded box.</p>
+                    </div>
+                    <p>DO LIDAR UPDATING SYSTEM (BUTTON FOR START RETURNING TO POSITION FOR UPDATING, BUTTON TO START LIDAR SCAN, USE DATABASE FROM APC)</p>
                 </div>
             </div>
         </div>

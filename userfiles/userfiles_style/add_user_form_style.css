@@ -1,0 +1,53 @@
+.add-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.add-button {
+    background-color: #4CAF50;
+    width: 75px;
+    height: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 15px;
+    margin: 0;
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-form-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    width: 430px;
+    height: 400px;
+    background-color: #415a77;
+    margin-left: 300px;
+    margin-top: 300px;
+}
+
+.add-form-container input {
+    width: 300px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 7.5px;
+    border: 2px solid #000;
+}
+
+.add-form-container input[type="submit"]{
+    width: 300px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4CAF50;
+}
+
+.add-form-container input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #152c16;
+}

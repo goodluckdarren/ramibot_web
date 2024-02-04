@@ -7,7 +7,9 @@
     <title>ADMIBOT</title> 
     <link rel="stylesheet" href="../homepage.css">
     <link rel="stylesheet" href="../interactions.css">
-    <link rel="stylesheet" href="../userfiles/info_user_files_table.css">
+    <link rel="stylesheet" href="../userfiles/userfiles_style/sort_search_style.css">
+    <link rel="stylesheet" href="../userfiles/userfiles_style/info_user_files_table.css">
+    <link rel="stylesheet" href="../userfiles/userfiles_style/add_user_form_style.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -52,8 +54,8 @@
                 <div class="main-panel">
                     <div class = "sort-search-box">
                         <div class = "search-box">
-                                <p class="sort-search-title">Search:</p>
-                                <input class="search-input" type="text" id="search-input" name="search" placeholder="Search..">
+                            <p class="sort-search-title">Search:</p>
+                            <input class="search-input" type="text" id="search-input" name="search" placeholder="Search..">
                         </div>
                         <div class = "sort-box">
                             <p class="sort-search-title">Sort by:</p>
@@ -67,20 +69,22 @@
                             </select>
                         </div>
                         <div class="add-container">
-                                <div class="add-button" onclick="toggleForm()">
-                                    <i class="fas fa-plus"></i> Add
-                                </div>
-                             <form id="addForm" style="display: none;">
-                                    <!-- Your form fields go here -->
-                                <input type="text" name="idInput" placeholder="ID Number" required>
-                                <input type="text" name="professionInput" placeholder="Profession" required>
-                                <input type="text" name="lastNameInput" placeholder="Last Name" required>
-                                <input type="text" name="givenNameInput" placeholder="Given Name" required>
-                                <input type="text" name="middleInitialInput" placeholder="Middle Initial" required>
-                                <input type="text" name="nicknameInput" placeholder="Nickname" required>
-                                <input type="submit" value="Add to Database">
-                             </form>
+                            <div class="add-button" onclick="toggleAddForm()">
+                                <i class="fas fa-plus"></i>&#160Add
+                            </div>
                         </div>
+                    </div>
+                    <div class="add-form-container" id="addForm" style="display: none;">
+                        <form action = "add_new_user.php" method="POST">
+                            <!-- Your form fields go here -->
+                            <input type="text" name="idInput" placeholder="ID Number" required>
+                            <input type="text" name="professionInput" placeholder="Profession" required>
+                            <input type="text" name="lastNameInput" placeholder="Last Name" required>
+                            <input type="text" name="givenNameInput" placeholder="Given Name" required>
+                            <input type="text" name="middleInitialInput" placeholder="Middle Initial" required>
+                            <input type="text" name="nicknameInput" placeholder="Nickname" required>
+                            <input type="submit" value="Add to Database">
+                        </form>
                     </div>
                     <div class = "table-container">
                     <table class="user-files-table">

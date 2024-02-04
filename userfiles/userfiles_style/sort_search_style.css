@@ -1,0 +1,42 @@
+.sort-search-box {
+    display: flex;
+    position: relative;
+    width: 70%;
+    height: 6.1%;
+    margin-top: 30px;
+    margin-left: 78px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    background-color: rgb(253, 253, 253);
+    align-items: center;
+}
+
+.sort-search-title {
+    background-color: rgb(255,255,255);
+    color: #001233;
+    margin-left: 10px;
+    margin-right: 5px;
+    font-weight: bolder;
+}
+
+.search-box {
+    display: flex;
+    position: relative;
+    width: 50%;
+    height: 100%;
+    margin-left: 10px;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+}
+
+.sort-box {
+    display: flex;
+    position: relative;
+    width: 50%;
+    height: 100%;
+    margin-left: 10px;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    align-items: center;
+}

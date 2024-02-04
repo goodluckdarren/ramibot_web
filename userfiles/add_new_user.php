@@ -1,31 +1,33 @@
 <?php
     require_once('../database_connect.php');
 
-// Assuming you have a database table named 'users'
-$mysqli = new mysqli("localhost", "username", "password", "your_database");
+    // Prepare and bind the statement
+    $stmt = $con->prepare("INSERT INTO ramibot_faces (ID_Number, Profession, Last_Name, Given_Name, MI, nickname) 
+            VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $idNumber, $profession, $lastName, $givenName, $middleInitial, $nickname);
 
-// Check connection
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-}
+    // Set parameters and execute
+    $idNumber = $_POST['idInput'];
+    $profession = $_POST['professionInput'];
+    $lastName = $_POST['lastNameInput'];
+    $givenName = $_POST['givenNameInput'];
+    $middleInitial = $_POST['middleInitialInput'];
+    $nickname = $_POST['nicknameInput'];
 
-// Sanitize input (to prevent SQL injection)
-$idNumber = mysqli_real_escape_string($mysqli, $_POST['idInput']);
-$profession = mysqli_real_escape_string($mysqli, $_POST['professionInput']);
-$lastName = mysqli_real_escape_string($mysqli, $_POST['lastNameInput']);
-$givenName = mysqli_real_escape_string($mysqli, $_POST['givenNameInput']);
-$middleInitial = mysqli_real_escape_string($mysqli, $_POST['middleInitialInput']);
-$nickname = mysqli_real_escape_string($mysqli, $_POST['nicknameInput']);
+    if ($stmt->execute()) {
+        echo "Record added successfully";
+        // Add the "Okay" button
+        echo '<br><button onclick="goBack()">Okay</button>';
+    } else {
+        echo "Error: " . $stmt->error;
+    }
 
-// Insert data into the database
-$sql = "INSERT INTO users (Id_number, Profession, Last_Name, Given_Name, MI, nickname) VALUES ('$idNumber', '$profession', '$lastName', '$givenName', '$middleInitial', '$nickname')";
-
-if ($mysqli->query($sql) === TRUE) {
-    echo "Record added successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $mysqli->error;
-}
-
-// Close the database connection
-$mysqli->close();
+    // Close the statement
+    $stmt->close();
 ?>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
