@@ -29,6 +29,25 @@ td {
     height: 45px;
 }
 
+.delete-button[type="button"]{
+    position: relative;
+    right: 0px;
+    box-shadow: none;
+    border: 1px solid #000;
+    background-color: #8a2e26;
+    color: #fff;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.delete-button:hover{
+    background-color: #E7AE41;
+}
+
+
+
 /* Pagination style */
 .pagination {
     display: flex;

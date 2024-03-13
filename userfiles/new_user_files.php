@@ -96,6 +96,7 @@
                                 <th>Given Name</th>
                                 <th>Middle Initial</th>
                                 <th>Nickname</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody id="user-files-table-content">

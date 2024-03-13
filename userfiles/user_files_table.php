@@ -28,6 +28,12 @@
         echo "<td>" . $row['Given_Name'] . "</td>";
         echo "<td>" . $row['MI'] . "</td>";
         echo "<td>" . $row['nickname'] . "</td>";
+        echo '<td class="action-buttons">';
+        echo '<div>';
+        echo '<button class="delete-button" type="button" onclick="deleteRow(' . $row['ID_Number'] . ')"> 
+                <i class="fas fa-trash"></i></button>';
+        echo '</div>';
+        echo '</td>';
         echo "</tr>";
     }
 ?>
@@ -89,5 +95,27 @@
                 alert('Error loading table content.');
             }
         });
+    }
+
+</script>
+<script>
+
+     function deleteRow(ID_Number) {
+        if (confirm("Do you want to delete this user?")) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "../userfiles/delete_user.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        alert("User has been successfully deleted.");
+                        location.reload();
+                    } else {
+                        alert("Error deleting user: " + xhr.responseText);
+                    }
+                }
+            };
+            xhr.send("ID_Number=" + ID_Number);
+        }
     }
 </script>
