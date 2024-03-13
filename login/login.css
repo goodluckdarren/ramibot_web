@@ -4,12 +4,6 @@ html, body {
     overflow: hidden;
 }
 
-body {
-    background-image: url('../ramibot_web/login/adminLoginPic.png');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
 
 .login-page{
     display: flex;
@@ -18,16 +12,6 @@ body {
     text-align: center;
 }
 
-.blur {
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-}
 
 .logo {
     position: absolute;
@@ -40,7 +24,7 @@ body {
     z-index: 2;
     position: absolute;
     height: 650px;
-    width: 550px;
+    width: 500px;
     background-color: rgba(0, 0, 0, 0.83);
     border-radius: 32px;
     
@@ -52,7 +36,7 @@ body {
     height: fit-content;
     width: 100%;
     color: azure;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     font-family: 'Calibri', sans-serif;
     text-align: center;
@@ -96,7 +80,7 @@ form input{
     padding: 0px 10px;
     border-radius: 5px;
     border: 1px solid #343A40;
-    font-size: 1.3rem;
+    font-size: 1rem;
     outline: none;
 }
 form input::placeholder{
