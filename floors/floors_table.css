@@ -1,0 +1,104 @@
+.upload-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    margin-top: 15px;
+    width: 100%;
+    height: 70px;
+    background-color: rgb(253, 253, 253);
+}
+
+.upload-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 131, 245);
+    margin-left: 15px;
+    height: 35px;
+    width: 250px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.upload-title {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.upload-title i {
+    vertical-align: middle;
+}
+
+#fileInput:hover{
+    cursor: pointer;
+}
+
+.floors-imgs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    width: 97.7%;
+    max-height: 100%;
+    margin-left: 15px;
+    margin-top: 15px;
+    background-color: #4a4e69;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.floor-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #22223b;
+
+}
+
+.floor-content img{
+    overflow: auto;
+    width: 640px;
+    height: 480px;
+}
+
+.floor-text{
+    color: white;
+    font-size: 20px;
+}
+.text{
+    color: white;
+    font-size: 20px;
+    margin: 10px;
+
+}
+
+.delete-button[type="button"]{
+    position: relative;
+    right: 0px;
+    box-shadow: none;
+    border: 1px solid #000;
+    background-color: #8a2e26;
+    color: #fff;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.delete-button:hover{
+    background-color: #E7AE41;
+}
+
+.image-size {
+    width: 400px;
+    height: 400px;
+    margin: 10px;
+}

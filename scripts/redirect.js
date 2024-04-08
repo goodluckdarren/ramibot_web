@@ -22,6 +22,10 @@ function redirectToStatus(){
     window.location.href = '../status/rami_status.php';
 }
 
+function redirectToFloors(){
+    window.location.href = '../floors/floors.php';
+}
+
 function toggleAddForm() {
     var addForm = document.getElementById("addForm");
     addForm.style.display = (addForm.style.display === "none" || addForm.style.display === "") ? "block" : "none";

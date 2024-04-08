@@ -127,6 +127,11 @@ input[type=password]{
     margin-bottom: 50px;
 }
 
+.popup{
+    color: red;
+    font-weight: bold;
+}
+
 a:link {color:#FFFAFA;}
 a:visited {color:#FFFAFA;} 
 a:hover {color:#FFFAFA;} 

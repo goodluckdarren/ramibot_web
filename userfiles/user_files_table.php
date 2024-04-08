@@ -71,14 +71,17 @@
         $('#pagination').html(paginationHtml);
     }
 
+    
     function loadPage(page) {
-        if (page < 1 || page > totalPages || page === currentPage) {
-            return;
-        }
+    if (page < 1 || page > totalPages || page === currentPage) {
+        return;
+    }
 
-        currentPage = page;
-        updatePagination();
-        loadTableContent();
+    currentPage = page;
+    updatePagination();
+    loadTableContent();
+
+    event.preventDefault();
     }
 
     function loadTableContent() {

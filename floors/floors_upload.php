@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
 
-            $sql = "INSERT INTO programs_img (img_url) VALUES ('$imgUrl')";
+            $sql = "INSERT INTO floors_img (img_url) VALUES ('$imgUrl')";
             if ($con->query($sql) === TRUE) {
                 echo "Record inserted into the database successfully.";
             } else {

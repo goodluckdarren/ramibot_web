@@ -23,6 +23,9 @@
                 <div class="btn programs-offered" onclick="redirectToProgramsOffered()">
                     <p>Programs Offered</p>
                 </div>
+                <div class="btn floors" onclick="redirectToFloors()">
+                    <p>Floors</p>
+                </div>
                 <div class="btn office-hours" onclick="redirectToOfficeHours()">
                     <p>Office Hours</p>
                 </div>

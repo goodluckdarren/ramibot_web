@@ -7,7 +7,7 @@
     <title>ADMIBOT</title>
     <link rel="stylesheet" href="../homepage.css">
     <link rel="stylesheet" href="../interactions.css">
-    <link rel="stylesheet" href="../programs/programs_offered_table.css">
+    <link rel="stylesheet" href="../floors/floors_table.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <script src="../scripts/redirect.js"></script>
@@ -23,9 +23,9 @@
             var fileName = document.getElementById('fileInput').value;
             if (fileName === '') {
                 alert('Please select a file');
-                return false; // Prevent form submission if no file is selected
+                return false; 
             }
-            return true; // Allow form submission
+            return true;
         }
     </script>
 <body class="home-page">
@@ -38,11 +38,11 @@
                 <div class="btn faculty-schedule" onclick="redirectToSchedule()">
                     <p>Faculty Schedule</p>
                 </div>
-                <div class="main-btn btn programs-offered" onclick="redirectToProgramsOffered()">
-                    <div class="main-btn-box"></div>
+                <div class="btn programs-offered" onclick="redirectToProgramsOffered()">
                     <p>Programs Offered</p>
                 </div>
-                <div class="btn floors" onclick="redirectToFloors()">
+                <div class="main-btn btn floors" onclick="redirectToFloors()">
+                    <div class="main-btn-box"></div>
                     <p>Floors</p>
                 </div>
                 <div class="btn office-hours" onclick="redirectToOfficeHours()">
@@ -59,7 +59,7 @@
         <div class="content">
             <div class="top-header">
                 <div class="page-title">
-                    <p class="page-name">PROGRAMS OFFERED</p>
+                    <p class="page-name">Floor Maps</p>
                 </div>
                 <div class="user-profile">
                     <p class="user-name">BARACK OBAMA</p>
@@ -68,7 +68,7 @@
             </div>
             <div class="main-menu">
                 <div class="main-panel">
-                    <form action="programs_upload.php" method="post" enctype="multipart/form-data" onsubmit="return showFileName()">
+                    <form action="floors_upload.php" method="post" enctype="multipart/form-data" onsubmit="return showFileName()">
                         <div class="upload-container">
                             <div class="upload-button">    
                                 <label for="fileInput" class="upload-title">
@@ -79,8 +79,8 @@
                             <input type="submit" value="Submit">
                         </div>
                     </form>
-                    <div class="programs-imgs">
-                    <?php include '../programs/programs_images.php'?>
+                    <div class="floors-imgs">
+                    <?php include '../floors/floors_images.php'?>
                     </div>
                 </div>
             </div>
