@@ -7,11 +7,14 @@
 
     $offset = ($page - 1) * $rows_per_page;
 
-    // Get search input and sort criteria from GET parameters
+    
     $search = isset($_GET['search']) ? $_GET['search'] : '';
-    $sort = isset($_GET['sort']) ? $_GET['sort'] : 'id_number'; // Default sorting criteria
-
-    // Construct the WHERE clause for search
+    $sort = isset($_GET['sort']) ? $_GET['sort'] : 'id_number'; 
+        
+    
+    // Construct the ORDER BY clause for sorting
+    $sort_clause = "ORDER BY $sort ASC";
+    
     $search_condition = '';
     if (!empty($search)) {
         $search_condition = "WHERE ID_Number LIKE '%$search%' OR 
@@ -22,7 +25,6 @@
                             nickname LIKE '%$search%'";
     }
 
-    // Construct the ORDER BY clause for sorting
     $sort_clause = "ORDER BY $sort ASC";
 
     $count_query = "SELECT COUNT(*) as count FROM ramibot_faces $search_condition";
@@ -33,10 +35,10 @@
     $total_pages = ceil($total_rows / $rows_per_page);
 
     $sql = "SELECT rf.* 
-            FROM ramibot_faces AS rf
-            $search_condition
-            $sort_clause
-            LIMIT $offset, $rows_per_page";
+        FROM ramibot_faces AS rf
+        $search_condition
+        $sort_clause
+        LIMIT $offset, $rows_per_page";
     $result_table = mysqli_query($con, $sql);
 
     while ($row = mysqli_fetch_assoc($result_table)) {
@@ -58,7 +60,6 @@
 ?>
 
 <script>
-    // Declare global variables
     var currentPage = <?php echo $page; ?>;
     var totalPages = <?php echo $total_pages; ?>;
 
@@ -103,21 +104,25 @@
     event.preventDefault();
     }
 
-    function loadTableContent() {
-        $.ajax({
-            url: '../userfiles/user_files_table.php',
-            type: 'GET',
-            data: { page: currentPage },
-            success: function (data) {
-                $('#user-files-table-content').fadeOut('fast', function () {
-                    $(this).html(data).fadeIn('fast');
-                });
-            },
-            error: function () {
-                alert('Error loading table content.');
-            }
-        });
-    }
+    function loadTableContent(search, sort) {
+    $.ajax({
+        url: '../userfiles/user_files_table.php',
+        type: 'GET',
+        data: { 
+            page: currentPage,
+            search: search,
+            sort: sort
+        },
+        success: function (data) {
+            $('#user-files-table-content').fadeOut('fast', function () {
+                $(this).html(data).fadeIn('fast');
+            });
+        },
+        error: function () {
+            alert('Error loading table content.');
+        }
+    });
+}
 
 </script>
 <script>
