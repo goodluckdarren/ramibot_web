@@ -1,7 +1,7 @@
 <?php
 require_once('../database_connect.php');
 
-$sql = "SELECT rf.img_url
+$sql = "SELECT rf.img_id, rf.img_url
         FROM programs_img AS rf
         ORDER BY rf.img_id ASC";
 
@@ -12,13 +12,40 @@ if ($statement === false) {
 }
 
 mysqli_stmt_execute($statement);
-mysqli_stmt_bind_result($statement, $img_url);
+mysqli_stmt_bind_result($statement, $img_id, $img_url);
 
 while (mysqli_stmt_fetch($statement)) {
     $img_url = '../programs_img/' . htmlspecialchars($img_url, ENT_QUOTES, 'UTF-8');
-    echo "<div><img class='image-size' alt='Image' src='", $img_url, "'></div>";
+    echo '<div class="image-container">';
+    echo '<img src="' . $img_url . '" class="image-size" alt="Image">';
+    echo '<button class="delete-button" type="button" onclick="deleteImage(' . $img_id . ')"> 
+                <i class="fas fa-trash large-trash-icon"></i></button>';
+    echo '</div>';  
+    
 }
 
 mysqli_stmt_close($statement);
 mysqli_close($con);
 ?>
+<script>
+function deleteImage($img_Id) {
+    if (confirm("Are you sure you want to delete this image?")) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "programs_delete.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    alert(xhr.responseText);
+                    // Reload the page or update the image container after successful deletion
+                    // Example: window.location.reload();
+                } else {
+                    alert("Error deleting image: " + xhr.responseText);
+                }
+            }
+        };
+        xhr.send("img_id=" + $img_Id);
+    }  
+    location.reload();
+}
+</script>

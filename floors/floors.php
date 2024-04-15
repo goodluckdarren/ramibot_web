@@ -76,9 +76,11 @@
                                 </label>
                                 <input type="file" name="fileInput" id="fileInput" accept=".jpg, .jpeg, .png" style="position: absolute; opacity: 0;" onchange="displayFileName(this)">
                             </div>
+                            <input type="text" name="floorIdentifier" id="floorIdentifier" placeholder="Floor Identifier" required>
+                            <input type="number" name="floorId" id="floorId" placeholder="Floor Number" required>
                             <input type="submit" value="Submit">
                         </div>
-                    </form>
+                     </form>
                     <div class="floors-imgs">
                     <?php include '../floors/floors_images.php'?>
                     </div>

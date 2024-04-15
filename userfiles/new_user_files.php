@@ -58,11 +58,11 @@
                     <div class = "sort-search-box">
                         <div class = "search-box">
                             <p class="sort-search-title">Search:</p>
-                            <input class="search-input" type="text" id="search-input" name="search" placeholder="Search..">
+                            <input class="search-input" type="text" id="search-input" name="search" placeholder="Search.." oninput="searchAndLoad()">
                         </div>
                         <div class = "sort-box">
                             <p class="sort-search-title">Sort by:</p>
-                            <select class="sort-select" name="sort" id="sort-select">
+                            <select class="sort-select" name="sort" id="sort-select" onchange="searchAndLoad()">
                                 <option value="id_number">ID Number</option>
                                 <option value="profession">Profession</option>
                                 <option value="last_name">Last Name</option>
@@ -115,3 +115,4 @@
     </div>
 </body>
 </html>
+

@@ -53,8 +53,41 @@
     overflow: auto;
 }
 
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.delete-button {
+    position: absolute;
+    top: .1px; /* Adjust the top position as needed */
+    right: .1px; /* Adjust the right position as needed */
+    background-color: rgba(255, 0, 0, 0.7); /* Semi-transparent red background */
+    color: white;
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    display: none; /* Initially hidden */
+}
+
+.delete-button:hover {
+    background-color: rgba(250, 0, 0, 0.35); /* Darker red on hover */
+    
+}
+
+.image-container:hover .delete-button {
+    display: block; /* Show delete button when image container is hovered */
+}
+
+
 .image-size {
     width: 400px;
     height: 400px;
     margin: 10px;
+}
+
+.large-trash-icon{
+    font-size: 3rem;
 }

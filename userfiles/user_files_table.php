@@ -7,7 +7,25 @@
 
     $offset = ($page - 1) * $rows_per_page;
 
-    $count_query = "SELECT COUNT(*) as count FROM ramibot_faces";
+    // Get search input and sort criteria from GET parameters
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
+    $sort = isset($_GET['sort']) ? $_GET['sort'] : 'id_number'; // Default sorting criteria
+
+    // Construct the WHERE clause for search
+    $search_condition = '';
+    if (!empty($search)) {
+        $search_condition = "WHERE ID_Number LIKE '%$search%' OR 
+                            Profession LIKE '%$search%' OR 
+                            Last_Name LIKE '%$search%' OR 
+                            Given_Name LIKE '%$search%' OR 
+                            MI LIKE '%$search%' OR 
+                            nickname LIKE '%$search%'";
+    }
+
+    // Construct the ORDER BY clause for sorting
+    $sort_clause = "ORDER BY $sort ASC";
+
+    $count_query = "SELECT COUNT(*) as count FROM ramibot_faces $search_condition";
     $count_result = mysqli_query($con, $count_query);
     $count_row = mysqli_fetch_assoc($count_result);
     $total_rows = $count_row['count'];
@@ -15,9 +33,10 @@
     $total_pages = ceil($total_rows / $rows_per_page);
 
     $sql = "SELECT rf.* 
-        FROM ramibot_faces AS rf
-        -- ORDER BY rf.ID_Number ASC
-        LIMIT $offset, $rows_per_page";
+            FROM ramibot_faces AS rf
+            $search_condition
+            $sort_clause
+            LIMIT $offset, $rows_per_page";
     $result_table = mysqli_query($con, $sql);
 
     while ($row = mysqli_fetch_assoc($result_table)) {
@@ -121,4 +140,13 @@
             xhr.send("ID_Number=" + ID_Number);
         }
     }
+</script>
+<script>
+function searchAndLoad() {
+    var searchInput = document.getElementById('search-input').value;
+    var sortSelect = document.getElementById('sort-select').value;
+    currentPage = 1; // Reset to the first page when searching or sorting
+    updatePagination();
+    loadTableContent(searchInput, sortSelect);
+}
 </script>

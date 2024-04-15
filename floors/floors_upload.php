@@ -1,41 +1,37 @@
-<?php
+    <?php
 
 require_once '../database_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_FILES['fileInput']) && $_FILES['fileInput']['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = '../programs_img/'; 
+    if (isset($_POST['floorId']) && isset($_POST['floorIdentifier'])) {
+        $floor_id = $_POST['floorId'];
+        $floor_identifier = $_POST['floorIdentifier'];
+
+        $uploadDir = '../floors_img/';
         $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
 
         if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {
-            echo 'File has been uploaded successfully.<br>';
-            
-            echo '<img src="' . $uploadFile . '" alt="Uploaded Picture" style="max-width: 100%;">';
-
             $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
 
-            $sql = "INSERT INTO floors_img (img_url) VALUES ('$imgUrl')";
-            if ($con->query($sql) === TRUE) {
-                echo "Record inserted into the database successfully.";
+            $stmt = $con->prepare("INSERT INTO floor_map (floor_id, floor_identifier, img_url) VALUES (?, ?, ?)");
+            $stmt->bind_param("iss", $floor_id, $floor_identifier, $imgUrl);
+
+            if ($stmt->execute()) {
+                echo "Record added successfully";
+                echo '<br><button onclick="goBack()">Okay</button>';
             } else {
-                if ($con->errno == 1062) {
-                    echo "Error: Duplicate entry. Handle this case as needed.";
-                } else {
-                    echo "Error inserting record into the database: " . $con->error;
-                }
+                echo "Error: " . $stmt->error;
             }
 
+            $stmt->close();
             $con->close();
         } else {
             echo 'Error uploading file.';
         }
     } else {
-        echo 'No file uploaded or an error occurred.';
+        echo 'Missing floorId or floorIdentifier.';
     }
     ?>
-    <br>
-    <button onclick="goBack()">Okay</button>
-
     <script>
         function goBack() {
             window.history.back();
