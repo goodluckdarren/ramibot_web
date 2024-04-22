@@ -26,6 +26,10 @@ function redirectToFloors(){
     window.location.href = '../floors/floors.php';
 }
 
+function redirectToCalendar(){
+    window.location.href = '../calendars/calendars.php';
+}
+
 function toggleAddForm() {
     var addForm = document.getElementById("addForm");
     addForm.style.display = (addForm.style.display === "none" || addForm.style.display === "") ? "block" : "none";

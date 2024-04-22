@@ -54,6 +54,9 @@
                 <div class="btn status" onclick="redirectToStatus()">
                     <p>Status</p>
                 </div>
+                <div class="btn calendar"onclick="redirectToCalendar()">
+                    <p>Calendar</p>
+                </div>       
             </div>
         </div>
         <div class="content">

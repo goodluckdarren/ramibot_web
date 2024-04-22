@@ -39,6 +39,9 @@
                     <div class="main-btn-box"></div>
                     <p>Status</p>
                 </div>
+                <div class="btn calendar"onclick="redirectToCalendar()">
+                    <p>Calendar</p>
+                </div>       
             </div>
         </div>
         <div class="content">
