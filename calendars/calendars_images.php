@@ -1,11 +1,12 @@
 <?php
     require_once('../database_connect.php');
 
+    $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'img_Identifier'; // Default sorting colum
     $sql = "SELECT * FROM calendars_img";
     $result_table = mysqli_query($con, $sql);
 
     while ($row = mysqli_fetch_assoc($result_table)) {
-        $calendarIdentifier = $row['calendar_identifier'];
+        $calendarIdentifier = $row['img_identifier'];
         $calendarImg = $row['img_url'];
         $category = $row['category']; // Ensure category is retrieved from the database
 

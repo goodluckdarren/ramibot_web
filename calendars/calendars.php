@@ -1,3 +1,5 @@
+<?php require_once('../database_connect.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +72,7 @@
                                     <option value="All">All</option>
                                     <option value="SHS">SHS Calendars</option>
                                     <option value="Undergraduate">Colleges Calendars</option>
-                                    <option value="Gradute">Graduate School Calendars</option>
+                                    <option value="Graduate">Graduate School Calendars</option>
                                 </select>
                             </div>
                         </div>

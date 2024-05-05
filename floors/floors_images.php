@@ -6,7 +6,7 @@
     $result_table = mysqli_query($con, $sql);
 
     while ($row = mysqli_fetch_assoc($result_table)) {
-        $floor_identifier = $row['floor_identifier'];
+        $floor_identifier = $row['img_identifier'];
         $floor_img = $row['img_url'];
 
         echo "<div class='floor-content'>
