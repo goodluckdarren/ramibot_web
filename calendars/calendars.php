@@ -50,7 +50,7 @@
                     <p class="page-name">CALENDAR</p>
                 </div>
                 <div class="user-profile">
-                    <p class="user-name">BARACK OBAMA</p>
+                    <?php include_once('../admin_account.php');?>
                     <img class ="profile-picture" src="../images_home/obama sample.jpg" alt="Image of Admin" width="70px" height="70px">
                 </div>
             </div>
@@ -65,6 +65,8 @@
                                 <input type="file" name="fileInput" id="fileInput" accept=".jpg, .jpeg, .png" style="position: absolute; opacity: 0;" onchange="displayFileName(this)">
                             </div>
                         </form>
+                        <input type="text" name="programsIdentifier" id="programsIdentifier" placeholder="Programs Identifier" required>
+                        <input type="submit" value="Submit">
                         <div class="category-filter">
                         <label for="categorySelect">Select Category:</label>
                             <select id="categorySelect" onchange="filterCalendars()">
@@ -72,15 +74,6 @@
                                 <option value="SHS">Senior High School</option>
                                 <option value="Undergraduate">Undergraduate</option>
                                 <option value="Graduate">Graduate School</option>
-                            </select>
-                        </div>
-                        <div class="term-filter">
-                        <label for="termSelect">Select Term:</label>
-                            <select id="termSelect" onchange="filterTerm()">
-                                <option value="All">All Terms</option>
-                                <option value="T1">Term 1</option>
-                                <option value="T2">Term 2</option>
-                                <option value="T3">Term 3</option>
                             </select>
                         </div>
                     </div>  

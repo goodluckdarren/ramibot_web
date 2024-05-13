@@ -7,7 +7,7 @@ function redirectToProgramsOffered(){
 }
 
 function redirectToOfficeHours(){
-    window.location.href = '../officesched/office_hours.php';
+    window.location.href = '../offices/office_hours.php';
 }
 
 function redirectToAnnouncements(){

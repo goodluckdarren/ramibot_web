@@ -52,7 +52,7 @@
                     <p class="page-name">USER FILES</p>
                 </div>
                 <div class="user-profile">
-                    <p class="user-name">BARACK OBAMA</p>
+                    <?php include_once('../admin_account.php');?>
                     <img class ="profile-picture" src="../images_home/obama sample.jpg" alt="Image of Admin" width="70px" height="70px">
                 </div>
             </div>
@@ -63,13 +63,13 @@
                             <p class="sort-search-title">Search:</p>
                             <input class="search-input" type="text" id="search-input" name="search" placeholder="Search.." oninput="searchAndLoad()">
                         </div>
-                        <div class = "sort-box">
-                            <p class="sort-search-title">Sort by:</p>
-                            <select class="sort-select" name="sort" id="sort-select" onchange="searchAndLoad()">
-                                <option value="id_number">ID Number</option>
-                                <option value="profession">Profession</option>
-                                <option value="last_name">Last Name</option>
-                                <option value="given_name">Given Name</option>
+                        <div class="sorting-dropdown">
+                            <label for="sort-by">Sort by:</label>
+                            <select id="sort-by" onchange="sortTable()">
+                                <option value="ID_Number">ID Number</option>
+                                <option value="Profession">Profession</option>
+                                <option value="Last_Name">Last Name</option>
+                                <option value="Given_Name">Given Name</option>
                                 <option value="MI">Middle Initial</option>
                                 <option value="nickname">Nickname</option>
                             </select>
@@ -82,7 +82,6 @@
                     </div>
                     <div class="add-form-container" id="addForm" style="display: none;">
                         <form action = "add_new_user.php" method="POST">
-                            <!-- Your form fields go here -->
                             <input type="text" name="idInput" placeholder="ID Number" required>
                             <input type="text" name="professionInput" placeholder="Profession" required>
                             <input type="text" name="lastNameInput" placeholder="Last Name" required>
@@ -93,22 +92,22 @@
                         </form>
                     </div>
                     <div class = "table-container">
-                    <table class="user-files-table">
-                        <thead>
-                            <tr>
-                                <th>ID Number</th>
-                                <th>Profession</th>
-                                <th>Last Name</th>
-                                <th>Given Name</th>
-                                <th>Middle Initial</th>
-                                <th>Nickname</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody id="user-files-table-content">
-                        <?php include '../userfiles/user_files_table.php'?>
-                        </tbody>
-                    </table>
+                        <table class="user-files-table">
+                            <thead>
+                                <tr>
+                                    <th>ID Number</th>
+                                    <th>Profession</th>
+                                    <th>Last Name</th>
+                                    <th>Given Name</th>
+                                    <th>Middle Initial</th>
+                                    <th>Nickname</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="user-files-table-content">
+                            <?php include '../userfiles/user_files_table.php'?>
+                            </tbody>
+                        </table>
                     </div>
                     <ul id="pagination" class="pagination">
                     </ul>
@@ -119,3 +118,25 @@
 </body>
 </html>
 
+<script>
+    function filterCalendars() {
+        var categorySelect = document.getElementById("sort-select");
+        var selectedCategory = categorySelect.value.toLowerCase(); // Convert to lowercase for case-insensitive comparison
+        var calendarContents = document.getElementsByClassName("calendar-content");
+
+        console.log("Selected category:", selectedCategory); // Debug statement
+
+        for (var i = 0; i < calendarContents.length; i++) {
+            var calendarContent = calendarContents[i];
+            var categoryText = calendarContent.querySelector(".category-text").innerText.trim().toLowerCase(); // Convert to lowercase
+
+            console.log("Category text:", categoryText); // Debug statement
+
+            if (selectedCategory === "all" || categoryText === selectedCategory) { // Use lowercase for comparison
+                calendarContent.style.display = "block";
+            } else {
+                calendarContent.style.display = "none";
+            }
+        }
+    }
+</script>

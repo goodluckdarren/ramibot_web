@@ -22,6 +22,7 @@
     }
 ?>
 
+
 <script>    
      function deleteRow(floor_id) {
         if (confirm("Do you want to delete this?")) {

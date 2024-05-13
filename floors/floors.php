@@ -65,7 +65,7 @@
                     <p class="page-name">Floor Maps</p>
                 </div>
                 <div class="user-profile">
-                    <p class="user-name">BARACK OBAMA</p>
+                    <?php include_once('../admin_account.php');?>
                     <img class ="profile-picture" src="../images_home/obama sample.jpg" alt="Image of Admin" width="70px" height="70px">
                 </div>
             </div>

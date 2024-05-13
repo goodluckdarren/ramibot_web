@@ -3,16 +3,16 @@
 require_once '../database_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['programsIdentifier'])) {
-        $programsIdentifier = $_POST['programsIdentifier'];
+    if (isset($_POST['officeIdentifier'])) {
+        $officeIdentifier = $_POST['officeIdentifier'];
 
-        $uploadDir = '../programs_img/';
+        $uploadDir = '../offices_img/';
         $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
 
         if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {
             $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
 
-            $stmt = $con->prepare("INSERT INTO programs_img (img_identifier, img_url) VALUES (?, ?)");
+            $stmt = $con->prepare("INSERT INTO offices (img_identifier, img_url) VALUES (?, ?)");
             $stmt->bind_param("ss", $programsIdentifier, $imgUrl);
 
             if ($stmt->execute()) {

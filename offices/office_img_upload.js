@@ -49,32 +49,3 @@ function saveImageUrlToDatabase(imageUrl) {
     // Implement code to save the imageUrl to your database here
     console.log('Image URL saved to database:', imageUrl);
 }
-
-
-function getCategory(calendarText) {
-    var words = calendarText.split(' ');
-    return words[0];
-}
-
-function filterCalendars() {
-    var categorySelect = document.getElementById("categorySelect");
-    var selectedCategory = categorySelect.value.toLowerCase(); // Convert to lowercase for case-insensitive comparison
-    var calendarContents = document.getElementsByClassName("calendar-content");
-
-    console.log("Selected category:", selectedCategory); // Debug statement
-
-    for (var i = 0; i < calendarContents.length; i++) {
-        var calendarContent = calendarContents[i];
-        var categoryText = calendarContent.querySelector(".category-text").innerText.trim().toLowerCase(); // Convert to lowercase
-
-        console.log("Category text:", categoryText); // Debug statement
-
-        if (selectedCategory === "all" || categoryText === selectedCategory) { // Use lowercase for comparison
-            calendarContent.style.display = "block";
-        } else {
-            calendarContent.style.display = "none";
-        }
-    }
-}
-
-

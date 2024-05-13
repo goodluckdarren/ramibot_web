@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../interactions.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
+    <link rel="stylesheet" href="../offices/office_table.css"> 
     <script src="../scripts/redirect.js"></script>
 </head>
 <body class="home-page">
@@ -43,13 +44,27 @@
         <div class="content">
             <div class="top-header">
                 <div class="user-profile">
-                    <p class="user-name">BARACK OBAMA</p>
+                    <?php include_once('../admin_account.php');?>
                     <img class ="profile-picture" src="../images_home/obama sample.jpg" alt="Image of Admin" width="70px" height="70px">
                 </div>
             </div>
             <div class="main-menu">
                 <div class="main-panel">
-                    Lorem ipsum dorem
+                    <form action="office_upload.php" method="post" enctype="multipart/form-data" onsubmit="return showFileName()">
+                        <div class="upload-container">
+                            <div class="upload-button">    
+                                <label for="fileInput" class="upload-title">
+                                    Upload <i class="fas fa-upload"></i>
+                                </label>
+                                <input type="file" name="fileInput" id="fileInput" accept=".jpg, .jpeg, .png" style="position: absolute; opacity: 0;" onchange="displayFileName(this)">
+                            </div>
+                            <input type="text" name="officeIdentifier" id="officeIdentifier" placeholder="Office Identifier" required>
+                            <input type="submit" value="Submit">
+                        </div>
+                    </form>
+                <div class="offices-imgs">
+                    <?php include '../offices/office_images.php'?>
+                </div>
                 </div>
             </div>
         </div>

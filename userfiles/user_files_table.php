@@ -2,18 +2,10 @@
     require_once('../database_connect.php');
 
     $rows_per_page = 10;
-
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-
     $offset = ($page - 1) * $rows_per_page;
-
-    
     $search = isset($_GET['search']) ? $_GET['search'] : '';
-    $sort = isset($_GET['sort']) ? $_GET['sort'] : 'id_number'; 
-        
-    
-    // Construct the ORDER BY clause for sorting
-    $sort_clause = "ORDER BY $sort ASC";
+    $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'ID_Number';
     
     $search_condition = '';
     if (!empty($search)) {
@@ -25,8 +17,6 @@
                             nickname LIKE '%$search%'";
     }
 
-    $sort_clause = "ORDER BY $sort ASC";
-
     $count_query = "SELECT COUNT(*) as count FROM ramibot_faces $search_condition";
     $count_result = mysqli_query($con, $count_query);
     $count_row = mysqli_fetch_assoc($count_result);
@@ -34,10 +24,11 @@
 
     $total_pages = ceil($total_rows / $rows_per_page);
 
+    //Added sorting ORDER BY
     $sql = "SELECT rf.* 
         FROM ramibot_faces AS rf
         $search_condition
-        $sort_clause
+        ORDER BY $sort_by ASC
         LIMIT $offset, $rows_per_page";
     $result_table = mysqli_query($con, $sql);
 
@@ -104,26 +95,63 @@
     event.preventDefault();
     }
 
-    function loadTableContent(search, sort) {
-    $.ajax({
-        url: '../userfiles/user_files_table.php',
-        type: 'GET',
-        data: { 
-            page: currentPage,
-            search: search,
-            sort: sort
-        },
-        success: function (data) {
-            $('#user-files-table-content').fadeOut('fast', function () {
-                $(this).html(data).fadeIn('fast');
-            });
-        },
-        error: function () {
-            alert('Error loading table content.');
-        }
-    });
-}
+    function loadTableContent() {
+        $.ajax({
+            url: '../userfiles/user_files_table.php',
+            type: 'GET',
+            data: { 
+                page: currentPage,
+            },
+            success: function (data) {
+                $('#user-files-table-content').fadeOut('fast', function () {
+                    $(this).html(data).fadeIn('fast');
+                });
+            },
+            error: function () {
+                alert('Error loading table content.');
+            }
+        });
+    }
 
+    function sortTable(){
+        var sortBy=$('#sort-by').val();
+        $.ajax({
+            url: '../userfiles/user_files_table.php',
+            type: 'GET',
+            data: {
+                page: currentPage,
+                sort_by: sortBy
+            },
+            success: function(data){
+                $('#user-files-table-content').fadeOut('fast', function(){
+                    $(this).html(data).fadeIn('fast');
+                });
+            },
+            error: function(){
+                alert('Error sorting table content.');
+            }
+        });
+    }
+
+    function searchTable(){
+        var searchBy=$();
+        $.ajax({
+            url: '../userfiles/user_files_table.php',
+            type: 'GET',
+            data: {
+                page: currentPage,
+                sort_by: sortBy
+            },
+            success: function(data){
+                $('#user-files-table-content').fadeOut('fast', function(){
+                    $(this).html(data).fadeIn('fast');
+                });
+            },
+            error: function(){
+                alert('Error sorting table content.');
+            }
+        });
+    }
 </script>
 <script>
 
@@ -149,9 +177,8 @@
 <script>
 function searchAndLoad() {
     var searchInput = document.getElementById('search-input').value;
-    var sortSelect = document.getElementById('sort-select').value;
     currentPage = 1;
     updatePagination();
-    loadTableContent(searchInput, sortSelect);
+    loadTableContent(searchInput);
 }
 </script>
