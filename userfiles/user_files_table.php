@@ -150,7 +150,7 @@
 function searchAndLoad() {
     var searchInput = document.getElementById('search-input').value;
     var sortSelect = document.getElementById('sort-select').value;
-    currentPage = 1; // Reset to the first page when searching or sorting
+    currentPage = 1;
     updatePagination();
     loadTableContent(searchInput, sortSelect);
 }

@@ -70,7 +70,7 @@
                                 <option value="profession">Profession</option>
                                 <option value="last_name">Last Name</option>
                                 <option value="given_name">Given Name</option>
-                                <option value="middle_initial">Middle Initial</option>
+                                <option value="MI">Middle Initial</option>
                                 <option value="nickname">Nickname</option>
                             </select>
                         </div>

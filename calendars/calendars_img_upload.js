@@ -77,3 +77,24 @@ function filterCalendars() {
     }
 }
 
+function filterTerm() {
+    var termSelect = document.getElementById("termSelect");
+    var selectedTerm = termSelect.value.toLowerCase(); // Convert to lowercase for case-insensitive comparison
+    var calendarContents = document.getElementsByClassName("calendar-content");
+
+    console.log("Selected term:", selectedTerm); // Debug statement
+
+    for (var i = 0; i < calendarContents.length; i++) {
+        var calendarContent = calendarContents[i];
+        var termText = calendarContent.querySelector(".term-text").innerText.trim().toLowerCase(); // Convert to lowercase
+
+        console.log("Term text:", termText); // Debug statement
+
+        if (selectedTerm === "all" || termText === selectedTerm) { // Use lowercase for comparison
+            calendarContent.style.display = "block";
+        } else {
+            calendarContent.style.display = "none";
+        }
+    }
+}
+
