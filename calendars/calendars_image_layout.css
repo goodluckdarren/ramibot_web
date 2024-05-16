@@ -4,8 +4,10 @@
     align-items: center; 
     margin-top: 15px;
     width: 100%;
-    height: 70px;
+    height: auto; /* Adjust height to auto to fit all contents */
     background-color: rgb(253, 253, 253);
+    padding: 10px; /* Added padding for better spacing */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
 }
 
 .upload-button {
@@ -13,13 +15,16 @@
     align-items: center;
     justify-content: center;
     background-color: rgb(0, 131, 245);
-    margin-left: 15px;
     height: 35px;
     width: 250px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin-right: 10px;
+    cursor: pointer;
+    color: white; /* Ensures text color contrasts with the background */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    padding: 5px; /* Optional: Add padding for better button appearance */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
 }
 
 .upload-title {
@@ -33,8 +38,29 @@
     vertical-align: middle;
 }
 
-#fileInput:hover{
+#fileInput {
+    display: none; /* Hide the file input field */
+}
+
+.upload-button:hover {
+    background-color: #006bbf; /* Darken the button on hover */
+}
+
+input[type="text"], input[type="submit"] {
+    margin-left: 10px; /* Space between the elements */
+    padding: 5px;
+    border: 1px solid #ccc; /* Optional: Add border for better visual separation */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+input[type="submit"] {
+    background-color: #0c69f9;
+    color: white;
     cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056d2;
 }
 
 .calendars-imgs {
@@ -43,43 +69,53 @@
     flex-wrap: wrap;
     border-radius: 5px;
     width: 97.7%;
-    height: 100%;
+    height: auto; /* Adjust height to auto to fit all contents */
     margin-left: 15px;
     margin-top: 15px;
     background-color: #4a4e69;
     align-items: center;
     justify-content: center;
     overflow: auto;
+    padding: 10px; /* Added padding for better spacing */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
 }
 
-.calendar-content{
+.calendar-content {
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 10px;
     border-radius: 5px;
     background-color: #22223b;
-    width: 920  px;
-
+    width: auto; /* Adjust width as needed */
+    padding: 10px; /* Added padding for better spacing */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
 }
 
-.calendar-content img{
-    width: 960px;
-    height: 620px;
+.category-filter {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.calendar-text{
+.calendar-content img {
+    width: 100%; /* Adjust to fit the container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+.calendar-text {
     color: white;
     font-size: 20px;
 }
-.text{
+
+.text {
     color: white;
     font-size: 20px;
-    margin: 10px;
-
+    margin-left: 50px;
 }
 
-.delete-button[type="button"]{
+.delete-button[type="button"] {
     position: relative;
     right: 0px;
     box-shadow: none;
@@ -92,7 +128,7 @@
     cursor: pointer;
 }
 
-.delete-button:hover{
+.delete-button:hover {
     background-color: #E7AE41;
 }
 

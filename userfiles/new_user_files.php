@@ -36,14 +36,20 @@
                     <p>Office Hours</p>
                 </div>
                 <div class="btn announcements" onclick="redirectToAnnouncements()">
-                    <p>Announcements</p>
+                    <p>About APC</p>
                 </div>
                 <div class="btn status" onclick="redirectToStatus()">
                     <p>Status</p>   
                 </div>
                 <div class="btn calendar"onclick="redirectToCalendar()">
                     <p>Calendar</p>
-                </div>            
+                </div>    
+                <div class="btn tuition" onclick="redirectToTuition()">
+                    <p>Tuition</p>    
+                </div> 
+                <div class="btn accreditations" onclick="redirectToAccreditation()">
+                    <p>Accreditations</p>    
+                </div>         
             </div>
         </div>
         <div class="content">
@@ -61,7 +67,7 @@
                     <div class = "sort-search-box">
                         <div class = "search-box">
                             <p class="sort-search-title">Search:</p>
-                            <input class="search-input" type="text" id="search-input" name="search" placeholder="Search.." oninput="searchAndLoad()">
+                            <input class="search-input" type="text" id="search-input" name="search" placeholder="Search.." oninput="searchTable()">
                         </div>
                         <div class="sorting-dropdown">
                             <label for="sort-by">Sort by:</label>
@@ -91,9 +97,21 @@
                             <input type="submit" value="Add to Database">
                         </form>
                     </div>
+                    <div id="editFormContainer" class="edit-form-container" style="display: none;">
+                        <form id="editForm" class="edit-form" action="update_user.php" method="POST">
+                            <input type="text" id="editIdNumber" name="editIdNumber" placeholder= "ID Number" required>
+                            <input type="text" id="editProfession" name="editProfession" placeholder="Profession" required>
+                            <input type="text" id="editLastName" name="editLastName" placeholder="Last Name" required>
+                            <input type="text" id="editGivenName" name="editGivenName" placeholder="Given Name" required>
+                            <input type="text" id="editMiddleInitial" name="editMiddleInitial" placeholder="Middle Initial" required>
+                            <input type="text" id="editNickname" name="editNickname" placeholder="Nickname" required>
+                            <input type="submit" value="Save Changes">
+                            <button id="closeEditFormBtn" type="button">Close</button>
+                        </form>
+                    </div>
                     <div class = "table-container">
                         <table class="user-files-table">
-                            <thead>
+                            <thead> 
                                 <tr>
                                     <th>ID Number</th>
                                     <th>Profession</th>
@@ -101,7 +119,7 @@
                                     <th>Given Name</th>
                                     <th>Middle Initial</th>
                                     <th>Nickname</th>
-                                    <th>Delete</th>
+                                    <th>Modify</th>
                                 </tr>
                             </thead>
                             <tbody id="user-files-table-content">
@@ -117,6 +135,64 @@
     </div>
 </body>
 </html>
+
+<script>
+    // Function to handle clicking the edit button
+    function editRow(ID_Number) {
+        // Your logic for editing a row goes here
+        // For example, you can open a modal or populate a form for editing
+        
+        // Here, I'm setting the values of the edit form fields based on the row data
+        $('#editIdNumber').val(ID_Number);
+        $('#editProfession').val($('#profession_' + ID_Number).text());
+        $('#editLastName').val($('#lastName_' + ID_Number).text());
+        $('#editGivenName').val($('#givenName_' + ID_Number).text());
+        $('#editMiddleInitial').val($('#middleInitial_' + ID_Number).text());
+        $('#editNickname').val($('#nickname_' + ID_Number).text());
+        
+        // Show the edit form (assuming it's hidden by default)
+        $('#editFormContainer').show();
+    }
+
+    // Submit edit form handler
+    $('#editForm').submit(function(event) {
+        // Prevent default form submission
+        event.preventDefault();
+
+        // Get form data
+        var idNumber = $('#editIdNumber').val();
+        var profession = $('#editProfession').val();
+        var lastName = $('#editLastName').val();
+        var givenName = $('#editGivenName').val();
+        var middleInitial = $('#editMiddleInitial').val();
+        var nickname = $('#editNickname').val();
+
+        // Send AJAX request to update user details
+        $.ajax({
+            url: 'update_user.php',
+            type: 'POST',
+            data: {
+                editIdNumber: idNumber,
+                editProfession: profession,
+                editLastName: lastName,
+                editGivenName: givenName,
+                editMiddleInitial: middleInitial,
+                editNickname: nickname
+            },
+            success: function(response) {
+                // Display success message
+                alert(response);
+                // Reload the page to reflect changes
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                // Display error message
+                alert('Error updating user details: ' + error);
+            }
+        });
+    });
+</script>
+
 
 <script>
     function filterCalendars() {

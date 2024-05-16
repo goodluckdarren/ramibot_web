@@ -4,8 +4,10 @@
     align-items: center; 
     margin-top: 15px;
     width: 100%;
-    height: 70px;
+    height: auto; /* Adjust height to auto to fit all contents */
     background-color: rgb(253, 253, 253);
+    padding: 10px; /* Added padding for better spacing */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
 }
 
 .upload-button {
@@ -13,13 +15,16 @@
     align-items: center;
     justify-content: center;
     background-color: rgb(0, 131, 245);
-    margin-left: 15px;
     height: 35px;
     width: 250px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin-right: 10px;
+    cursor: pointer;
+    color: white; /* Ensures text color contrasts with the background */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    padding: 5px; /* Optional: Add padding for better button appearance */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
 }
 
 .upload-title {
@@ -27,6 +32,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    flex-grow: 1; /* Added flex-grow to expand with container */
 }
 
 .upload-title i {
@@ -64,7 +70,7 @@
 
 .floor-content img{
     overflow: auto;
-    width: 640px;
+    width: 800px;
     height: 480px;
 }
 
@@ -100,4 +106,21 @@
     width: 400px;
     height: 400px;
     margin: 10px;
+}
+
+input[type="text"], input[type="submit"], input[type="number"] {
+    margin-left: 10px; /* Space between the elements */
+    padding: 5px;
+    border: 1px solid #ccc; /* Optional: Add border for better visual separation */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+input[type="submit"] {
+    background-color: #0c69f9;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056d2;
 }

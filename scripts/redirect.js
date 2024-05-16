@@ -11,7 +11,7 @@ function redirectToOfficeHours(){
 }
 
 function redirectToAnnouncements(){
-    window.location.href = '../announcements/announcements.php';
+    window.location.href = '../announcements/about.php';
 }
 
 function redirectToUserFiles(){
@@ -28,6 +28,14 @@ function redirectToFloors(){
 
 function redirectToCalendar(){
     window.location.href = '../calendars/calendars.php';
+}
+
+function redirectToTuition(){
+    window.location.href = '../tuition/tuition.php';
+}
+
+function redirectToAccreditation(){
+    window.location.href = '../accreditations/accreditations.php';
 }
 
 function toggleAddForm() {

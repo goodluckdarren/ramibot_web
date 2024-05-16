@@ -4,7 +4,7 @@ require_once '../database_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['officeIdentifier'])) {
-        $officeIdentifier = $_POST['officeIdentifier'];
+        $office_identifier = $_POST['officeIdentifier'];
 
         $uploadDir = '../offices_img/';
         $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
 
             $stmt = $con->prepare("INSERT INTO offices (img_identifier, img_url) VALUES (?, ?)");
-            $stmt->bind_param("ss", $programsIdentifier, $imgUrl);
+            $stmt->bind_param("ss", $office_identifier, $imgUrl);
 
             if ($stmt->execute()) {
                 echo "Record added successfully";
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo 'Error uploading file.';
         }
     } else {
-        echo 'Missing programsId or programsIdentifier.';
+        echo 'Missing floorId or floorIdentifier.';
     }
     ?>
     <script>

@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {
             $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
 
-            $stmt = $con->prepare("INSERT INTO floor_map (floor_id, floor_identifier, img_url) VALUES (?, ?, ?)");
+            $stmt = $con->prepare("INSERT INTO floor_map (floor_id, img_identifier, img_url) VALUES (?, ?, ?)");
             $stmt->bind_param("iss", $floor_id, $floor_identifier, $imgUrl);
 
             if ($stmt->execute()) {

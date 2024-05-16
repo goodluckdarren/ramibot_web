@@ -42,6 +42,12 @@
                 <div class="btn calendar"onclick="redirectToCalendar()">
                     <p>Calendar</p>
                 </div>       
+                <div class="btn tuition" onclick="redirectToTuition()">
+                    <p>Tuition</p>    
+                </div> 
+                <div class="btn accreditations" onclick="redirectToAccreditation()">
+                    <p>Accreditations</p>    
+                </div> 
             </div>
         </div>
         <div class="content">

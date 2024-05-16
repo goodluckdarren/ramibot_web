@@ -39,7 +39,7 @@
                     <p>Faculty Schedule</p>
                 </div>
                 <div class="main-btn btn programs-offered" onclick="redirectToProgramsOffered()">
-                    <div class="main-btn-box"></div>
+                <div class="main-btn-box"></div>
                     <p>Programs Offered</p>
                 </div>
                 <div class="btn floors" onclick="redirectToFloors()">
@@ -49,7 +49,7 @@
                     <p>Office Hours</p>
                 </div>
                 <div class="btn announcements" onclick="redirectToAnnouncements()">
-                    <p>Announcements</p>
+                    <p>About APC</p>
                 </div>
                 <div class="btn status" onclick="redirectToStatus()">
                     <p>Status</p>
@@ -57,6 +57,12 @@
                 <div class="btn calendar"onclick="redirectToCalendar()">
                     <p>Calendar</p>
                 </div>       
+                <div class="btn tuition" onclick="redirectToTuition()">
+                    <p>Tuition</p>    
+                </div> 
+                <div class="btn accreditations" onclick="redirectToAccreditation()">
+                    <p>Accreditations</p>    
+                </div> 
             </div>
         </div>
         <div class="content">

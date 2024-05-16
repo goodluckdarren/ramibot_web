@@ -1,0 +1,165 @@
+.upload-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    margin-top: 15px;
+    width: 100%;
+    height: auto; /* Adjust height to auto to fit all contents */
+    background-color: rgb(253, 253, 253);
+    padding: 10px; /* Added padding for better spacing */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+}
+
+.upload-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 131, 245);
+    height: 35px;
+    width: 250px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    color: white; /* Ensures text color contrasts with the background */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    padding: 5px; /* Optional: Add padding for better button appearance */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
+}
+
+.upload-title {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex-grow: 1; /* Added flex-grow to expand with container */
+}
+
+.upload-title i {
+    vertical-align: middle;
+}
+
+#fileInput:hover{
+    cursor: pointer;
+}
+
+.scheds-imgs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 5px;
+    width: 97.7%;
+    height: 100%;
+    margin-left: 15px;
+    margin-top: 15px;
+    background-color: #4a4e69;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.sched-content{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #22223b;
+
+}
+
+.sched-content img{
+    overflow: auto;
+    width: 640px;
+    height: 480px;
+}
+
+.sched-text{
+    color: white;
+    font-size: 20px;
+}
+.text{
+    color: white;
+    font-size: 20px;
+    margin: 10px;
+
+}
+
+.delete-button[type="button"]{
+    position: relative;
+    right: 0px;
+    box-shadow: none;
+    border: 1px solid #000;
+    background-color: #8a2e26;
+    color: #fff;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.delete-button:hover{
+    background-color: #E7AE41;
+}
+
+.image-size {
+    width: 400px;
+    height: 400px;
+    margin: 10px;
+}
+
+input[type="text"], input[type="submit"], input[type="number"] {
+    margin-left: 10px; /* Space between the elements */
+    padding: 5px;
+    border: 1px solid #ccc; /* Optional: Add border for better visual separation */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+input[type="submit"] {
+    background-color: #0c69f9;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056d2;
+}
+
+.school-container {
+    width: 100%; /* Set the width of the school container to span the full width */
+}
+
+.school-bar {
+    background-color: #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.schedule-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.sched-content {
+    width: 48%;
+    margin-bottom: 20px;
+}
+
+.sched-image {
+    max-width: 100%; /* Ensure images fit within their containers */
+}
+
+
+.school-container {
+    margin-bottom: 20px; /* Adjust margin to separate school containers */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust spacing between columns */
+}
+
+
+

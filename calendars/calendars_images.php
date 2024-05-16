@@ -1,7 +1,7 @@
 <?php
     require_once('../database_connect.php');
 
-    $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'img_Identifier'; // Default sorting colum
+    $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'img_identifier'; // Default sorting colum
     $sql = "SELECT * FROM calendars_img";
     $result_table = mysqli_query($con, $sql);
 
@@ -28,7 +28,7 @@
      function deleteRow(calendar_id) {
         if (confirm("Do you want to delete this?")) {
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "../calendars/delete_calendar.php", true);
+            xhr.open("POST", "../calendars/calendars_delete.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {

@@ -4,8 +4,10 @@
     align-items: center; 
     margin-top: 15px;
     width: 100%;
-    height: 70px;
+    height: auto; /* Adjust height to auto to fit all contents */
     background-color: rgb(253, 253, 253);
+    padding: 10px; /* Added padding for better spacing */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
 }
 
 .upload-button {
@@ -13,13 +15,16 @@
     align-items: center;
     justify-content: center;
     background-color: rgb(0, 131, 245);
-    margin-left: 15px;
     height: 35px;
     width: 250px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    margin-right: 10px;
+    cursor: pointer;
+    color: white; /* Ensures text color contrasts with the background */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    padding: 5px; /* Optional: Add padding for better button appearance */
+    box-sizing: border-box; /* Ensure padding and border are included in width and height */
 }
 
 .upload-title {
@@ -27,6 +32,25 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    flex-grow: 1; /* Added flex-grow to expand with container */
+}
+
+
+input[type="text"], input[type="submit"], input[type="number"] {
+    margin-left: 10px; /* Space between the elements */
+    padding: 5px;
+    border: 1px solid #ccc; /* Optional: Add border for better visual separation */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+
+input[type="submit"] {
+    background-color: #0c69f9;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056d2;
 }
 
 .upload-title i {
@@ -36,7 +60,6 @@
 #fileInput:hover{
     cursor: pointer;
 }
-
 
 .offices-imgs {
     display: flex;
@@ -53,41 +76,52 @@
     overflow: auto;
 }
 
-.image-container {
-    position: relative;
-    display: inline-block;
+.office-content{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #22223b;
+
 }
 
-.delete-button {
-    position: absolute;
-    top: .1px; /* Adjust the top position as needed */
-    right: .1px; /* Adjust the right position as needed */
-    background-color: rgba(255, 0, 0, 0.7); /* Semi-transparent red background */
+.office-content img{
+    overflow: auto;
+    width: 960px;
+    height: 580px;
+}
+
+.office-text{
     color: white;
-    border: none;
-    width: 100%;
-    height: 100%;
-    font-size: 16px;
+    font-size: 20px;
+}
+.text{
+    color: white;
+    font-size: 20px;
+    margin: 10px;
+
+}
+
+.delete-button[type="button"]{
+    position: relative;
+    right: 0px;
+    box-shadow: none;
+    border: 1px solid #000;
+    background-color: #8a2e26;
+    color: #fff;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    display: none; /* Initially hidden */
 }
 
-.delete-button:hover {
-    background-color: rgba(250, 0, 0, 0.35); /* Darker red on hover */
-    
+.delete-button:hover{
+    background-color: #E7AE41;
 }
-
-.image-container:hover .delete-button {
-    display: block; /* Show delete button when image container is hovered */
-}
-
 
 .image-size {
     width: 400px;
     height: 400px;
     margin: 10px;
-}
-
-.large-trash-icon{
-    font-size: 3rem;
 }

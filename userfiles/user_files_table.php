@@ -6,18 +6,21 @@
     $offset = ($page - 1) * $rows_per_page;
     $search = isset($_GET['search']) ? $_GET['search'] : '';
     $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : 'ID_Number';
-    
-    $search_condition = '';
-    if (!empty($search)) {
-        $search_condition = "WHERE ID_Number LIKE '%$search%' OR 
+
+    $condition = [];
+    if ($search) {
+        $condition[] = "WHERE ID_Number LIKE '%$search%' OR 
                             Profession LIKE '%$search%' OR 
                             Last_Name LIKE '%$search%' OR 
-                            Given_Name LIKE '%$search%' OR 
+                            Given_Name LIKE '%$search%' OR  
                             MI LIKE '%$search%' OR 
                             nickname LIKE '%$search%'";
     }
 
-    $count_query = "SELECT COUNT(*) as count FROM ramibot_faces $search_condition";
+    $where_clause = implode(' AND ', $condition);
+
+    $condition = implode(' OR ', $condition);
+    $count_query = "SELECT COUNT(*) as count FROM ramibot_faces $condition";
     $count_result = mysqli_query($con, $count_query);
     $count_row = mysqli_fetch_assoc($count_result);
     $total_rows = $count_row['count'];
@@ -27,32 +30,37 @@
     //Added sorting ORDER BY
     $sql = "SELECT rf.* 
         FROM ramibot_faces AS rf
-        $search_condition
+        $where_clause
         ORDER BY $sort_by ASC
         LIMIT $offset, $rows_per_page";
     $result_table = mysqli_query($con, $sql);
 
     while ($row = mysqli_fetch_assoc($result_table)) {
         echo "<tr>";
-        echo "<td>" . $row['ID_Number'] . "</td>";
-        echo "<td>" . $row['Profession'] . "</td>";
-        echo "<td>" . $row['Last_Name'] . "</td>";
-        echo "<td>" . $row['Given_Name'] . "</td>";
-        echo "<td>" . $row['MI'] . "</td>";
-        echo "<td>" . $row['nickname'] . "</td>";
+        echo "<td id='idNumber_" . $row['ID_Number'] . "'>" . $row['ID_Number'] . "</td>";
+        echo "<td id='profession_" . $row['ID_Number'] . "'>" . $row['Profession'] . "</td>";
+        echo "<td id='lastName_" . $row['ID_Number'] . "'>" . $row['Last_Name'] . "</td>";
+        echo "<td id='givenName_" . $row['ID_Number'] . "'>" . $row['Given_Name'] . "</td>";
+        echo "<td id='middleInitial_" . $row['ID_Number'] . "'>" . $row['MI'] . "</td>";
+        echo "<td id='nickname_" . $row['ID_Number'] . "'>" . $row['nickname'] . "</td>";
         echo '<td class="action-buttons">';
         echo '<div>';
+        echo '<button class="edit-button" type="button" onclick="editRow(' . $row['ID_Number'] . ')"> 
+                <i class="fas fa-edit"></i></button>';
         echo '<button class="delete-button" type="button" onclick="deleteRow(' . $row['ID_Number'] . ')"> 
                 <i class="fas fa-trash"></i></button>';
         echo '</div>';
         echo '</td>';
         echo "</tr>";
     }
+    
 ?>
 
 <script>
     var currentPage = <?php echo $page; ?>;
     var totalPages = <?php echo $total_pages; ?>;
+    var sortBy = '<?php echo $sort_by; ?>';
+    var search = '<?php echo $search; ?>';
 
     $(document).ready(function () {
         updatePagination();
@@ -88,19 +96,24 @@
         return;
     }
 
+    var sortBy = $('#sort-by').val(); // Get the current sorting value
+    var search = $('#search-input').val(); // Get the current search value
+
     currentPage = page;
     updatePagination();
-    loadTableContent();
+    loadTableContent(page, sortBy, search);
 
     event.preventDefault();
     }
 
-    function loadTableContent() {
+    function loadTableContent(page) {
         $.ajax({
             url: '../userfiles/user_files_table.php',
             type: 'GET',
             data: { 
                 page: currentPage,
+                sort_by: sortBy,
+                search: search
             },
             success: function (data) {
                 $('#user-files-table-content').fadeOut('fast', function () {
@@ -120,7 +133,8 @@
             type: 'GET',
             data: {
                 page: currentPage,
-                sort_by: sortBy
+                sort_by: sortBy,
+                search: search
             },
             success: function(data){
                 $('#user-files-table-content').fadeOut('fast', function(){
@@ -140,7 +154,7 @@
             type: 'GET',
             data: {
                 page: currentPage,
-                sort_by: sortBy
+                search: search
             },
             success: function(data){
                 $('#user-files-table-content').fadeOut('fast', function(){
@@ -154,8 +168,7 @@
     }
 </script>
 <script>
-
-     function deleteRow(ID_Number) {
+    function deleteRow(ID_Number) {
         if (confirm("Do you want to delete this user?")) {
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "../userfiles/delete_user.php", true);
@@ -173,12 +186,4 @@
             xhr.send("ID_Number=" + ID_Number);
         }
     }
-</script>
-<script>
-function searchAndLoad() {
-    var searchInput = document.getElementById('search-input').value;
-    currentPage = 1;
-    updatePagination();
-    loadTableContent(searchInput);
-}
 </script>

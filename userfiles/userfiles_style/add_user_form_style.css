@@ -51,3 +51,43 @@
     cursor: pointer;
     background-color: #152c16;
 }
+
+/* Edit Form Pop-up */
+.edit-form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 57%;
+    height: 20%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it appears above other content */
+    background-color: white;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+}
+
+.edit-form {
+    /* Form styling */
+}
+
+/* Close button styling */
+#closeEditFormBtn {
+    background-color: #ccc;
+    border: none;
+    color: black;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#closeEditFormBtn:hover {
+    background-color: #ddd;
+}

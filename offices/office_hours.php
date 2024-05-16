@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <link rel="stylesheet" href="../offices/office_table.css"> 
     <script src="../scripts/redirect.js"></script>
+    <script src="../offices/office_img_upload.js"></script>
 </head>
 <body class="home-page">
     <div class="container">
@@ -31,7 +32,7 @@
                     <p>Office Hours</p>
                 </div>
                 <div class="btn announcements" onclick="redirectToAnnouncements()">
-                    <p>Announcements</p>
+                    <p>About APC</p>
                 </div>
                 <div class="btn status" onclick="redirectToStatus()">
                     <p>Status</p>
@@ -39,6 +40,12 @@
                 <div class="btn calendar"onclick="redirectToCalendar()">
                     <p>Calendar</p>
                 </div>       
+                <div class="btn tuition" onclick="redirectToTuition()">
+                    <p>Tuition</p>    
+                </div> 
+                <div class="btn accreditations" onclick="redirectToAccreditation()">
+                    <p>Accreditations</p>    
+                </div> 
             </div>
         </div>
         <div class="content">
@@ -58,8 +65,10 @@
                                 </label>
                                 <input type="file" name="fileInput" id="fileInput" accept=".jpg, .jpeg, .png" style="position: absolute; opacity: 0;" onchange="displayFileName(this)">
                             </div>
-                            <input type="text" name="officeIdentifier" id="officeIdentifier" placeholder="Office Identifier" required>
-                            <input type="submit" value="Submit">
+                            <div class="office-input">
+                                <input type="text" name="officeIdentifier" id="officeIdentifier" placeholder="Office Name" required>
+                                <input type="submit" value="Submit">
+                            </div>
                         </div>
                     </form>
                 <div class="offices-imgs">

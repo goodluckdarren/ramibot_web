@@ -1,51 +1,45 @@
 <?php
-require_once('../database_connect.php');
+    require_once('../database_connect.php');
 
-$sql = "SELECT rf.office_id, rf.img_url
-        FROM offices AS rf
-        ORDER BY rf.office_id ASC";
+    $sql = "SELECT of.* 
+    FROM offices AS of";
+    $result_table = mysqli_query($con, $sql);
 
-$statement = mysqli_prepare($con, $sql);
+    while ($row = mysqli_fetch_assoc($result_table)) {
+        $office_identifier = $row['img_identifier'];
+        $office_img = $row['img_url'];
 
-if ($statement === false) {
-    die("Prepare failed: " . mysqli_error($con));
-}
+        echo "<div class='office-content'>
+        <div class='office-text'>$office_identifier</div>
+        <img src='$office_img'>";
+        echo '<div class="action-button">';
+        echo '<button style="width: 30px; height: 30px;" 
+                class="delete-button" type="button" 
+                onclick="deleteRow(' . $row['office_id'] . ')"> 
+                <i class="fas fa-trash"></i></button>';
+        echo '</div>';
 
-mysqli_stmt_execute($statement);
-mysqli_stmt_bind_result($statement, $img_id, $img_url);
-
-while (mysqli_stmt_fetch($statement)) {
-    $img_url = '../offices_img/' . htmlspecialchars($img_url, ENT_QUOTES, 'UTF-8');
-    echo '<div class="image-container">';
-    echo '<img src="' . $img_url . '" class="image-size" alt="Image">';
-    echo '<button class="delete-button" type="button" onclick="deleteImage(' . $img_id . ')"> 
-                <i class="fas fa-trash large-trash-icon"></i></button>';
-    echo '</div>';  
-    
-}
-
-mysqli_stmt_close($statement);
-mysqli_close($con);
+    }
 ?>
-<script>
-function deleteImage($img_Id) {
-    if (confirm("Are you sure you want to delete this image?")) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "delete_office.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    alert(xhr.responseText);
-                    // Reload the page or update the image container after successful deletion
-                    // Example: window.location.reload();
-                } else {
-                    alert("Error deleting image: " + xhr.responseText);
+
+
+<script>    
+     function deleteRow(office_id) {
+        if (confirm("Do you want to delete this?")) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "../offices/delete_office.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        alert("Image has been successfully deleted.");
+                        location.reload();
+                    } else {
+                        alert("Error deleting image: " + xhr.responseText);
+                    }
                 }
-            }
-        };
-        xhr.send("office_id=" + $office_Id);
-    }  
-    location.reload();
-}
+            };
+            xhr.send("office_id=" + office_id);
+        }
+    }
 </script>
