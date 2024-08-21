@@ -17,34 +17,7 @@
     <div class="container">
         <div class="side-panel" id="sidePanel">
             <div class="home-btn-group">
-                <div class="btn faculty-schedule" onclick="redirectPage('../facultysched/faculty_schedule.php')">
-                    <p>Faculty Schedule</p>
-                </div>
-                <div class="btn programs-offered" onclick="redirectPage('../programs/programs_offered.php')">
-                    <p>Programs Offered</p>
-                </div>
-                <div class="btn floors" onclick="redirectPage('../floors/floors.php')">
-                    <p>Floors</p>
-                </div>
-                <div class="main-btn btn office-hours" onclick="redirectPage('../offices/office_hours.php')">
-                    <div class="main-btn-box"></div>
-                    <p>Office Hours</p>
-                </div>
-                <div class="btn announcements" onclick="redirectPage('../announcements/about.php')">
-                    <p>About APC</p>
-                </div>
-                <div class="btn status" onclick="redirectPage('../status/rami_status.php')">
-                    <p>Status</p>
-                </div>
-                <div class="btn calendar" onclick="redirectPage('../calendars/calendars.php')">
-                    <p>Calendar</p>
-                </div>
-                <div class=" btn tuition" onclick="redirectPage('../tuition/tuition.php')">
-                    <p>Tuition</p>
-                </div>
-                <div class="btn accreditations" onclick="redirectPage('../accreditations/accreditations.php')">
-                    <p>Accreditations</p>
-                </div>
+                <?php include_once('../scripts/side_panel.php'); ?>
             </div>
         </div>
         <div class="content">
