@@ -13,23 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <script src="../scripts/redirect.js"></script>
     <script src="../scripts/program_img_upload.js"></script>
-    <script>
-        function displayFileName(input) {
-            var fileName = input.value.split('\\').pop();
-            var uploadTitle = document.querySelector('.upload-title');
-            uploadTitle.textContent = fileName;
-            uploadTitle.title = fileName;
-        }
-
-        function showFileName() {
-            var fileName = document.getElementById('fileInput').value;
-            if (fileName === '') {
-                alert('Please select a file');
-                return false; // Prevent form submission if no file is selected
-            }
-            return true; // Allow form submission
-        }
-    </script>
+</head>
 
 <body class="home-page">
     <div class="container">
@@ -77,7 +61,7 @@
             </div>
             <div class="main-menu">
                 <div class="main-panel">
-                    <form action="upload.php" method="post" enctype="multipart/form-data" onsubmit="return showFileName()">
+                    <form action="programs_upload.php" method="post" enctype="multipart/form-data" onsubmit="return showFileName()">
                         <div class="upload-container">
                             <div class="upload-button">
                                 <label for="fileInput" class="upload-title">

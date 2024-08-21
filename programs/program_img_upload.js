@@ -22,30 +22,18 @@ function validateFile(file) {
     return allowedExtensions.test(file.name);
 }
 
-function uploadFile(file) {
-    const formData = new FormData();
-    formData.append('file', file);
-
-    // Use XMLHttpRequest or Fetch API to send the file to the server
-    // Example using Fetch API
-    fetch('/upload.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Assuming the server responds with the URL
-        const imageUrl = data.imageUrl;
-
-        // Now you can save the imageUrl in your database
-        saveImageUrlToDatabase(imageUrl);
-    })
-    .catch(error => {
-        console.error('Error uploading file:', error);
-    });
+function displayFileName(input) {
+    var fileName = input.value.split('\\').pop();
+    var uploadTitle = document.querySelector('.upload-title');
+    uploadTitle.textContent = fileName;
+    uploadTitle.title = fileName;
 }
 
-function saveImageUrlToDatabase(imageUrl) {
-    // Implement code to save the imageUrl to your database here
-    console.log('Image URL saved to database:', imageUrl);
+function showFileName() {
+    var fileName = document.getElementById('fileInput').value;
+    if (fileName === '') {
+        alert('Please select a file');
+        return false; // Prevent form submission if no file is selected
+    }
+    return true; // Allow form submission
 }
