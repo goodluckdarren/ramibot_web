@@ -27,11 +27,10 @@ html, body {
     width: 500px;
     background-color: rgba(0, 0, 0, 0.83);
     border-radius: 32px;
-    
+    text-align: center;
 }
 
 .justified-center{
-    position: relative;
     z-index: 3;
     height: fit-content;
     width: 100%;
@@ -64,6 +63,11 @@ html, body {
     background: #007BFF;
     transition: 0.5s;
 }
+
+.form {
+    z-index: 1;
+}
+
 .center form{
     position: relative;
     background: #fff;
@@ -83,6 +87,7 @@ form input{
     font-size: 1rem;
     outline: none;
 }
+
 form input::placeholder{
     color: black;
     font-weight: bold;
@@ -93,26 +98,33 @@ form input:focus{
     -webkit-transition: 1s;
     transition: 1s;
 }
+
 form i{
     position: absolute;
     font-size: 20px;
     color: #343A40;
 }
+
 i.fa-envelope{
-    margin: 10px 0 0 -40px;
+    margin-left: -40px;
 }
+
 i.fa-eye{
-    margin: 30px 0 0 -41px;
+    margin-top: 97px;
+    margin-left: -42px;
 }
+
 .fas{
     font-weight: 900;
 }
-.form{
-    z-index: 1;
+
+.input-container i {
+    position: absolute;
+    top: 25.9%;
+    transform: translateY(-50%);
+    left: 400px;
 }
-.email-input{
-    margin-bottom: 130px;
-}
+
 .forgot-password{
     position: relative; 
     margin-top: 0px;
