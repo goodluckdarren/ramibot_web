@@ -1,41 +1,5 @@
-function redirectToSchedule(){
-    window.location.href = '../facultysched/faculty_schedule.php';
-}
-
-function redirectToProgramsOffered(){
-    window.location.href = '../programs/programs_offered.php';
-}
-
-function redirectToOfficeHours(){
-    window.location.href = '../offices/office_hours.php';
-}
-
-function redirectToAnnouncements(){
-    window.location.href = '../announcements/about.php';
-}
-
-function redirectToUserFiles(){
-    window.location.href = '../userfiles/new_user_files.php';
-}
-
-function redirectToStatus(){
-    window.location.href = '../status/rami_status.php';
-}
-
-function redirectToFloors(){
-    window.location.href = '../floors/floors.php';
-}
-
-function redirectToCalendar(){
-    window.location.href = '../calendars/calendars.php';
-}
-
-function redirectToTuition(){
-    window.location.href = '../tuition/tuition.php';
-}
-
-function redirectToAccreditation(){
-    window.location.href = '../accreditations/accreditations.php';
+function redirectPage(path) {
+    window.location.href = path;
 }
 
 function toggleAddForm() {
