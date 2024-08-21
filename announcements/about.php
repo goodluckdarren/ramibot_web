@@ -15,37 +15,34 @@
     <div class="container">
         <div class="side-panel" id="sidePanel">
             <div class="home-btn-group">
-                <!-- <div class="btn new-user-files" onclick="redirectToUserFiles()">
-                    <p>User Files</p>
-                </div> -->
-                <div class="btn faculty-schedule" onclick="redirectToSchedule()">
+                <div class="btn faculty-schedule" onclick="redirectPage('../facultysched/faculty_schedule.php')">
                     <p>Faculty Schedule</p>
                 </div>
-                <div class="btn programs-offered" onclick="redirectToProgramsOffered()">
+                <div class="btn programs-offered" onclick="redirectPage('../programs/programs_offered.php')">
                     <p>Programs Offered</p>
                 </div>
-                <div class="btn floors" onclick="redirectToFloors()">
+                <div class="btn floors" onclick="redirectPage('../offices/office_hours.php')">
                     <p>Floors</p>
                 </div>
-                <div class="btn office-hours" onclick="redirectToOfficeHours()">
+                <div class="btn office-hours" onclick="redirectPage('../offices/office_hours.php')">
                     <p>Office Hours</p>
                 </div>
-                <div class="main-btn btn announcements" onclick="redirectToAnnouncements()">
-                    <div class="main-btn-box"></div>    
+                <div class="main-btn btn announcements" onclick="redirectPage('../announcements/about.php')">
+                    <div class="main-btn-box"></div>
                     <p>About APC</p>
                 </div>
-                <div class="btn status" onclick="redirectToStatus()">
+                <div class="btn status" onclick="redirectPage('../status/rami_status.php')">
                     <p>Status</p>
                 </div>
-                <div class="btn calendar"onclick="redirectToCalendar()">
+                <div class="btn calendar" onclick="redirectPage('../calendars/calendars.php')">
                     <p>Calendar</p>
-                </div>       
-                <div class="btn tuition" onclick="redirectToTuition()">
-                    <p>Tuition</p>    
-                </div> 
-                <div class="btn accreditations" onclick="redirectToTuition()">
-                    <p>Accreditations</p>    
-                </div> 
+                </div>
+                <div class=" btn tuition" onclick="redirectPage('../tuition/tuition.php')">
+                    <p>Tuition</p>
+                </div>
+                <div class="btn accreditations" onclick="redirectPage('../accreditations/accreditations.php')">
+                    <p>Accreditations</p>
+                </div>
             </div>
         </div>
         <div class="content">

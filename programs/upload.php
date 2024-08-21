@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $fileNameCmps = explode(".", $fileName);
         $fileExtension = strtolower(end($fileNameCmps));
 
-        $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+        $newFileName = $fileName;
 
         $uploadFileDir = '../programs_img/';
         $dest_path = $uploadFileDir . $newFileName;
