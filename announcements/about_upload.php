@@ -9,6 +9,8 @@
             $uploadDir = '../announcements_img/';
             $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
 
+            echo $uploadDir;
+            echo $uploadFile;
             if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {
                 $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
 
@@ -25,10 +27,11 @@
                 $stmt->close();
                 $con->close();
             } else {
-                echo 'Error uploading file.';
+                echo 'Error uploading file.';       
             }
         } else {
-            echo 'Missing programsId or programsIdentifier.';
+            echo $uploadDir;
+            echo $uploadFile;
         }
         ?>
         <script>

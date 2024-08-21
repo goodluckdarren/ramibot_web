@@ -55,7 +55,7 @@
                 </div>
                 <div class="user-profile">
                     <?php include_once('../admin_account.php'); ?>
-                    <img class="profile-picture" src="../images_home/obama sample.jpg" alt="Image of Admin" width="70px" height="70px">
+                    <img class="profile-picture" src="" alt="Image of Admin" width="70px" height="70px">
                 </div>
             </div>
             <div class="main-menu">
