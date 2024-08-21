@@ -1,8 +1,11 @@
 <?php 
     require_once('../database_connect.php');
 
+    // Check the logged-in user's role from the session
+    $userID = $_SESSION['user_id'];
+
     // Query to get all admin accounts
-    $sql = "SELECT * FROM admin_accounts";
+    $sql = "SELECT * FROM admin_accounts WHERE user_id = $userID";
     $result = mysqli_query($con, $sql);
 
     if ($result === false) {
@@ -26,7 +29,7 @@
     // Function to check if a page is active
     function isActivePage($page) {
         global $currentPage;
-        return $currentPage === basename($page) ? 'main-btn' : '';
+        return $currentPage === basename($page) ? 'main-btn btn-indicator' : '';
     }
 
     // HTML for buttons

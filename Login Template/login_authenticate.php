@@ -1,14 +1,14 @@
 <?php
-    require_once('../database_connect.php');
-
+    require_once('../scripts/database_connect.php');
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Prepare and execute the query to get user by email
-    $stmt = $con->prepare("SELECT ac.*, r.role_url
-                            FROM admin_accounts ac
-                            JOIN role_type r ON ac.role = r.role_id
-                            WHERE ac.email = ? AND ac.password = ?");
+    $stmt = $con->prepare("SELECT u.*, ul.employee_id, ul.employee_email, ul.employee_password, 
+                            r.role_url 
+            FROM user u
+            JOIN user_list ul ON u.employee_id = ul.employee_id
+            JOIN role_type r ON u.user_role = r.role_id 
+            WHERE ul.employee_email = ? AND ul.employee_password = ?");
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -20,12 +20,13 @@
             header('Location: login.php?error=disabled');
             exit;
         }
-        $_SESSION['user_id'] = $row['user_id'];
+        $_SESSION['employee_id'] = $row['employee_id'];
         $_SESSION['session_id'] = uniqid();
-        header('Location: ' . $row['role_url']);
+        header('Location: ../Home/homepage.php');
         exit;
-        } else {
-        $stmt = $con->prepare("SELECT * FROM admin_accounts WHERE email = ?");
+    }
+    else {
+        $stmt = $con->prepare("SELECT * FROM user_list WHERE employee_email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();

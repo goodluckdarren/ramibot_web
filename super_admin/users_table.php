@@ -26,9 +26,9 @@
     // Loop through the results and display each row
     while ($row = mysqli_fetch_assoc($result)) {
         // Conditional check to highlight the row if the user_id matches the current session user_id
-        // $highlightClass = ($row['user_id'] == $_SESSION['user_id']) ? 'highlight-row' : '';
-        // $disabledClass = ($row['user_status'] == 0) ? 'disabled' : '';
-        // echo '<tr class="' . $disabledClass . ' ' . $highlightClass . '">';
+        $highlightClass = ($row['user_id'] == $_SESSION['user_id']) ? 'highlight-row' : '';
+        $disabledClass = ($row['user_status'] == 0) ? 'disabled' : '';
+        echo '<tr class="' . $disabledClass . ' ' . $highlightClass . '">';
 
         echo '<tr>';
         echo '<td>' . $row['user_id'] . '</td>';
