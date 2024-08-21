@@ -3,9 +3,10 @@
    if (session_status() == PHP_SESSION_NONE) {
       session_start();
    }
-   $host = "airhub-soe.apc.edu.ph";
-   $user = "marj";
-   $password = "RAMIcpe211";
+   $host = "localhost";
+   $user = "root";
+   $password = "";
+   $db_name = "ramibot";
    // if (session_status() == PHP_SESSION_NONE) {
    //    session_start();
    // }
