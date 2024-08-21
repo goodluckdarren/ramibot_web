@@ -23,7 +23,7 @@
                 <div class="btn programs-offered" onclick="redirectPage('../programs/programs_offered.php')">
                     <p>Programs Offered</p>
                 </div>
-                <div class="btn floors" onclick="redirectPage('../offices/office_hours.php')">
+                <div class="btn floors" onclick="redirectPage('../floors/floors.php')">
                     <p>Floors</p>
                 </div>
                 <div class="btn office-hours" onclick="redirectPage('../offices/office_hours.php')">

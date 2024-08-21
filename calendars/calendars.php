@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>ADMIBOT</title>
-    <link rel="stylesheet" href="../homepage.css">
-    <link rel="stylesheet" href="../interactions.css">
-    <link rel="stylesheet" href="calendars_image_layout.css">
+    <link rel="stylesheet" href="../styles/homepage.css">
+    <link rel="stylesheet" href="../styles/interactions.css">
+    <link rel="stylesheet" href="../styles/accreditations_table.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <script src="../calendars/calendars_img_upload.js"></script>
     <script src="../scripts/redirect.js"></script>
 </head>
+
 <body class="home-page">
     <div class="container">
         <div class="side-panel" id="sidePanel">
             <div class="home-btn-group">
-                <div class="btn new-user-files" onclick="redirectToUserFiles()">
-                    <p>User Files</p>
-                </div>
-                <div class="btn faculty-schedule" onclick="redirectToSchedule()">
+                <div class="btn faculty-schedule" onclick="redirectPage('../facultysched/faculty_schedule.php')">
                     <p>Faculty Schedule</p>
                 </div>
-                <div class="btn programs-offered" onclick="redirectToProgramsOffered()">
+                <div class="btn programs-offered" onclick="redirectPage('../programs/programs_offered.php')">
                     <p>Programs Offered</p>
                 </div>
-                <div class="btn floors" onclick="redirectToFloors()">
+                <div class="btn floors" onclick="redirectPage('../floors/floors.php')">
                     <p>Floors</p>
                 </div>
-                <div class="btn office-hours" onclick="redirectToOfficeHours()">
+                <div class="btn office-hours" onclick="redirectPage('../offices/office_hours.php')">
                     <p>Office Hours</p>
                 </div>
-                <div class="btn announcements" onclick="redirectToAnnouncements()">
+                <div class="btn announcements" onclick="redirectPage('../announcements/about.php')">
                     <p>About APC</p>
                 </div>
-                <div class="btn status" onclick="redirectToStatus()">
+                <div class="btn status" onclick="redirectPage('../status/rami_status.php')">
                     <p>Status</p>
                 </div>
-                <div class="main-btn btn calendar" onclick="redirectToCalendar()">
+                <div class="main-btn btn calendar" onclick="redirectPage('../calendars/calendars.php')">
                     <div class="main-btn-box"></div>
                     <p>Calendar</p>
                 </div>
-                <div class="btn tuition" onclick="redirectToTuition()">
+                <div class=" btn tuition" onclick="redirectPage('../tuition/tuition.php')">
                     <p>Tuition</p>
                 </div>
-                <div class="btn accreditations" onclick="redirectToAccreditation()">
+                <div class="btn accreditations" onclick="redirectPage('../accreditations/accreditations.php')">
                     <p>Accreditations</p>
                 </div>
             </div>
@@ -123,4 +122,5 @@
         }
     </script>
 </body>
+
 </html>

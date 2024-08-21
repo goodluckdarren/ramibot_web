@@ -1,5 +1,3 @@
-// uploadScript.js
-
 document.getElementById('fileInput').addEventListener('change', handleFileSelect);
 
 function handleFileSelect(event) {

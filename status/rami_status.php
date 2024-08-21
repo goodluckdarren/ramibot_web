@@ -1,18 +1,20 @@
-<?php require_once('../database_connect.php');?>
+<?php require_once('../database_connect.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>ADMIBOT</title> 
-    <link rel="stylesheet" href="../homepage.css">
-    <link rel="stylesheet" href="../interactions.css">
-    <link rel="stylesheet" href="../status/lidar_status_style.css">
+    <title>ADMIBOT</title>
+    <link rel="stylesheet" href="../styles/homepage.css">
+    <link rel="stylesheet" href="../styles/interactions.css">
+    <link rel="stylesheet" href="../styles/lidar_status_style.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../scripts/redirect.js"></script>
 </head>
+
 <body class="home-page">
     <div class="container">
         <div class="side-panel" id="sidePanel">
@@ -53,8 +55,8 @@
                     <p class="page-name">RAMIBOT STATUS</p>
                 </div>
                 <div class="user-profile">
-                    <?php include_once('../admin_account.php');?>
-                    <img class ="profile-picture" src="" alt="Image of Admin" width="70px" height="70px">
+                    <?php include_once('../admin_account.php'); ?>
+                    <img class="profile-picture" src="" alt="Image of Admin" width="70px" height="70px">
                 </div>
             </div>
             <div class="main-menu">
@@ -85,8 +87,9 @@
                         </div>
                     </div>
                 </div>
-             </div> 
+            </div>
         </div>
     </div>
 </body>
+
 </html>
