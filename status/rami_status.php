@@ -17,9 +17,9 @@
     <div class="container">
         <div class="side-panel" id="sidePanel">
             <div class="home-btn-group">
-                <div class=" btn new-user-files" onclick="redirectToUserFiles()">
+                <!-- <div class=" btn new-user-files" onclick="redirectToUserFiles()">
                     <p>User Files</p>  
-                </div>
+                </div> -->
                 <div class="btn faculty-schedule" onclick="redirectToSchedule()">
                     <p>Faculty Schedule</p>
                 </div>
@@ -33,7 +33,7 @@
                     <p>Office Hours</p>
                 </div>
                 <div class="btn announcements" onclick="redirectToAnnouncements()">
-                    <p>Announcements</p>
+                    <p>About APC</p>
                 </div>
                 <div class="main-btn btn faq" onclick="redirectToStatus()">
                     <div class="main-btn-box"></div>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="user-profile">
                     <?php include_once('../admin_account.php');?>
-                    <img class ="profile-picture" src="../images_home/obama sample.jpg" alt="Image of Admin" width="70px" height="70px">
+                    <img class ="profile-picture" src="" alt="Image of Admin" width="70px" height="70px">
                 </div>
             </div>
             <div class="main-menu">

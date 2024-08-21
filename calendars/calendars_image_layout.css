@@ -4,7 +4,7 @@
     align-items: center; 
     margin-top: 15px;
     width: 100%;
-    height: auto; /* Adjust height to auto to fit all contents */
+    height: 165px; /* Adjust height to auto to fit all contents */
     background-color: rgb(253, 253, 253);
     padding: 10px; /* Added padding for better spacing */
     box-sizing: border-box; /* Ensure padding and border are included in width and height */
@@ -81,17 +81,12 @@ input[type="submit"]:hover {
 }
 
 .calendar-content {
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 10px;
     border-radius: 5px;
-    background-color: #22223b;
-    width: auto; /* Adjust width as needed */
-    padding: 10px; /* Added padding for better spacing */
-    box-sizing: border-box; /* Ensure padding and border are included in width and height */
-}
+    background-color: #22223b;}
 
 .category-filter {
     margin-top: 10px;

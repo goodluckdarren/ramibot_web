@@ -1,4 +1,4 @@
-<?php require_once('../database_connect.php');?>
+<!-- <?php require_once('../database_connect.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -215,4 +215,4 @@
             }
         }
     }
-</script>
+</script> -->

@@ -13,7 +13,7 @@
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['user_id'];
-        header('Location: ../userfiles/new_user_files.php');
+        header('Location: ../facultysched/faculty_schedule.php');
         exit;
     }
     else {

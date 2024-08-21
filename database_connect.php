@@ -1,8 +1,8 @@
 <?php
    // Check if session has started
-   if (session_status() == PHP_SESSION_NONE) {
-      session_start();
-   }
+   // if (session_status() == PHP_SESSION_NONE) {
+   //    session_start();
+   // }
    // $host = "airhub-soe.apc.edu.ph";
    // $user = "marj";
    // $password = "RAMIcpe211";
@@ -20,4 +20,4 @@
 
    or 
    die("Failed to connect with MySQL: " . mysqli_connect_error());
-?>
+// ?>
