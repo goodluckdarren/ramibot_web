@@ -1,81 +1,42 @@
+/* Container for the table */
 .table-container {
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* User table styling */
+.user-files-table {
+    width: 85%;  /* Increased width */
+    height: 50%;
+    margin-left: 50px;
+    margin-top: 20px;
+    background-color: #ffffff;
     align-items: center;
-}
-
-/* table part */
-.table-no-record {
-    position: relative;
-    top: 175px;
-    font-size: 1.5rem;
-}
-
-th,
-td {
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 15px;
-    text-align: center;
-    cursor: default;
+    border-radius: 5px;
 }
 
 th {
-    background-color: #E7AE41;
-    border: 1px solid #000;
-    cursor: default;
-    font-size: 1.2rem;
+    background-color: #ffffff;
+    color: #001233;
+    height: 40px;  /* Increased height */
+    min-width: 100px;  /* Increased min-width */
+    font-weight: bold;
+    font-size: 1.1rem;  /* Slightly increased font size */
+}
+
+tr {
+    background-color: #001233;
 }
 
 td {
-    border: 1px solid #000;
-    background-color: rgba(255, 255, 255);
-}
-
-.highlight-row {
-    color: gray;
-}
-
-th a:hover {
-    color: #fff;
-    transition: 0.2s color ease-in-out;
-}
-
-td {
-    text-overflow: ellipsis;
-    font-size: 1rem;
-    min-width: 100px;
-    max-width: 150px;
-}
-
-/* will fix later */
-tr.disabled td:not(.action-buttons) {
-    background-color: #ccc;
-}
-
-.disabled {
-    color: gray;
-}
-
-/* admin table style */
-.user-management-table {
-    overflow: hidden;
-    border: 1px solid #000;
-    border-collapse: collapse;
-    width: 90%;
-    text-align: left;
-    font-size: 1rem;
-}
-
-/* action buttons */
-.action-buttons {
-    position: relative;
-    width: 10px;
-    white-space: nowrap;
-}
-
-.action-buttons button {
-    margin: 0 5px;
+    color: white;
+    min-width: 200px;  /* Increased min-width */
+    max-width: 500px;  /* Increased max-width */
+    height: 50px;  /* Increased height */
+    padding: 10px;  /* Added padding for more spacing */
 }
 
 .delete-button[type="button"] {
@@ -83,11 +44,11 @@ tr.disabled td:not(.action-buttons) {
     right: 0px;
     box-shadow: none;
     border: 1px solid #000;
-    background-color: #f44336;
+    background-color: #8a2e26;
     color: #fff;
     border-radius: 5px;
-    width: 30px;
-    height: 30px;
+    width: 35px;  /* Slightly increased width */
+    height: 35px;  /* Slightly increased height */
     cursor: pointer;
 }
 
@@ -95,103 +56,51 @@ tr.disabled td:not(.action-buttons) {
     background-color: #E7AE41;
 }
 
-.edit-button[type="button"] {
-    position: relative;
-    right: 0px;
-    box-shadow: none;
-    border: 1px solid #000;
-    background-color: #007BFF;
-    color: #fff;
-    border-radius: 5px;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-
-.edit-button:hover {
-    background-color: #E7AE41;
-}
-
-.restore-button[type="button"] {
-    position: relative;
-    right: 0px;
-    box-shadow: none;
-    border: 1px solid #000;
-    background-color: #007BFF;
-    color: #fff;
-    border-radius: 5px;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-}
-
-.restore-button:hover {
-    background-color: #E7AE41;
-}
-
-/* user status */
-
-.status-form select {
-    font-size: 1rem;
-    background-color: transparent;
-    border: none;
-    border-radius: 5px;
-}
-
-/* table pagination */
+/* Pagination style */
 .pagination {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    margin-top: 20px;  /* Added margin for spacing */
 }
 
 .page-item {
-    border: 0px solid #000;
-    border-radius: 5px;
-    background-color: white;
+    width: 35px;  /* Increased width */
+    height: 35px;  /* Increased height */
+    background-color: #001233;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
-    margin-right: 5px;
-    font-size: 1rem;
+    margin-left: 10px;  /* Increased margin */
 }
 
+/* Pagination text styling */
 .page-item a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    border-radius: 5px;
     text-decoration: none;
-    color: black;
-}
-
-.previous {
-    border: 1px solid #000;
-    width: 100px;
-}
-
-.number {
-    border: 1px solid #000;
-    width: 50px;
-}
-
-.number:hover {
-    background-color: #E7AE41;
-    color: #fff;
-    transition: 0.2s background-color ease-in-out, color 0.2s ease-in-out;
-}
-
-.next {
-    border: 1px solid #000;
-    width: 100px;
+    color: #ffffff;
 }
 
 .page-item.disabled {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: gray;
+    color: white;
 }
 
 .page-item.active {
-    background-color: #E7AE41;
+    background-color: #33415c;
+    color: white;
+}
+
+/* Dropdown styling */
+.status-form select {
+    font-size: 1rem;
+    background-color: #ffffff;  /* White background for visibility */
+    color: #001233;  /* Dark text color */
+    border: 1px solid #000;  /* Border for visibility */
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.status-form select option {
+    background-color: #ffffff;  /* White background for options */
+    color: #001233;  /* Dark text color for options */
 }
