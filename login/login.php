@@ -8,6 +8,7 @@
     <title>ADMIBOT</title>
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
+    <link rel="shortcut icon" href="../images_home/apc-logo.ico">
     <script src="../scripts/login.js"></script>
 </head>
 
