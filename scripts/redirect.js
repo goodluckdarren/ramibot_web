@@ -86,12 +86,6 @@ function updatePositioningStatus(callback) {
     });
 }
 
-
-
-
-
-
-
 // function toggleSidePanel() {
 //     var sidePanel = document.getElementById("sidePanel");
 //     sidePanel.classList.toggle("minimized");

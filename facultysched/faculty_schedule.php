@@ -10,6 +10,7 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <script src="../scripts/redirect.js"></script>
+    <script src="../scripts/program_img_upload.js"></script>
 </head>
 
 <body class="home-page">
@@ -37,7 +38,7 @@
                                 <label for="fileInput" class="upload-title">
                                     Upload <i class="fas fa-upload"></i>
                                 </label>
-                                <input type="file" name="fileInput" id="fileInput" accept=".jpg, .jpeg, .png" style="position: absolute; opacity: 0;" onchange="displayFileName(this)">
+                                <input type="file" name="fileInput" id="fileInput" accept=".jpg, .jpeg, .png" style="position: absolute; opacity: 0;" onchange="displayFileName(this)" required>
                             </div>
                             <input type="text" name="faculty_name" id="faculty_name" placeholder="Full Name" required>
                             <input type="text" name="school" id="school" placeholder="Department" required>
