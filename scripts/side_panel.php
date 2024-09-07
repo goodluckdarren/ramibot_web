@@ -47,7 +47,7 @@
     ];
 
     foreach ($buttons as $button) {
-        if ($hasRole1 || !isset($button['path']) || !str_contains($button['path'], 'manage_users')) {
+        if ($hasRole1 || !isset($button['path']) || !str_contains($button['path'], 'manage_users') && !str_contains($button['path'], 'rami_status')) {
             echo '<div class="btn ' . isActivePage($button['path']) . '" onclick="redirectPage(\'' . $button['path'] . '\')">';
             echo '<p>' . $button['label'] . '</p>';
             echo '</div>';

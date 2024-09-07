@@ -27,14 +27,17 @@ foreach ($schedules as $school => $school_schedules) {
         $sched_img = $schedule['img_url'];
 
         echo "<div class='sched-content'>
-                <div class='sched-text'>$faculty_name</div>
-                <img src='$sched_img' class='sched-image'>
-                <div class='action-button'>
+                <div class='sched-text'>$faculty_name</div>";
+        if (empty($sched_img)) {
+            echo "<h2>Professor doesn't have available schedule.</h2>";
+        } else { 
+            echo "<img src='$sched_img' class='sched-image'>";
+            echo "<div class='action-button'>
                     <button class='delete-button' type='button' onclick='deleteRow(" . $schedule['sched_id'] . ")'>
                         <i class='fas fa-trash'></i>
                     </button>
-                </div>
-              </div>";
+                </div>";
+        }   echo "</div>";
     }
 
     echo "</div>"; // Close schedule wrapper
@@ -42,11 +45,6 @@ foreach ($schedules as $school => $school_schedules) {
 
 echo "</div>"; // Close school container
 ?>
-
-
-
-
-
 
 <script>    
      function deleteRow(sched_id) {

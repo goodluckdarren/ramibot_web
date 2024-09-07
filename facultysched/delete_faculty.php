@@ -3,18 +3,18 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        $sched_id = $_POST['sched_id'];
-        
-        // Delete related data from floor_map table
-        $delete_query = "DELETE FROM faculty_scheds WHERE sched_id = ?";
-        $stmt = mysqli_prepare($con, $delete_query);
+    $sched_id = $_POST['sched_id'];
+
+        // Update the img_url column to NULL or '' for the given sched_id
+        $update_query = "UPDATE faculty_scheds SET img_url = '' WHERE sched_id = ?";
+        $stmt = mysqli_prepare($con, $update_query);
         mysqli_stmt_bind_param($stmt, 'i', $sched_id);
         mysqli_stmt_execute($stmt);
 
         if (mysqli_stmt_affected_rows($stmt) > 0) {
-            echo 'Image has been deleted successfully.';
+            echo 'Image column has been emptied successfully.';
         } else {
-            echo "Error deleting image: " . mysqli_error($con);
-        } 
+            echo "Error updating image column: " . mysqli_error($con);
+        }
     }
 ?>

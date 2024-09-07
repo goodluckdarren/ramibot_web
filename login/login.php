@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ADMIBOT</title>
+    <title>RAMIBOT Web</title>
     <link rel="stylesheet" href="../styles/login.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <link rel="shortcut icon" href="../images_home/apc-logo.ico">
@@ -19,7 +19,7 @@
 
     <div class="login-box">
         <div class="justified-center">
-            ADMIN LOGIN
+            WELCOME TO RAMIBOT
         </div>
         <form class="form-container" action="login_authenticate.php" name="signin-form" method="POST" autocomplete="off">
             <div class="input-container">
