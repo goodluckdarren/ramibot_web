@@ -1,4 +1,4 @@
-/* Container for the table */
+/* Container for both tables */
 .table-container {
     margin-top: 30px;
     display: flex;
@@ -7,48 +7,114 @@
     margin-right: 20px;
 }
 
-/* User table styling */
-.user-files-table {
-    width: 85%;  /* Increased width */
-    height: 50%;
-    margin-left: 50px;
+/* Styling for user-management-table (the main user table) */
+.user-management-table {
+    width: 100%;
     margin-top: 20px;
     background-color: #ffffff;
-    align-items: center;
     border-radius: 5px;
+    border-collapse: collapse;
+    font-family: 'Montserrat', sans-serif;
 }
 
-th {
-    background-color: #ffffff;
-    color: #001233;
-    height: 40px;  /* Increased height */
-    min-width: 100px;  /* Increased min-width */
-    font-weight: bold;
-    font-size: 1.1rem;  /* Slightly increased font size */
-}
-
-tr {
-    background-color: #001233;
-}
-
-td {
+/* Table headers for user-management-table */
+.user-management-table th {
+    background-color: #007BFF;
     color: white;
-    min-width: 200px;  /* Increased min-width */
-    max-width: 500px;  /* Increased max-width */
-    height: 50px;  /* Increased height */
-    padding: 10px;  /* Added padding for more spacing */
+    height: 40px;
+    min-width: 100px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 3px solid #0056b3;
 }
 
+/* Table rows styling for user-management-table */
+.user-management-table td {
+    color: #001233;
+    padding: 10px;
+    border-bottom: 1px solid #dce4ec;
+    height: 50px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* Alternate row coloring for clarity */
+.user-management-table tr:nth-child(even) {
+    background-color: #f2f9ff;
+}
+
+/* Hover effect on table rows */
+.user-management-table tr:hover {
+    background-color: #e6f2ff;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Styling for user-files-table (the main user table) */
+.user-files-table, .logs-table {
+    width: 100%;  /* Full width for both tables */
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border-collapse: collapse;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Table headers for both tables */
+.user-files-table th, .logs-table th {
+    background-color: #007BFF; /* Blue header for both */
+    color: white;
+    height: 40px;
+    min-width: 100px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: left;
+    padding: 12px;
+    border-bottom: 3px solid #0056b3;
+}
+
+/* Table rows styling for both tables */
+.user-files-table td, .logs-table td {
+    color: #001233;  /* Dark text */
+    padding: 10px;
+    border-bottom: 1px solid #dce4ec;
+    height: 50px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+/* Alternate row coloring */
+.user-files-table tr:nth-child(even), .logs-table tr:nth-child(even) {
+    background-color: #f2f9ff; /* Light blue for even rows */
+}
+
+/* Hover effect for table rows */
+.user-files-table tr:hover, .logs-table tr:hover {
+    background-color: #e6f2ff;
+    transition: background-color 0.3s ease;
+}
+
+/* Container for the user logs table */
+.user_logs_container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #dce4ec;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Delete button for both tables */
 .delete-button[type="button"] {
-    position: relative;
-    right: 0px;
     box-shadow: none;
     border: 1px solid #000;
     background-color: #8a2e26;
     color: #fff;
     border-radius: 5px;
-    width: 35px;  /* Slightly increased width */
-    height: 35px;  /* Slightly increased height */
+    width: 35px;
+    height: 35px;
     cursor: pointer;
 }
 
@@ -56,25 +122,24 @@ td {
     background-color: #E7AE41;
 }
 
-/* Pagination style */
+/* Pagination styling for both tables */
 .pagination {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 20px;  /* Added margin for spacing */
+    margin-top: 20px;
 }
 
 .page-item {
-    width: 35px;  /* Increased width */
-    height: 35px;  /* Increased height */
+    width: 35px;
+    height: 35px;
     background-color: #001233;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 10px;  /* Increased margin */
+    margin-left: 10px;
 }
 
-/* Pagination text styling */
 .page-item a {
     text-decoration: none;
     color: #ffffff;
@@ -93,14 +158,14 @@ td {
 /* Dropdown styling */
 .status-form select {
     font-size: 1rem;
-    background-color: #ffffff;  /* White background for visibility */
-    color: #001233;  /* Dark text color */
-    border: 1px solid #000;  /* Border for visibility */
+    background-color: #ffffff;
+    color: #001233;
+    border: 1px solid #000;
     border-radius: 5px;
     padding: 5px;
 }
 
 .status-form select option {
-    background-color: #ffffff;  /* White background for options */
-    color: #001233;  /* Dark text color for options */
+    background-color: #ffffff;
+    color: #001233;
 }

@@ -37,6 +37,12 @@
                     <div class="table-container">
                         <?php include('users_table.php')?>
                     </div>
+                    
+                    <!-- User Logs Container -->
+                    <div class="user_logs_container">
+                        <?php include('user_logs_table.php') ?>
+                    </div>
+                    
                 </div>
             </div>
         </div>

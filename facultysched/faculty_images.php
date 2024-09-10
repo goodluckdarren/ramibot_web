@@ -1,5 +1,6 @@
 <?php
 require_once('../database_connect.php');
+require_once('../scripts/user_logs.php');
 
 $sql = "SELECT fm.* FROM faculty_scheds AS fm";
 $result_table = mysqli_query($con, $sql);

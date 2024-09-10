@@ -1,5 +1,6 @@
 <?php
-
+require_once('../database_connect.php');
+require_once('../scripts/user_logs.php');
 // Set the maximum upload file size FIND THE php.ini file and change the upload_max_filesize and post_max_size
 ini_set('upload_max_filesize', '40M');
 ini_set('post_max_size', '40M');
@@ -24,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (move_uploaded_file($fileTmpPath, $dest_path)) {
             echo "File is successfully uploaded.";
+            add_user_log($_SESSION['user_id'], "Added program image");
         } else {
             echo "There was some error moving the file to the upload directory. Please make sure the upload directory is writable by the web server.";
         }

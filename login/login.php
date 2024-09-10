@@ -2,7 +2,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>RAMIBOT Web</title>
@@ -16,7 +15,6 @@
     <div class="logo">
         <img id="nu-apc-logo.png" src="../login/nu-apc-logo.png" width="300px" height="150px">
     </div>
-
     <div class="login-box">
         <div class="justified-center">
             WELCOME TO RAMIBOT

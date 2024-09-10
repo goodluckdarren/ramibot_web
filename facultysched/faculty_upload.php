@@ -1,6 +1,7 @@
 <?php
 
 require_once '../database_connect.php';
+require_once '../scripts/user_logs.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['school']) && isset($_POST['faculty_name']) && isset($_FILES['fileInput'])) {
@@ -32,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($stmt->execute()) {
                     echo "Record updated successfully.";
                     echo '<br><button onclick="goBack()">Okay</button>';
+                    add_user_log($_SESSION['user_id'], "Updated faculty schedule image");
                 } else {
                     echo "Error: " . $stmt->error;
                 }
@@ -51,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($stmt->execute()) {
                     echo "Record added successfully.";
                     echo '<br><button onclick="goBack()">Okay</button>';
+                    add_user_log($_SESSION['user_id'], "Added faculty schedule image");
+
                 } else {
                     echo "Error: " . $stmt->error;
                 }

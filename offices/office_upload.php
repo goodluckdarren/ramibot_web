@@ -1,6 +1,7 @@
 <?php
 
 require_once '../database_connect.php';
+require_once '../scripts/user_logs.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['officeIdentifier'])) {
@@ -18,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->execute()) {
                 echo "Record added successfully";
                 echo '<br><button onclick="goBack()">Okay</button>';
+                add_user_log($_SESSION['user_id'], "Added office image");
             } else {
                 echo "Error: " . $stmt->error;
             }
