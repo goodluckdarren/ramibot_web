@@ -1,0 +1,35 @@
+/* Pagination style */
+.pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.page-item {
+    width: 30px;
+    height: 30px;
+    background-color: #001233;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+/* Pagination text styling */
+.page-item a {
+    text-decoration: none;
+    color: #ffffff;
+    /* Adjust the color as needed */
+}
+
+.page-item.disabled {
+    background-color: gray;
+    color: white;
+}
+
+.page-item.active {
+    background-color: #33415c;
+    /* Adjust the color for the active page */
+    color: white;
+    /* Adjust the text color for the active page */
+}

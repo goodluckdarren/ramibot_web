@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/homepage.css">
     <link rel="stylesheet" href="../styles/interactions.css">
     <link rel="stylesheet" href="../styles/super_admin.css">
+    <link rel="stylesheet" href="../styles/table.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <script src="../scripts/redirect.js"></script>
@@ -34,19 +35,32 @@
             </div>
             <div class="main-menu">
                 <div class="main-panel">
-                    <div class="table-container">
-                        <?php include('users_table.php')?>
+                    <div class="users-table-container">
+                        <?php include('users_table.php') ?>
                     </div>
-                    
+                    <ul id="users-pagination" class="pagination"></ul>
+
                     <!-- User Logs Container -->
-                    <div class="user_logs_container">
-                        <?php include('user_logs_table.php') ?>
+                    <h2>User Activity Logs</h2>
+                    <div class="user-logs-container">
+                        <table class="logs-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Action</th>
+                                    <th>Timestamp</th>
+                                </tr>
+                            </thead>
+                            <tbody id="user-logs-table-content">
+                                <?php include('user_logs_table.php') ?>
+                            </tbody>
+                        </table>
+                        <!-- Pagination element for user logs -->
+                        <ul id="logs-pagination" class="pagination"></ul>
                     </div>
-                    
                 </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
