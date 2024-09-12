@@ -4,7 +4,7 @@
     align-items: center; 
     margin-top: 15px;
     width: 100%;
-    height: auto; /* Adjusts height to fit contents */
+    height: 300px; /* Adjusts height to fit contents */
     max-height: 165px; /* Optional: Set a max height for better control */
     background-color: rgb(253, 253, 253);
     padding: 10px;
