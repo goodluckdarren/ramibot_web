@@ -6,7 +6,7 @@
     <title>ADMIBOT</title>
     <link rel="stylesheet" href="../styles/homepage.css">
     <link rel="stylesheet" href="../styles/interactions.css">
-    <link rel="stylesheet" href="../styles/accreditations_table.css">
+    <link rel="stylesheet" href="../styles/calendars_image_layout.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <script src="../calendars/calendars_img_upload.js"></script>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="calendars-imgs">
-                        <?php include '../calendars/calendars_images.php'; ?>
+                        <?php include 'calendars_images.php'; ?>
                     </div>
                 </div>
             </div>

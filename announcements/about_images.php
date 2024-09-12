@@ -15,7 +15,7 @@ mysqli_stmt_execute($statement);
 mysqli_stmt_bind_result($statement, $info_id, $img_url);
 
 while (mysqli_stmt_fetch($statement)) {
-    $img_url = '../announcements_img/' . htmlspecialchars($img_url, ENT_QUOTES, 'UTF-8');
+    $img_url = '' . htmlspecialchars($img_url, ENT_QUOTES, 'UTF-8');
     echo '<div class="image-container">';
     echo '<img src="' . $img_url . '" class="image-size" alt="Image">';
     echo '<button class="delete-button" type="button" onclick="deleteImage(' . $info_id . ')"> 
@@ -39,6 +39,7 @@ function deleteImage($info_Id) {
                     alert(xhr.responseText);
                     // Reload the page or update the image container after successful deletion
                     // Example: window.location.reload();
+                    window.location.reload();
                 } else {
                     alert("Error deleting image: " + xhr.responseText);
                 }

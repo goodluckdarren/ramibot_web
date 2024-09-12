@@ -45,7 +45,7 @@
                         </div>
                     </form>
                     <div class="about-imgs">
-                        <?php include '../announcements/about_images.php' ?>
+                        <?php include 'about_images.php' ?>
                     </div>
                 </div>
             </div>

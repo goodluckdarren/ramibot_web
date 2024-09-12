@@ -13,7 +13,7 @@
    // $host = "airhub-soe.apc.edu.ph";
    // $user = "marj";
    // $password = "RAMIcpe211";
-   // $db_name = "ramibot";
+   // $db_name = "ramibot_test";
    
    // $con = mysqli_connect($host , $user , $password , $db_name) 
    // or 

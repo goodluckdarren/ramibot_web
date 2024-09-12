@@ -46,7 +46,7 @@
                         </div>
                     </form>
                     <div class="scheds-imgs">
-                        <?php include '../facultysched/faculty_images.php' ?>
+                        <?php include 'faculty_images.php' ?>
                     </div>
                 </div>
             </div>

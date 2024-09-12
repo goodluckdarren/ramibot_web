@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['img_id'])) {
 
     if (mysqli_stmt_affected_rows($stmt) > 0) {
         echo 'Image has been deleted successfully.';
+    
         add_user_log($_SESSION['user_id'], "Deleted program image");
     } else {
         echo "Error deleting image: " . mysqli_error($con);

@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $calendar_identifier = $_POST['calendarIdentifier'];
         $category = $_POST['category'];
 
-        $uploadDir = '../calendars_img/';
+        $uploadDir = 'calendars_img/';
         $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
 
         if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {

@@ -47,7 +47,7 @@
                         </div>
                     </form>
                     <div class="programs-imgs">
-                        <?php include 'programs/programs_images.php' ?>
+                        <?php include 'programs_images.php' ?>
                     </div>
                 </div>
             </div>

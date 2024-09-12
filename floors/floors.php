@@ -63,7 +63,7 @@
                         </div>
                     </form>
                     <div class="floors-imgs">
-                        <?php include '../floors/floors_images.php' ?>
+                        <?php include 'floors_images.php' ?>
                     </div>
                 </div>
             </div>

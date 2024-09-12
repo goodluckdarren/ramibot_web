@@ -7,7 +7,7 @@
         if (isset($_POST['aboutIdentifier'])) {
             $aboutIdentifier = $_POST['aboutIdentifier'];
 
-            $uploadDir = '../announcements_img/';
+            $uploadDir = 'announcements_img/';
             $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
 
             echo $uploadDir;

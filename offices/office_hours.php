@@ -47,7 +47,7 @@
                         </div>
                     </form>
                     <div class="offices-imgs">
-                        <?php include '../offices/office_images.php' ?>
+                        <?php include 'office_images.php' ?>
                     </div>
                 </div>
             </div>
