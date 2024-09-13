@@ -45,7 +45,7 @@
                         </div>
                     </form>
                     <div class="accreditations-imgs">
-                        <?php include '../accreditations/accreditations_images.php' ?>
+                        <?php include 'accreditations_images.php' ?>
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@
                                 </label>
                                 <input type="file" name="fileInput" id="fileInput" accept="image/*" style="position: absolute; opacity: 0;" onchange="displayFileName(this)">
                             </div>
-                            <!-- <input type="text" name="programsIdentifier" placeholder="Programs Identifier" required> -->
+                            <input type="text" name="programsIdentifier" placeholder="Programs Identifier" required>
                             <input type="submit" value="Submit">
                         </div>
                     </form>

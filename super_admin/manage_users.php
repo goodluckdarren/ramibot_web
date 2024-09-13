@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.3.0/css/all.css">
     <script src="../scripts/redirect.js"></script>
     <script src="../scripts/program_img_upload.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="home-page">
@@ -35,12 +36,16 @@
             </div>
             <div class="main-menu">
                 <div class="main-panel">
+                    <!-- Users Table Container -->
                     <div class="users-table-container">
-                        <?php include('users_table.php') ?>
+                        <div id="user-management-table-content">
+                            <?php include('users_table.php'); ?>
+                        </div>
+                        <!-- Pagination for Users Table -->
+                        <ul id="users-pagination" class="pagination"></ul>
                     </div>
-                    <ul id="users-pagination" class="pagination"></ul>
 
-                    <!-- User Logs Container -->
+                    <!-- User Logs Section -->
                     <h2>User Activity Logs</h2>
                     <div class="user-logs-container">
                         <table class="logs-table">
@@ -52,15 +57,13 @@
                                 </tr>
                             </thead>
                             <tbody id="user-logs-table-content">
-                                <?php include('user_logs_table.php') ?>
+                                <?php include('user_logs_table.php'); ?>
                             </tbody>
                         </table>
-                        <!-- Pagination element for user logs -->
+                        <!-- Pagination for User Logs Table -->
                         <ul id="logs-pagination" class="pagination"></ul>
                     </div>
                 </div>
             </div>
         </div>
-</body>
-
-</html>
+    </div>

@@ -63,5 +63,78 @@
     }
 
     echo '</table>';
+
+    echo '<ul id="users-pagination" class="pagination"></ul>';
+  
 ?>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    var currentPage = <?php echo $page; ?>;
+    var totalPages = <?php echo $total_pages; ?>;
+
+    $(document).ready(function() {
+        updatePagination();
+    });
+
+    function updatePagination() {
+        var paginationHtml = '';
+        var maxButtons = 5; // Show max 5 buttons
+
+        var startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
+        var endPage = Math.min(totalPages, startPage + maxButtons - 1);
+
+        if (endPage - startPage < maxButtons - 1) {
+            startPage = Math.max(1, endPage - maxButtons + 1);
+        }
+
+        // Previous button
+        paginationHtml += '<li class="page-item ' + (currentPage === 1 ? 'disabled' : '') + '">';
+        paginationHtml += '<a class="page-link" href="#" onclick="loadPage(' + (currentPage - 1) + ')">&laquo;</a>';
+        paginationHtml += '</li>';
+
+        // Page buttons
+        for (var i = startPage; i <= endPage; i++) {
+            paginationHtml += '<li class="page-item ' + (i === currentPage ? 'active' : '') + '">';
+            paginationHtml += '<a class="page-link" href="#" onclick="loadPage(' + i + ')">' + i + '</a>';
+            paginationHtml += '</li>';
+        }
+
+        // Next button
+        paginationHtml += '<li class="page-item ' + (currentPage === totalPages ? 'disabled' : '') + '">';
+        paginationHtml += '<a class="page-link" href="#" onclick="loadPage(' + (currentPage + 1) + ')">&raquo;</a>';
+        paginationHtml += '</li>';
+
+        $('#users-pagination').html(paginationHtml);
+    }
+
+    function loadPage(page) {
+        if (page < 1 || page > totalPages || page === currentPage) {
+            return;
+        }
+
+        currentPage = page;
+        updatePagination();
+        loadTableContent(page);
+
+        event.preventDefault();
+    }
+
+    function loadTableContent(page) {
+        $.ajax({
+            url: 'users_table.php',
+            type: 'GET',
+            data: {
+                page: currentPage
+            },
+            success: function(data) {
+                $('#user-management-table-content').fadeOut('fast', function() {
+                    $(this).html(data).fadeIn('fast');
+                });
+            },
+            error: function() {
+                alert('Error loading table content.');
+            }
+        });
+    }
+</script>

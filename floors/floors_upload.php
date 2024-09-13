@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $floor_id = $_POST['floorId'];
         $floor_identifier = $_POST['floorIdentifier'];
 
-        $uploadDir = '../floors_img/';
+        $uploadDir = 'floors_img/';
         $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
 
         if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {

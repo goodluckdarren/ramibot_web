@@ -28,7 +28,7 @@
      function deleteRow(calendar_id) {
         if (confirm("Do you want to delete this?")) {
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "../calendars/calendars_delete.php", true);
+            xhr.open("POST", "calendars_delete.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
