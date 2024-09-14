@@ -1,26 +1,21 @@
-<?php 
+<?php  
     require_once('../database_connect.php');
 
     // Check the logged-in user's role from the session
     $userID = $_SESSION['user_id'];
 
-    // Query to get all admin accounts
-    $sql = "SELECT * FROM admin_accounts WHERE user_id = $userID";
+    // Query to get the current user's role
+    $sql = "SELECT role FROM admin_accounts WHERE user_id = $userID";
     $result = mysqli_query($con, $sql);
 
     if ($result === false) {
         die("Failed to connect with MySQL: " . mysqli_error($con));
     }
 
-    // Initialize a flag to check if any user has role 1
-    $hasRole1 = false;
-
-    // Check if any user has role 1
-    while ($row = mysqli_fetch_assoc($result)) {
-        if ($row['role'] == 1) {
-            $hasRole1 = true;
-            break; // No need to check further if we already found a user with role 1
-        }
+    // Fetch the user's role
+    $userRole = null;
+    if ($row = mysqli_fetch_assoc($result)) {
+        $userRole = $row['role'];
     }
 
     // Get the current page
@@ -47,7 +42,14 @@
     ];
 
     foreach ($buttons as $button) {
-        if ($hasRole1 || !isset($button['path']) || !str_contains($button['path'], 'manage_users') && !str_contains($button['path'], 'rami_status')) {
+        // Allow access for Role 1 and Role 2
+        if ($userRole == 1 || $userRole == 2) {
+            echo '<div class="btn ' . isActivePage($button['path']) . '" onclick="redirectPage(\'' . $button['path'] . '\')">';
+            echo '<p>' . $button['label'] . '</p>';
+            echo '</div>';
+        }
+        // Restrict Role 3 from 'manage_users.php' and 'rami_status.php'
+        elseif ($userRole == 3 && !(str_contains($button['path'], 'manage_users') || str_contains($button['path'], 'rami_status'))) {
             echo '<div class="btn ' . isActivePage($button['path']) . '" onclick="redirectPage(\'' . $button['path'] . '\')">';
             echo '<p>' . $button['label'] . '</p>';
             echo '</div>';
