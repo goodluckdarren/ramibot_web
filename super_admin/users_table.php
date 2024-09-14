@@ -38,17 +38,14 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     // Conditional check to display "Active" or "Disabled" based on user_status value
     echo '<td>';
-    echo '<form class="status-form">';
-    echo '<input type="hidden" name="user_id" value="' . $row['user_id'] . '">';
-    echo '<select name="user_status" onchange="updateStatus(this.form);"';
-    if ($row['user_id'] == $_SESSION['user_id']) {
-        echo ' disabled';
+    if ($row['user_status'] == 1) {
+        echo 'Enabled';
+    } else {
+        echo 'Disabled';
     }
-    echo '>';
-    echo '<option class="status-enabled" value="1"' . ($row['user_status'] == 1 ? ' selected' : '') . '>Enabled</option>';
-    echo '<option class="status-disabled" value="0"' . ($row['user_status'] == 0 ? ' selected' : '') . '>Disabled</option>';
-    echo '</select>';
-    echo '</form>';
+    if ($row['user_id'] == $_SESSION['user_id']) {
+        echo ' (You)';
+    }
     echo '</td>';
 
     echo '<td class="action-buttons">';
@@ -164,6 +161,37 @@ echo '<ul id="users-pagination" class="pagination"></ul>';
         } else {
             if (confirm('Are you sure you want to edit this user?')) {
                 window.location.href = 'user_edit_page.php?user_id=' + userId;
+            }
+        }
+    }
+
+    function deleteRow(userId) {
+        var currentUserId = <?php echo $_SESSION['user_id']; ?>;
+
+        if (userId === currentUserId) {
+            alert('You cannot delete your own account.');
+            return;
+        } else {
+            if (confirm('Are you sure you want to delete this user?')) {
+                $.ajax({
+                    url: 'delete_user.php',
+                    type: 'POST',
+                    data: {
+                        user_id: userId
+                    },
+                    success: function(response) {
+                        // Assuming response contains success or error message
+                        if (response.includes('successfully')) {
+                            alert('User deleted successfully.');
+                        } else {
+                            alert('Failed to delete user.');
+                        }
+                        loadTableContent(currentPage);
+                    },
+                    error: function() {
+                        alert('Error deleting user.');
+                    }
+                });
             }
         }
     }
