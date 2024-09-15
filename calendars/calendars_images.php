@@ -12,7 +12,6 @@
 
         echo "<div class='calendar-content'>";
         echo "<div class='calendar-text'>$calendarIdentifier</div>";
-        echo "<div class='category-text'>$category</div>"; // Display category
         echo "<img src='$calendarImg' alt='$calendarIdentifier'>";
         echo '<div class="action-button">';
         echo '<button style="width: 30px; height: 30px;" 

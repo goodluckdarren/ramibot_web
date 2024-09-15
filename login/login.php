@@ -28,24 +28,24 @@
                 <input id="password_field" name="password" type="password" placeholder="Password" autocomplete="password" required>
                 <i class="fas fa-eye" onclick="showPassword()"></i>
             </div>
-            <div class="forgot-password">
+            <!-- <div class="forgot-password">
                 <a href="" id="password-reset"> forgot password? </a>
-            </div>
-            <div class="popup" id="errorPopup">
+            </div> -->
+            <!-- <div class="popup" id="errorPopup">
                 <div class="popup-content">
                     <?php
-                    if (isset($_GET['error'])) {
-                        $error = $_GET['error'];
-                        if ($error === 'disabled') {
-                            echo '<p class="disabled-message">Account is disabled. Please contact the administrator.</p>';
-                        } elseif ($error === 'invalid_credentials') {
-                            echo '<p class="invalid-message">Invalid email or password. Please try again.</p>';
-                        }
-                    }
+                    // if (isset($_GET['error'])) {
+                    //     $error = $_GET['error'];
+                    //     if ($error === 'disabled') {
+                    //         echo '<p class="disabled-message">Account is disabled. Please contact the administrator.</p>';
+                    //     } elseif ($error === 'invalid_credentials') {
+                    //         echo '<p class="invalid-message">Invalid email or password. Please try again.</p>';
+                    //     }
+                    // }
                     ?>
                     <span class="close-button" onclick="closePopup()">&times;</span>
                 </div>
-            </div>
+            </div> -->
             <button type="submit" name="login" class="signin-button button">
                 <span class="fas fa-sign-in-alt"></span>
                 Log In

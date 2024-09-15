@@ -44,7 +44,9 @@
                 </div>
                 <div class="user-profile">
                     <?php include_once('../admin_account.php'); ?>
-                    <img class="profile-picture" src="" alt="Image of Admin" width="70px" height="70px">
+                    <a href="../logout.php" class="logout-link">
+                        <i class="fas fa-sign-out-alt"></i> <!-- Font Awesome logout icon -->
+                    </a>
                 </div>
             </div>
             <div class="main-menu">

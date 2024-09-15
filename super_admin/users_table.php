@@ -1,11 +1,26 @@
 <?php
 require_once('../database_connect.php');
 
-// Query to join admin_accounts and role_types tables
+// Number of records per page
+$rows_per_page = 3;
+$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+$offset = ($page - 1) * $rows_per_page;
+
+// Query to get total number of records for pagination
+$sql_total = "SELECT COUNT(*) as total FROM admin_accounts";
+$total_result = mysqli_query($con, $sql_total);
+$total_row = mysqli_fetch_assoc($total_result);
+$total_records = $total_row['total'];
+
+// Calculate total pages
+$total_pages = ceil($total_records / $rows_per_page);
+
+// Query to fetch the data with pagination
 $sql = "SELECT ac.user_id, ac.email, ac.username, 
                    rt.role_name, ac.user_status
             FROM admin_accounts ac
-            JOIN role_type rt ON ac.role = rt.role_id";
+            JOIN role_type rt ON ac.role = rt.role_id
+            LIMIT $offset, $rows_per_page";
 
 $result = mysqli_query($con, $sql);
 
@@ -25,116 +40,101 @@ echo '</tr>';
 
 // Loop through the results and display each row
 while ($row = mysqli_fetch_assoc($result)) {
-    // Conditional check to highlight the row if the user_id matches the current session user_id
     $highlightClass = ($row['user_id'] == $_SESSION['user_id']) ? 'highlight-row' : '';
     $disabledClass = ($row['user_status'] == 0) ? 'disabled' : '';
     echo '<tr class="' . $disabledClass . ' ' . $highlightClass . '">';
-
-    echo '<tr>';
     echo '<td>' . $row['user_id'] . '</td>';
     echo '<td>' . $row['email'] . '</td>';
     echo '<td>' . $row['username'] . '</td>';
     echo '<td>' . $row['role_name'] . '</td>';
-
-    // Conditional check to display "Active" or "Disabled" based on user_status value
-    echo '<td>';
-    if ($row['user_status'] == 1) {
-        echo 'Enabled';
-    } else {
-        echo 'Disabled';
-    }
-    if ($row['user_id'] == $_SESSION['user_id']) {
-        echo ' (You)';
-    }
-    echo '</td>';
-
+    echo '<td>' . ($row['user_status'] == 1 ? 'Enabled' : 'Disabled') . '</td>';
     echo '<td class="action-buttons">';
-    echo '<div>';
     echo '<button class="edit-button" type="button" onclick="editRow(' . $row['user_id'] . ')"> 
                         <i class="fas fa-edit"></i></button>';
     echo '<button class="delete-button" type="button" onclick="deleteRow(' . $row['user_id'] . ')"> 
                         <i class="fas fa-trash"></i></button>';
-    echo '</div>';
     echo '</td>';
     echo '</tr>';
 }
 
 echo '</table>';
 
-echo '<ul id="users-pagination" class="pagination"></ul>';
-
+// Display pagination
+echo '<ul id="users-pagination" class="pagination">';
+for ($i = 1; $i <= $total_pages; $i++) {
+    echo '<li class="page-item ' . ($i == $page ? 'active' : '') . '">';
+    echo '<a class="page-link" href="#" onclick="loadPage(' . $i . ')">' . $i . '</a>';
+    echo '</li>';
+}
+echo '</ul>';
 ?>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    var currentPage = <?php echo $page; ?>;
-    var totalPages = <?php echo $total_pages; ?>;
+    var currentUserPage = <?php echo $page; ?>; // Current page for users table
+    var totalUserPages = <?php echo $total_pages; ?>; // Total pages for users table
 
     $(document).ready(function() {
-        updatePagination();
+        updateUserPagination();
     });
 
-    function updatePagination() {
-        var paginationHtml = '';
-        var maxButtons = 5; // Show max 5 buttons
+    function loadUserPage(page) {
+        if (page < 1 || page > totalUserPages || page === currentUserPage) {
+            return;
+        }
 
-        var startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
-        var endPage = Math.min(totalPages, startPage + maxButtons - 1);
+        currentUserPage = page;
+
+        $.ajax({
+            url: 'users_table.php',
+            type: 'GET',
+            data: {
+                page: currentUserPage
+            },
+            success: function(data) {
+                console.log('Users Table Data:', data);
+                $('#user-management-table-content').fadeOut('fast', function() {
+                    $(this).html(data).fadeIn('fast');
+                });
+                updateUserPagination(); // Update pagination for users table
+
+            },
+            error: function() {
+                alert('Error loading user table content.');
+            }
+        });
+    }
+
+    function updateUserPagination() {
+        var paginationHtml = '';
+        var maxButtons = 5;
+
+        var startPage = Math.max(1, currentUserPage - Math.floor(maxButtons / 2));
+        var endPage = Math.min(totalUserPages, startPage + maxButtons - 1);
 
         if (endPage - startPage < maxButtons - 1) {
             startPage = Math.max(1, endPage - maxButtons + 1);
         }
 
-        // Previous button
-        paginationHtml += '<li class="page-item ' + (currentPage === 1 ? 'disabled' : '') + '">';
-        paginationHtml += '<a class="page-link" href="#" onclick="loadPage(' + (currentPage - 1) + ')">&laquo;</a>';
+        paginationHtml += '<li class="page-item ' + (currentUserPage === 1 ? 'disabled' : '') + '">';
+        paginationHtml += '<a class="page-link" href="#" onclick="loadUserPage(' + (currentUserPage - 1) + ')">&laquo;</a>';
         paginationHtml += '</li>';
 
-        // Page buttons
         for (var i = startPage; i <= endPage; i++) {
-            paginationHtml += '<li class="page-item ' + (i === currentPage ? 'active' : '') + '">';
-            paginationHtml += '<a class="page-link" href="#" onclick="loadPage(' + i + ')">' + i + '</a>';
+            paginationHtml += '<li class="page-item ' + (i === currentUserPage ? 'active' : '') + '">';
+            paginationHtml += '<a class="page-link" href="#" onclick="loadUserPage(' + i + ')">' + i + '</a>';
             paginationHtml += '</li>';
         }
 
-        // Next button
-        paginationHtml += '<li class="page-item ' + (currentPage === totalPages ? 'disabled' : '') + '">';
-        paginationHtml += '<a class="page-link" href="#" onclick="loadPage(' + (currentPage + 1) + ')">&raquo;</a>';
+        paginationHtml += '<li class="page-item ' + (currentUserPage === totalUserPages ? 'disabled' : '') + '">';
+        paginationHtml += '<a class="page-link" href="#" onclick="loadUserPage(' + (currentUserPage + 1) + ')">&raquo;</a>';
         paginationHtml += '</li>';
 
         $('#users-pagination').html(paginationHtml);
     }
-
-    function loadPage(page) {
-        if (page < 1 || page > totalPages || page === currentPage) {
-            return;
-        }
-
-        currentPage = page;
-        updatePagination();
-        loadTableContent(page);
-
-        event.preventDefault();
-    }
-
-    function loadTableContent(page) {
-        $.ajax({
-            url: 'users_table.php',
-            type: 'GET',
-            data: {
-                page: currentPage
-            },
-            success: function(data) {
-                $('#user-management-table-content').fadeOut('fast', function() {
-                    $(this).html(data).fadeIn('fast');
-                });
-            },
-            error: function() {
-                alert('Error loading table content.');
-            }
-        });
-    }
 </script>
+
+
+
 
 <script>
     function updateStatus(form) {

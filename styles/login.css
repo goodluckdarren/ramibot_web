@@ -4,14 +4,27 @@ html, body {
     overflow: hidden;
 }
 
-
-.login-page{
+/* Background with dark blur and image */
+.login-page {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    background: url('../login/apc-background.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
 }
 
+.login-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1; /* Behind the content */
+}
 
 .logo {
     position: absolute;
@@ -22,15 +35,15 @@ html, body {
 
 .login-box {
     z-index: 2;
-    position: absolute;
+    position: relative;
     height: 650px;
     width: 500px;
-    background-color: rgba(0, 0, 0, 0.83);
+    background-color: rgba(0, 0, 0, 0.83); /* Black overlay for the box */
     border-radius: 32px;
     text-align: center;
 }
 
-.justified-center{
+.justified-center {
     z-index: 3;
     height: fit-content;
     width: 100%;
@@ -42,14 +55,14 @@ html, body {
     margin-top: 40px;
 }
 
-.signin-button[type="submit"]{
+.signin-button[type="submit"] {
     position: relative;
     margin-top: 20px;
     margin-left: 0px;
     width: 110px;
     height: 35px;
     text-align: center;
-    font-size:1.1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: black;
     cursor: pointer;
@@ -59,7 +72,7 @@ html, body {
     background: white;
 }
 
-.signin-button:hover{
+.signin-button:hover {
     background: #007BFF;
     transition: 0.5s;
 }
@@ -68,17 +81,17 @@ html, body {
     z-index: 1;
 }
 
-.center form{
+.center form {
     position: relative;
     background: #fff;
     width: 100%;
     padding: 30px 15px 0px 30px;
     box-sizing: border-box;
     border-radius: 0 0 5px 5px;
-    box-shadow: 15px 16px 10px 5px rgba(0,0,0,0.1);
+    box-shadow: 15px 16px 10px 5px rgba(0, 0, 0, 0.1);
 }
 
-form input{
+form input {
     height: 45px;
     width: 55%;
     padding: 0px 10px;
@@ -88,33 +101,33 @@ form input{
     outline: none;
 }
 
-form input::placeholder{
+form input::placeholder {
     color: black;
     font-weight: bold;
 }
 
-form input:focus{
+form input:focus {
     border: 1px solid #E7AE41;
     -webkit-transition: 1s;
     transition: 1s;
 }
 
-form i{
+form i {
     position: absolute;
     font-size: 20px;
     color: #343A40;
 }
 
-i.fa-envelope{
+i.fa-envelope {
     margin-left: -40px;
 }
 
-i.fa-eye{
+i.fa-eye {
     margin-top: 97px;
     margin-left: -42px;
 }
 
-.fas{
+.fas {
     font-weight: 900;
 }
 
@@ -125,26 +138,39 @@ i.fa-eye{
     left: 400px;
 }
 
-.forgot-password{
-    position: relative; 
+.forgot-password {
+    position: relative;
     margin-top: 0px;
     margin-left: 215px;
     font-family: 'Calibri';
 }
-input[type=email]{
+
+input[type=email] {
     margin-top: 65px;
     margin-bottom: 50px;
 }
-input[type=password]{
+
+input[type=password] {
     margin-bottom: 50px;
 }
 
-.popup{
+.popup {
     color: red;
     font-weight: bold;
 }
 
-a:link {color:#FFFAFA;}
-a:visited {color:#FFFAFA;} 
-a:hover {color:#FFFAFA;} 
-a:active {color:#FFFAFA;} 
+a:link {
+    color: #FFFAFA;
+}
+
+a:visited {
+    color: #FFFAFA;
+}
+
+a:hover {
+    color: #FFFAFA;
+}
+
+a:active {
+    color: #FFFAFA;
+}

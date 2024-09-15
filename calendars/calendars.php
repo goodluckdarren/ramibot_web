@@ -27,7 +27,9 @@
                 </div>
                 <div class="user-profile">
                     <?php include_once('../admin_account.php'); ?>
-                    <img class="profile-picture" src="" alt="Image of Admin" width="70px" height="70px">
+                    <a href="../logout.php" class="logout-link">
+                        <i class="fas fa-sign-out-alt"></i> <!-- Font Awesome logout icon -->
+                    </a>
                 </div>
             </div>
             <div class="main-menu">
@@ -43,7 +45,7 @@
                         </form>
                         <input type="text" name="calendarIdentifier" id="calendarIdentifier" placeholder="Calendar Identifier" required>
                         <input type="text" name="category" id="category" placeholder="Category" required>
-                        <button type="button" onclick="submitForm()">Submit</button>
+                        <input type="submit" class="submit-button" onclick="submitForm()"></>
                         <div class="category-filter">
                             <label for="categorySelect">Select Category:</label>
                             <select id="categorySelect" onchange="filterCalendars()">

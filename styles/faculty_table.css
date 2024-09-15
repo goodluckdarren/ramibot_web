@@ -85,7 +85,7 @@
 
 }
 
-.delete-button[type="button"]{
+.delete-button[type="button"] {
     position: relative;
     right: 0px;
     box-shadow: none;
@@ -98,8 +98,8 @@
     cursor: pointer;
 }
 
-.delete-button:hover{
-    background-color: #E7AE41;
+.delete-button:hover {
+    color: #cc0000; /* Darker red on hover */
 }
 
 .image-size {
@@ -162,4 +162,17 @@ input[type="submit"]:hover {
 }
 
 
+.sched-content  h2 {
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+}
 
+.school-bar {
+    background-color: #0c69f9;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: white    ;
+}

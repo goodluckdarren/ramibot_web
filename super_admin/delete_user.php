@@ -1,5 +1,4 @@
 <?php
-
 require_once '../database_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
@@ -31,15 +30,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
     // Execute the query
     $deleteResult = mysqli_stmt_execute($stmt);
 
+    // Check if the deletion was successful
+    if (mysqli_stmt_affected_rows($stmt) > 0) {
+        echo "User deleted successfully.";
+    } else {
+        echo "Error deleting user or user not found: " . mysqli_error($con);
+    }
+
     // Re-enable foreign key checks
     if (!mysqli_query($con, "SET FOREIGN_KEY_CHECKS = 1")) {
         die('Failed to re-enable foreign key checks: ' . mysqli_error($con));
-    }
-
-    if ($deleteResult) {
-        echo "User deleted successfully.";
-    } else {
-        echo "Error deleting user: " . mysqli_error($con);
     }
 
     // Close the statement

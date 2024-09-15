@@ -40,7 +40,7 @@ if (isset($_GET['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional: Link to external CSS -->
+    <link rel="stylesheet" href="../styles/edit_user.css"> <!-- Optional: Link to external CSS -->
     <script>
         // Function to show a popup message based on the status
         function showStatusMessage(status) {
@@ -64,7 +64,7 @@ if (isset($_GET['user_id'])) {
 </head>
 
 <body>
-    <h2>Edit User: <?php echo $userData['username']; ?></h2>
+    <h2>Editing User: <?php echo $userData['username']; ?></h2>
 
     <form action="user_edit_update.php" method="POST">
         <input type="hidden" name="user_id" value="<?php echo $userData['user_id']; ?>">

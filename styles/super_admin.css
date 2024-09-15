@@ -1,3 +1,39 @@
+.add-user-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px; /* Smaller padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#addUserForm {
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#addUserForm input, #addUserForm select {
+    display: block;
+    margin: 10px 0;
+    width: calc(100% - 20px); /* Adjust width for padding */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px; /* Smaller padding */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
 /* Container for both tables */
 .table-container {
     margin-top: 30px;
@@ -15,6 +51,7 @@
     border-radius: 5px;
     border-collapse: collapse;
     font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Table headers for user-management-table */
@@ -35,7 +72,7 @@
     color: #001233;
     padding: 10px;
     border-bottom: 1px solid #dce4ec;
-    height: 50px;
+    height: 40px;
     text-align: left;
     white-space: nowrap;
 }
@@ -51,8 +88,7 @@
     transition: background-color 0.3s ease;
 }
 
-
-/* Styling for user-files-table (the main user table) */
+/* Styling for user-files-table and logs-table */
 .user-files-table, .logs-table {
     width: 100%;  /* Full width for both tables */
     margin-top: 20px;
@@ -60,6 +96,7 @@
     border-radius: 5px;
     border-collapse: collapse;
     font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Consistent shadow for all tables */
 }
 
 /* Table headers for both tables */
@@ -80,7 +117,7 @@
     color: #001233;  /* Dark text */
     padding: 10px;
     border-bottom: 1px solid #dce4ec;
-    height: 50px;
+    height: 30px;
     text-align: left;
     white-space: nowrap;
 }
@@ -106,27 +143,47 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Delete button for both tables */
-.delete-button[type="button"] {
+/* Delete and Edit button styling for both tables */
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.delete-button[type="button"], .edit-button[type="button"] {
     box-shadow: none;
     border: 1px solid #000;
-    background-color: #8a2e26;
-    color: #fff;
     border-radius: 5px;
     width: 35px;
     height: 35px;
     cursor: pointer;
+    color: #fff;
+    margin-right: 10px; /* Add some spacing between buttons */
+}
+
+/* Delete Button */
+.delete-button[type="button"] {
+    background-color: #8a2e26;
 }
 
 .delete-button:hover {
     background-color: #E7AE41;
+    transition: background-color 0.3s ease;
+}
+
+/* Edit Button */
+.edit-button[type="button"] {
+    background-color: #4189e7;
+}
+
+.edit-button:hover {
+    background-color: #0066cc;
+    transition: background-color 0.3s ease;
 }
 
 /* Pagination styling for both tables */
 .pagination {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    justify-content: left;  /* Align pagination to the center */
     margin-top: 20px;
 }
 
@@ -138,21 +195,22 @@
     align-items: center;
     justify-content: center;
     margin-left: 10px;
+    border-radius: 5px; /* Rounded corners */
+    color: white;
 }
 
 .page-item a {
     text-decoration: none;
-    color: #ffffff;
+    color: white;
+    font-size: 1rem;
 }
 
 .page-item.disabled {
     background-color: gray;
-    color: white;
 }
 
 .page-item.active {
     background-color: #33415c;
-    color: white;
 }
 
 /* Dropdown styling */
@@ -169,3 +227,115 @@
     background-color: #ffffff;
     color: #001233;
 }
+
+.user-logs-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: #ffffff; /* Dark blue */
+    font-weight: bold;
+    padding-left: 10px; /* Align with table content */
+    border-bottom: 3px solid #dce4ec; /* Underline */
+}
+
+.add-container {
+    margin-top: 20px;
+    text-align: center; /* Center the add button */
+}
+
+.add-button {
+    display: inline-block;
+    background-color: #007BFF; /* Primary color */
+    color: white;
+    padding: 10px 20px; /* Add some padding */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.add-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Popup Modal Styles */
+#addUserForm {
+    display: none; /* Hidden by default */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%; /* Could be more or less, depending on screen size */
+    max-width: 600px; /* Set a max-width */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Box shadow for depth */
+}
+
+h2 {
+    text-align: center; /* Center the title */
+}
+
+input[type="text"], 
+input[type="password"], 
+select {
+    width: 100%; /* Full width */
+    padding: 10px; /* Add some padding */
+    margin: 10px 0; /* Space between inputs */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+input[type="submit"] {
+    background-color: #28a745; /* Green background */
+    color: white;
+    border: none; /* Remove border */
+    padding: 10px; /* Padding */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+    font-size: 16px; /* Font size */
+}
+
+input[type="submit"]:hover {
+    background-color: #218838; /* Darker shade on hover */
+}
+
+/* Popup Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+

@@ -38,7 +38,9 @@
         ['path' => '../status/rami_status.php', 'label' => 'Status'],
         ['path' => '../calendars/calendars.php', 'label' => 'Calendar'],
         ['path' => '../tuition/tuition.php', 'label' => 'Tuition'],
-        ['path' => '../accreditations/accreditations.php', 'label' => 'Accreditations']
+        ['path' => '../accreditations/accreditations.php', 'label' => 'Accreditations'],
+        ['path' => '../intents/intents.php', 'label' => 'Ramibot Response'],
+        ['path' => '../buttons/buttons.php', 'label' => 'Button Lists']
     ];
 
     foreach ($buttons as $button) {

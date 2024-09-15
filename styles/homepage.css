@@ -140,9 +140,9 @@ p{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 66px;
+    height: 60px;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 6px;
 }
 
 .btn:hover {
@@ -151,3 +151,21 @@ p{
     cursor: pointer;
 }
 
+.user-profile .logout-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background-color: transparent; /* Optional: Add background color if needed */
+    text-decoration: none;
+    color: #000; /* Icon color */
+}
+
+.user-profile .logout-link i {
+    font-size: 2em; /* Adjust icon size */
+}
+
+.user-profile .logout-link:hover i {
+    color: #ff0000; /* Change color on hover (optional) */
+}
