@@ -56,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
         if ($updateRoleResult) {
             // Redirect with success status
             header("Location: user_edit_page.php?user_id=$userId&status=success");
+            add_user_log($_SESSION['user_id'], "Updated user '" . $newUsername . "'");
             exit();
         } else {
             // Log the error if the role update fails

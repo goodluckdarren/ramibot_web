@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "User added successfully.";
                 echo '<br><button onclick="goBack()">Okay</button>';
                 echo '<script>function goBack() { window.history.back(); }</script>';
-
+                add_user_log($_SESSION['user_id'], "Added user '" . $username . "'" . " with role '" . $role . "'");  
             } else {
                 echo "Error: " . $stmt->error;
             }

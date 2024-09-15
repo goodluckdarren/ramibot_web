@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $uploadDir = 'calendars_img/';
         $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
+        $fileName = $_FILES['fileInput']['name'];
 
         if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {
             $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
@@ -19,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->execute()) {
                 echo "Record added successfully";
                 echo '<br><button onclick="goBack()">Okay</button>';
-                add_user_log($_SESSION['user_id'], "Added calendar image");
+                add_user_log($_SESSION['user_id'], "Added calendar image '" . $fileName . "'"); 
             } else {
                 echo "Error: " . $stmt->error;
             }

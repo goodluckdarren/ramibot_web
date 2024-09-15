@@ -9,6 +9,7 @@
 
             $uploadDir = 'announcements_img/';
             $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
+            $fileName = $_FILES['fileInput']['name'];       
 
             echo $uploadDir;
             echo $uploadFile;
@@ -21,7 +22,7 @@
                 if ($stmt->execute()) {
                     echo "Record added successfully";
                     echo '<br><button onclick="goBack()">Okay</button>';
-                    add_user_log($_SESSION['user_id'], "Added about APC image");
+                    add_user_log($_SESSION['user_id'], "Added about APC image '" . $fileName . "'");
                 } else {
                     echo "Error: " . $stmt->error;
                 }

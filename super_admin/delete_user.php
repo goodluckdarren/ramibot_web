@@ -29,10 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
 
     // Execute the query
     $deleteResult = mysqli_stmt_execute($stmt);
+    $username = $_POST['username']; // Get the username for logging 
 
     // Check if the deletion was successful
     if (mysqli_stmt_affected_rows($stmt) > 0) {
         echo "User deleted successfully.";
+        // Log the deletion
+        add_user_log($_SESSION['user_id'], "Deleted user '" . $username . "'");
     } else {
         echo "Error deleting user or user not found: " . mysqli_error($con);
     }

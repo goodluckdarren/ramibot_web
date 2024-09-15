@@ -11,10 +11,11 @@
         $stmt = mysqli_prepare($con, $delete_query);
         mysqli_stmt_bind_param($stmt, 'i', $office_id);
         mysqli_stmt_execute($stmt);
+        $fileName = $_FILES['fileInput']['name'];
 
         if (mysqli_stmt_affected_rows($stmt) > 0) {
             echo 'Image has been deleted successfully.';
-            add_user_log($_SESSION['user_id'], "Deleted office image");
+            add_user_log($_SESSION['user_id'], "Deleted office image '" . $fileName . "'"); 
         } else {
             echo "Error deleting image: " . mysqli_error($con);
         } 

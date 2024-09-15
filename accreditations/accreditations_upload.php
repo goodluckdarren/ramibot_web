@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {
             $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
+            $fileName = $_FILES['fileInput']['name'];       
 
             $stmt = $con->prepare("INSERT INTO apc_certificates (img_identifier, img_url) VALUES (?, ?)");
             $stmt->bind_param("ss", $accredIdentifier, $imgUrl);
@@ -19,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->execute()) {
                 echo "Record added successfully";
                 echo '<br><button onclick="goBack()">Okay</button>';
-                add_user_log($_SESSION['user_id'], "Added accreditation image");
+                add_user_log($_SESSION['user_id'], "Added accreditation image '" . $fileName . "'");    
             } else {
                 echo "Error: " . $stmt->error;
             }

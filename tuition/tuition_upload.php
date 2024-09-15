@@ -12,14 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {
             $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
-
+            $fileName = $_FILES['fileInput']['name'];
             $stmt = $con->prepare("INSERT INTO tuition_img (img_identifier, img_url) VALUES (?, ?)");
             $stmt->bind_param("ss", $tuitionIdentifier, $imgUrl);
 
             if ($stmt->execute()) {
                 echo "Record added successfully";
                 echo '<br><button onclick="goBack()">Okay</button>';
-                add_user_log($_SESSION['user_id'], "Added tuition image");
+                add_user_log($_SESSION['user_id'], "Added tuition image '" . $fileName . "'");
             } else {
                 echo "Error: " . $stmt->error;
             }

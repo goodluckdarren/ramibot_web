@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($updateStatusStmt->execute()) {
         echo "Status updated successfully";
+        add_user_log($_SESSION['user_id'], "Updated Ramibot's status");
     } else {
         echo "Error updating status: " . $updateStatusStmt->error;
     }
