@@ -1,5 +1,6 @@
 <?php
 require_once('../database_connect.php');
+require_once('../user_logs.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if the required fields are set

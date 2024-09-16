@@ -1,6 +1,19 @@
 <?php
 session_start(); // Start the session
 
+// Include the necessary files for database connection and logging
+require_once('database_connect.php'); // Adjust the path based on your project structure
+require_once('logout_log.php');   // Adjust the path based on your project structure
+
+// Check if the user is logged in
+if (isset($_SESSION['user_id'])) {
+    $userId = $_SESSION['user_id']; // Get the user ID from the session
+    $action = 'Logged out';
+
+    // Log the logout action using the custom function
+    add_user_log($userId, $action);
+}
+
 // Unset all of the session variables
 $_SESSION = array();
 

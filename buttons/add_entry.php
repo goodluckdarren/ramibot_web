@@ -1,5 +1,6 @@
 <?php
 require_once '../database_connect.php';
+require_once('../scripts/user_logs.php');
 
 if (isset($_POST['column']) && isset($_POST['value'])) {
     $column = $_POST['column'];
@@ -11,6 +12,8 @@ if (isset($_POST['column']) && isset($_POST['value'])) {
 
     if ($stmt->execute()) {
         echo "Entry added successfully!";
+        //add userr log
+        add_user_log($_SESSION['user_id'], "Added entry '" . $value . "' to column '" . $column . "'");
     } else {
         echo "Error: " . mysqli_error($con);
     }

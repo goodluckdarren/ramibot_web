@@ -32,7 +32,6 @@ if (isset($_GET['user_id'])) {
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,6 +46,7 @@ if (isset($_GET['user_id'])) {
             if (status === 'success') {
                 alert('User updated successfully!');
                 window.location.href = 'manage_users.php'; // Redirect to the manage_users page
+                // add user log
             } else if (status === 'error') {
                 alert('Failed to update user.');
             }

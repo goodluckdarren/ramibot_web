@@ -1,5 +1,6 @@
 <?php
 require_once '../database_connect.php';
+require_once('../user_logs.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
     $userId = $_POST['user_id'];
