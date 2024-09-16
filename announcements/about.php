@@ -1,3 +1,6 @@
+<?php require_once('../verify_login.php')?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

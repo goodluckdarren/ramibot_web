@@ -1,4 +1,4 @@
-<?php require_once('../database_connect.php') ?>
+<?php require_once('../verify_login.php')?>
 
 <!DOCTYPE html>
 <html lang="en">
