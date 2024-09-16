@@ -36,6 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['user_id'])) {
         echo "User deleted successfully.";
         // Log the deletion
         add_user_log($_SESSION['user_id'], "Deleted user '" . $username . "'");
+        // Refresh window location
+        echo '<br><button onclick="goBack()">Okay</button>';
     } else {
         echo "Error deleting user or user not found: " . mysqli_error($con);
     }

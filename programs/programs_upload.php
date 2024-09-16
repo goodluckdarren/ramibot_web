@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (mysqli_stmt_execute($stmt)) {
                 echo "File successfully uploaded and added to the database.";
                 echo '<br><button onclick="goBack()">Okay</button>';
-                add_user_log($_SESSION['user_id'], "Added program image for '" . $fileName . "'");
+                add_user_log($_SESSION['user_id'], "Added program image '" . $fileName . "'");
             } else {
                 echo "Error inserting image into the database: " . mysqli_stmt_error($stmt);
             }

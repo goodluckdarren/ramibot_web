@@ -57,7 +57,7 @@ foreach ($buttons as $button) {
         echo '</div>';
     } 
     // Restrict Role 3 from 'manage_users.php' and 'rami_status.php'
-    elseif ($userRole == 3 && !(str_contains($button['path'], 'manage_users') || str_contains($button['path'], 'rami_status'))) {
+    elseif ($userRole == 3 && !(str_contains($button['path'], 'manage_users') || str_contains($button['path'], 'rami_status') || str_contains($button['path'], 'buttons') || str_contains($button['path'], 'intents'))) {
         echo '<div class="btn ' . isActivePage($button['path']) . '" onclick="redirectPage(\'' . $button['path'] . '\')">';
         echo '<p>' . $button['label'] . '</p>';
         echo '</div>';

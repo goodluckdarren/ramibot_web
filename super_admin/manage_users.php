@@ -40,7 +40,7 @@
                 <div class="user-profile">
                     <?php include_once('../admin_account.php'); ?>
                     <a href="../logout.php" class="logout-link">
-                        <i class="fas fa-sign-out-alt"></i> <!-- Font Awesome logout icon -->
+                        <i class="fas fa-sign-out-alt"></i>
                     </a>
                 </div>
             </div>
