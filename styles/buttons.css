@@ -173,7 +173,7 @@ h3 {
 /* Styles for the dropdown and input field */
 #new-entry-section select,
 #new-entry-section input[type="text"] {
-    width: calc(50%); /* Full width minus padding */
+    width: 400px; /* Full width minus padding */
     padding: 8px; /* Padding inside the fields */
     margin: 5px 0; /* Margin around the fields */
     border: 1px solid #ccc; /* Light gray border */
@@ -193,4 +193,8 @@ h3 {
 /* Hover effect for the submit button */
 #new-entry-section button:hover {
     background-color: #218838; /* Darker green on hover */
+}
+
+.editable-entry {
+width: 400px;
 }

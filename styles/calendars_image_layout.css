@@ -1,14 +1,12 @@
 .upload-container {
     display: flex;
-    flex-direction: row;
     align-items: center; 
     margin-top: 15px;
     width: 100%;
-    height: 255px; /* Fixed height for the upload container */
+    height: 50px;
+    max-height: 255px; /* Fixed height for the upload container */
     background-color: rgb(253, 253, 253);
     padding: 10px;
-    box-sizing: border-box;
-    overflow: hidden; /* Prevent overflow from changing container size */
 }
 
 .upload-button {
@@ -33,13 +31,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    flex-grow: 1; /* Allow it to grow but keep within limits */
 }
 
 .category-filter {
     margin-top: 10px;
     margin-bottom: 10px;
-    flex-shrink: 0; /* Prevent shrinking of category filter */
 }
 
 /* Ensure inputs have a fixed width */
@@ -68,8 +64,8 @@ input[type="submit"]:hover {
     flex-direction: row;
     flex-wrap: wrap;
     border-radius: 5px;
-    width: 97.7%;
-    height: auto; /* Adjust height to auto to fit all contents */
+    width: 100%;
+    height: 100%; /* Adjust height to auto to fit all contents */
     margin-left: 15px;
     margin-top: 15px;
     background-color: #4a4e69;
@@ -155,4 +151,3 @@ input[type="submit"]:hover {
     font-weight: bold;
     color: #000000;
 }
-

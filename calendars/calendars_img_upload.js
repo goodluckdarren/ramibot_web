@@ -69,12 +69,11 @@ function filterCalendars() {
 
         console.log("Category text:", categoryText); // Debug statement
 
-        if (selectedCategory === "all" || categoryText === selectedCategory) { // Use lowercase for comparison
-            calendarContent.style.display = "block";
+        // Use lowercase for comparison to make it case-insensitive
+        if (selectedCategory === "all" || categoryText === selectedCategory) {
+            calendarContent.style.display = "block"; // Show matching entries
         } else {
-            calendarContent.style.display = "none";
+            calendarContent.style.display = "none"; // Hide non-matching entries
         }
     }
 }
-
-

@@ -15,7 +15,6 @@ mysqli_stmt_execute($statement);
 mysqli_stmt_bind_result($statement, $tuition_id, $img_url);
 
 while (mysqli_stmt_fetch($statement)) {
-    $img_url = 'tuition_img/' . htmlspecialchars($img_url, ENT_QUOTES, 'UTF-8');
     echo '<div class="image-container">';
     echo '<img src="' . $img_url . '" class="image-size" alt="Image">';
     echo '<button class="delete-button" type="button" onclick="deleteImage(' . $tuition_id . ')"> 

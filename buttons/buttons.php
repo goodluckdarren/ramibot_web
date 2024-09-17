@@ -126,6 +126,27 @@ $(document).ready(function() {
         }
     });
 
+    // Handle the delete functionality for existing entries
+    $(document).on('click', '.delete-btn', function() {
+        var column = $(this).data('column');
+        var value = $(this).data('value');
+
+        if (confirm('Are you sure you want to delete this entry?')) {
+            $.ajax({
+                type: 'POST',
+                url: 'delete_entry.php',
+                data: { column: column, value: value },
+                success: function(response) {
+                    alert(response); // Handle response
+                    $('#category').trigger('change'); // Refresh the entries list
+                },
+                error: function(xhr, status, error) {
+                    alert('Error deleting entry.');
+                }
+            });
+        }
+    });
+
     // Show the new entry section when Add Entry is clicked
     $('#add-entry-button').click(function() {
         $('#new-entry-section').toggle(); // Toggle visibility of the new entry section
@@ -136,14 +157,18 @@ $(document).ready(function() {
         var newEntry = $('#new-entry').val();
 
         if (newEntry) {
-            // Add the new entry as an editable input field in the list
-            $('#entries-list-container').append("<li><input type='text' class='editable-entry' name='entries[]' value='" + newEntry + "'></li>");
+            // Append the new entry with a delete button
+            var newEntryHtml = "<li><input type='text' class='editable-entry' name='entries[]' value='" + newEntry + "'>";
+            newEntryHtml += "<button type='button' class='delete-btn' data-column='new-column' data-value='" + newEntry + "'>Delete</button></li>";
+            
+            $('#entries-list-container').append(newEntryHtml);
             $('#new-entry').val(''); // Clear the input
         } else {
             alert('Please enter a value for the new entry.');
         }
     });
 });
+
 
 </script>
     
