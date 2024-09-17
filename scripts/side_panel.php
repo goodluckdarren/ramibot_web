@@ -39,8 +39,9 @@ $buttons = [
     ['path' => '../calendars/calendars.php', 'label' => 'Calendar'],
     ['path' => '../tuition/tuition.php', 'label' => 'Tuition'],
     ['path' => '../accreditations/accreditations.php', 'label' => 'Accreditations'],
-    ['path' => '../intents/intents.php', 'label' => 'Ramibot Response'],
-    ['path' => '../buttons/buttons.php', 'label' => 'Button Lists']
+    ['path' => 'http://192.168.80.4:5050', 'label' => 'Ramibot Response'],
+    ['path' => '../buttons/buttons.php', 'label' => 'Button Lists'],
+
 ];
 
 foreach ($buttons as $button) {

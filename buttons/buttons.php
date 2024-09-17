@@ -38,47 +38,36 @@
                     <div class="buttons-table-container">
                         <div class="edit-button-form">
                             <form method="POST" id="categoryForm" action="">
-                            <div class="form-header">
-                                <div class="category-selector">
-                                    <label for="category">Select Category:</label>
-                                    <select name="category" id="category" required>
-                                        <option value="">-- Select Category --</option>
-                                        <?php
-                                        // List of categories
-                                        $columns = ['Main_Menu', 'Office_Schedule', 'Faculty_Schedule', 'SOE_Faculty', 'SOAR_Faculty', 'SOCIT_Faculty', 'SOM_Faculty', 'SOMA_Faculty', 'SHS_Faculty', 'GS_Faculty', 'Programs_Offered', 'School_Information', 'Other_Information', 'Accreditations_and_Certifications', 'Tuition_Fees', 'School_Calendar', 'School_Organizations', 'Floor_Maps'];
-                                        
-                                        foreach ($columns as $column) {
-                                            echo "<option value='$column'>$column</option>";
-                                        }
-                                        ?>
-                                    </select>
+                                <div class="form-header">
+                                    <div class="category-selector">
+                                        <label for="category">Select Category:</label>
+                                        <select name="category" id="category" required>
+                                            <option value="">-- Select Category --</option>
+                                            <?php
+                                            // List of categories
+                                            $columns = ['Main_Menu', 'Office_Schedule', 'Faculty_Schedule', 'SOE_Faculty', 'SOAR_Faculty', 'SOCIT_Faculty', 'SOM_Faculty', 'SOMA_Faculty', 'SHS_Faculty', 'GS_Faculty', 'Programs_Offered', 'School_Information', 'Other_Information', 'Accreditations_and_Certifications', 'Tuition_Fees', 'School_Calendar', 'School_Organizations', 'Floor_Maps'];
+                                            
+                                            foreach ($columns as $column) {
+                                                echo "<option value='$column'>$column</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="button-group">
+                                        <button type="button" id="add-entry-button">Add Entry</button>
+                                        <button type="button" id="save-all-entries-button">Save All Entries</button>
+                                    </div>
                                 </div>
-                                <div class="button-group">
-                                    <button type="button" id="add-entry-button">Add Button</button>
+                                <h3>Entries</h3>
+                                <div id="entries-list">
                                 </div>
-                            </div>
-                            <h3>Entries</h3>
-                            <div id="entries-list">
-                            </div>
-                            <div id="new-entry-section" style="display: none;">
-                                <h4>Add New Entry</h4>
-                                <div>
-                                    <label for="new-column">Select Column:</label>
-                                    <select name="new-column" id="new-column" required>
-                                        <option value="">-- Select Column --</option>
-                                        <?php
-                                        // Repeat the same list of categories
-                                        foreach ($columns as $column) {
-                                            echo "<option value='$column'>$column</option>";
-                                        }
-                                        ?>
-                                    </select>
+                                <div id="new-entry-section" style="display: none;">
+                                    <h4>Add New Entry</h4>
+                                    <div>
+                                        <input type="text" id="new-entry" placeholder="Enter new entry value">
+                                        <button type="button" id="submit-new-entry">Submit</button>
+                                    </div>
                                 </div>
-                                <div>
-                                    <input type="text" id="new-entry" placeholder="Enter new entry value" required>
-                                    <button type="button" id="submit-new-entry">Submit</button>
-                                </div>
-                            </div>
                             </form>
                         </div>
                     </div>
@@ -90,7 +79,7 @@
 </html>
 
 <script>
-        $(document).ready(function() {
+$(document).ready(function() {
     $('#category').change(function() {
         var category = $(this).val();
         if (category) {
@@ -110,23 +99,30 @@
         }
     });
 
-    $(document).on('click', '.delete-btn', function() {
-        var column = $(this).data('column');
-        var value = $(this).data('value');
+    // Handle Save button click to save all entries
+    $('#save-all-entries-button').click(function() {
+        var entries = [];
+        $('.editable-entry').each(function() {
+            entries.push($(this).val());  // Collect all the current values in the input fields
+        });
+        
+        var category = $('#category').val();  // Get the selected category
 
-        if (confirm('Are you sure you want to delete this entry?')) {
+        if (category && entries.length > 0) {
             $.ajax({
                 type: 'POST',
-                url: 'delete_entry.php',
-                data: { column: column, value: value },
+                url: 'update_entries.php',
+                data: { category: category, entries: entries },
                 success: function(response) {
-                    alert(response); // Handle response                        
+                    alert(response);                        
                     $('#category').trigger('change'); // Refresh the entries list
                 },
                 error: function(xhr, status, error) {
-                    alert('Error deleting entry.');
+                    alert('Error saving entries.');
                 }
             });
+        } else {
+            alert('No entries to save or category not selected.');
         }
     });
 
@@ -137,26 +133,14 @@
 
     // Handle new entry submission
     $('#submit-new-entry').click(function() {
-        var newColumn = $('#new-column').val();
         var newEntry = $('#new-entry').val();
 
-        if (newColumn && newEntry) {
-            $.ajax({
-                type: 'POST',
-                url: 'add_entry.php',
-                data: { column: newColumn, value: newEntry },
-                success: function(response) {
-                    alert(response); // Handle response
-                    $('#new-entry').val(''); // Clear the input
-                    $('#new-column').val(''); // Reset the dropdown
-                    $('#category').trigger('change'); // Refresh the entries list
-                },
-                error: function(xhr, status, error) {
-                    alert('Error adding entry.');
-                }
-            });
+        if (newEntry) {
+            // Add the new entry as an editable input field in the list
+            $('#entries-list-container').append("<li><input type='text' class='editable-entry' name='entries[]' value='" + newEntry + "'></li>");
+            $('#new-entry').val(''); // Clear the input
         } else {
-            alert('Please select a column and enter a value.');
+            alert('Please enter a value for the new entry.');
         }
     });
 });

@@ -17,7 +17,7 @@ mysqli_stmt_bind_result($statement, $info_id, $img_url);
 while (mysqli_stmt_fetch($statement)) {
     // $calendarImg = 'calendars_img/' . htmlspecialchars($row['img_url'], ENT_QUOTES, 'UTF-8'); in case to move directory
 
-    $img_url = '' . htmlspecialchars($img_url, ENT_QUOTES, 'UTF-8');
+    $img_url = '../RamiAPI/Images' . htmlspecialchars($img_url, ENT_QUOTES, 'UTF-8');
     echo '<div class="image-container">';
     echo '<img src="' . $img_url . '" class="image-size" alt="Image">';
     echo '<button class="delete-button" type="button" onclick="deleteImage(' . $info_id . ')"> 

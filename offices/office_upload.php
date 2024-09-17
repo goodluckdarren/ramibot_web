@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['officeIdentifier'])) {
         $office_identifier = $_POST['officeIdentifier'];
 
-        $uploadDir = 'offices_img/';
+        $uploadDir = '../RamiAPI/Images/';
         $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
 
         if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {

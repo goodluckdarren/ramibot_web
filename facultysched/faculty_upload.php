@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['school']) && isset($_POST['faculty_name']) && isset($_FILES['fileInput'])) {
         $school = $_POST['school'];
         $faculty_name = $_POST['faculty_name'];
-        $uploadDir = 'facultysched_img/';
+        $uploadDir = '../RamiAPI/Images/';
         $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
 
         // Check if faculty_name already exists in the database
@@ -22,6 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->fetch();
             $stmt->close();
 
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0777, true); // Create directory with full access
+        }
+
             // Perform the file upload and update the record
             if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {
                 $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
@@ -33,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($stmt->execute()) {
                     echo "Record updated successfully.";
                     echo '<br><button onclick="goBack()">Okay</button>';
-                    add_user_log($_SESSION['user_id'], "Updated faculty schedule image");
+                    add_user_log($_SESSION['user_id'], "Updated faculty schedule '" . $faculty_name . "'");
                 } else {
                     echo "Error: " . $stmt->error;
                 }
@@ -53,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($stmt->execute()) {
                     echo "Record added successfully.";
                     echo '<br><button onclick="goBack()">Okay</button>';
-                    add_user_log($_SESSION['user_id'], "Added faculty schedule image");
+                    add_user_log($_SESSION['user_id'], "Added faculty schedule '" . $faculty_name . "'");
 
                 } else {
                     echo "Error: " . $stmt->error;

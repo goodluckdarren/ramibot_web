@@ -1,24 +1,44 @@
 <?php
-    require_once('../database_connect.php');
-    require_once('../scripts/user_logs.php');
+require_once('../database_connect.php');
+require_once('../scripts/user_logs.php');
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['calendar_id'])) {
         $calendar_id = $_POST['calendar_id'];
-        
-        // Delete related data from floor_map table
-        $delete_query = "DELETE FROM calendars_img WHERE calendar_id = ?";
-        $stmt = mysqli_prepare($con, $delete_query);
+
+        // Fetch the image URL associated with the calendar_id
+        $selectQuery = "SELECT img_url FROM calendars_img WHERE calendar_id = ?";
+        $stmt = mysqli_prepare($con, $selectQuery);
         mysqli_stmt_bind_param($stmt, 'i', $calendar_id);
         mysqli_stmt_execute($stmt);
-        $fileName = $_FILES['fileInput']['name'];       
+        mysqli_stmt_bind_result($stmt, $imgUrl);
+        mysqli_stmt_fetch($stmt);
+        mysqli_stmt_close($stmt);
 
+        // Delete the image file from the directory if it exists
+        if (!empty($imgUrl) && file_exists($imgUrl)) {
+            unlink($imgUrl);
+        }
+
+        // Delete the related data from calendars_img table
+        $deleteQuery = "DELETE FROM calendars_img WHERE calendar_id = ?";
+        $stmt = mysqli_prepare($con, $deleteQuery);
+        mysqli_stmt_bind_param($stmt, 'i', $calendar_id);
+        mysqli_stmt_execute($stmt);
 
         if (mysqli_stmt_affected_rows($stmt) > 0) {
             echo 'Image has been deleted successfully.';
-            add_user_log($_SESSION['user_id'], "Deleted calendar image '" . $fileName . "'");   
+            add_user_log($_SESSION['user_id'], "Deleted calendar image with ID '" . $calendar_id . "'");
         } else {
             echo "Error deleting image: " . mysqli_error($con);
-        } 
+        }
+
+        mysqli_stmt_close($stmt);
+        mysqli_close($con);
+    } else {
+        echo "Invalid request.";
     }
+} else {
+    echo "Invalid request method.";
+}
 ?>

@@ -1,6 +1,10 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once('../database_connect.php');
-require_once('../user_logs.php');
+require_once('../scripts/user_logs.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if the required fields are set

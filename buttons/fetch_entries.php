@@ -16,14 +16,14 @@ if (isset($_POST['category']) && !empty($_POST['category'])) {
         $result = mysqli_query($con, $sql);
 
         if ($result) {
-            echo "<ul>";    
+            echo "<ul id='entries-list-container'>";    
             while ($row = mysqli_fetch_assoc($result)) {
                 $entryValue = htmlspecialchars($row[$selectedColumn]);
-                
-                // Pass the column name and the value as data for deletion
+
+                // Create an editable input field for each entry and a delete button
                 echo "<li>";
-                echo $entryValue;
-                echo " <button class='delete-btn' data-column='$selectedColumn' data-value='$entryValue'>Delete</button>";
+                echo "<input type='text' class='editable-entry' name='entries[]' value='$entryValue'>";
+                echo "<button type='button' class='delete-btn' data-column='$selectedColumn' data-value='$entryValue'>Delete</button>";
                 echo "</li>";
             }
             echo "</ul>";

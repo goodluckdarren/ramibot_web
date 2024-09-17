@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $floor_id = $_POST['floorId'];
         $floor_identifier = $_POST['floorIdentifier'];
 
-        $uploadDir = 'floors_img/';
+        $uploadDir = '../RamiAPI/Images/';
         $uploadFile = $uploadDir . basename($_FILES['fileInput']['name']);
         $fileName = $_FILES['fileInput']['name'];
 
