@@ -7,7 +7,7 @@
 
     while ($row = mysqli_fetch_assoc($result_table)) {
         $calendarIdentifier = $row['img_identifier'];
-        $calendarImg = 'calendars_img/' . htmlspecialchars($row['img_url'], ENT_QUOTES, 'UTF-8');
+        $calendarImg = $row['img_url'];
         $category = htmlspecialchars($row['category'], ENT_QUOTES, 'UTF-8'); // Sanitize the category output
 
         echo "<div class='calendar-content'>";

@@ -12,36 +12,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {
             $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
-            $fileName = $_FILES['fileInput']['name'];       
+            $fileName = $_FILES['fileInput']['name'];
 
-            $stmt = $con->prepare("INSERT INTO apc_certificates (img_identifier, img_url) VALUES (?, ?)");
-            $stmt->bind_param("ss", $accredIdentifier, $imgUrl);
+            $stmt = mysqli_prepare($con, "INSERT INTO apc_certificates (img_identifier, img_url) VALUES (?, ?)");
+            mysqli_stmt_bind_param($stmt, "ss", $accredIdentifier, $imgUrl);
 
-            if ($stmt->execute()) {
-                echo "Record added successfully";
-                echo '<br><button onclick="goBack()">Okay</button>';
-                add_user_log($_SESSION['user_id'], "Added accreditation image '" . $fileName . "'");    
+            if (mysqli_stmt_execute($stmt)) {
+                add_user_log($_SESSION['user_id'], "Added accreditation image '" . $fileName . "'");
+                echo '<script>alert("Image added successfully."); window.history.back();</script>';
             } else {
-                echo "Error: " . $stmt->error;
+                echo '<script>alert("Error: ' . mysqli_stmt_error($stmt) . '"); window.history.back();</script>';
             }
 
-            $stmt->close();
-            $con->close();
+            mysqli_stmt_close($stmt);
+            mysqli_close($con);
         } else {
-            echo 'Error uploading file.';
+            echo '<script>alert("Error uploading file."); window.history.back();</script>';
         }
     } else {
-        echo 'Missing programsId or programsIdentifier.';
+        echo '<script>alert("Missing accredIdentifier."); window.history.back();</script>';
     }
-    ?>
-    <script>
-        function goBack() {
-            window.history.back();
-        }
-    </script>
-
-    <?php
 } else {
-    echo 'Invalid request.';
+    echo '<script>alert("Invalid request."); window.history.back();</script>';
 }
+
 ?>

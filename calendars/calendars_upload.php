@@ -18,30 +18,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bind_param("sss", $calendar_identifier, $imgUrl, $category);
 
             if ($stmt->execute()) {
-                echo "Record added successfully";
-                echo '<br><button onclick="goBack()">Okay</button>';
-                add_user_log($_SESSION['user_id'], "Added calendar image '" . $fileName . "'"); 
+                ?>
+                <script>
+                    alert("Record added successfully.");
+                    window.history.back();
+                </script>
+                <?php
+                add_user_log($_SESSION['user_id'], "Added calendar image '" . $fileName . "'");
             } else {
-                echo "Error: " . $stmt->error;
+                ?>
+                <script>
+                    alert("Error: <?php echo $stmt->error; ?>");
+                </script>
+                <?php
             }
 
             $stmt->close();
             $con->close();
         } else {
-            echo 'Error uploading file.';
+            ?>
+            <script>
+                alert('Error uploading file.');
+            </script>
+            <?php
         }
     } else {
-        echo 'Missing calendarIdentifier or category.';
+        ?>
+        <script>
+            alert('Missing calendarIdentifier or category.');
+        </script>
+        <?php
     }
+} else {
     ?>
     <script>
-        function goBack() {
-            window.history.back();
-        }
+        alert('Invalid request.');
     </script>
-
     <?php
-} else {
-    echo 'Invalid request.';
 }
 ?>
