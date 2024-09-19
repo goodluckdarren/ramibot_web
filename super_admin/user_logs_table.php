@@ -1,21 +1,17 @@
 <?php
 require_once('../database_connect.php');
 
-// Number of logs per page
 $rows_per_page = 5;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $rows_per_page;
 
-// Query to get total number of logs for pagination
 $sql_total_logs = "SELECT COUNT(*) as total_logs FROM user_logs";
 $total_logs_result = mysqli_query($con, $sql_total_logs);
 $total_logs_row = mysqli_fetch_assoc($total_logs_result);
 $total_logs = $total_logs_row['total_logs'];
 
-// Calculate total pages
 $total_pages = ceil($total_logs / $rows_per_page);
 
-// Query to get the logs with pagination
 $sql_logs = "SELECT ul.*, ac.username 
              FROM user_logs ul 
              JOIN admin_accounts ac ON ul.user_id = ac.user_id

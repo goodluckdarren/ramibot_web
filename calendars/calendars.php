@@ -79,7 +79,6 @@
             var calendarIdentifier = document.getElementById('calendarIdentifier').value;
             var category = document.getElementById('category').value;
 
-            // Create hidden input fields to append to the form
             var hiddenIdentifier = document.createElement('input');
             hiddenIdentifier.type = 'hidden';
             hiddenIdentifier.name = 'calendarIdentifier';

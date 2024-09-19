@@ -1,16 +1,11 @@
 <?php
-// Include database connection
 require_once('../database_connect.php');
 
-// Check if the user ID is set in the URL
 if (isset($_GET['user_id'])) {
     $userId = $_GET['user_id'];
-
-    // Fetch the user data from the admin_accounts table
     $query = "SELECT * FROM admin_accounts WHERE user_id = '$userId'";
     $result = mysqli_query($con, $query);
 
-    // Check if the user exists
     if (mysqli_num_rows($result) > 0) {
         $userData = mysqli_fetch_assoc($result);
     } else {
@@ -18,11 +13,9 @@ if (isset($_GET['user_id'])) {
         exit();
     }
 
-    // Fetch all available roles from the role_type table
     $roleQuery = "SELECT role_id, role_name FROM role_type";
     $roleResult = mysqli_query($con, $roleQuery);
 
-    // Store the roles in an array for displaying in the dropdown
     $roles = [];
     while ($row = mysqli_fetch_assoc($roleResult)) {
         $roles[] = $row;
@@ -41,18 +34,16 @@ if (isset($_GET['user_id'])) {
     <title>Edit User</title>
     <link rel="stylesheet" href="../styles/edit_user.css"> <!-- Optional: Link to external CSS -->
     <script>
-        // Function to show a popup message based on the status
         function showStatusMessage(status) {
             if (status === 'success') {
                 alert('User updated successfully!');
-                window.location.href = 'manage_users.php'; // Redirect to the manage_users page
+                window.location.href = 'manage_users.php'; 
                 // add user log
             } else if (status === 'error') {
                 alert('Failed to update user.');
             }
         }
 
-        // Check the URL for a status parameter and show the appropriate message
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const status = urlParams.get('status');

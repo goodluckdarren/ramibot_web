@@ -5,7 +5,6 @@ require_once('../scripts/user_logs.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tuition_id'])) {
     $tuition_id = $_POST['tuition_id'];
 
-    // Fetch the image URL before deleting the record
     $fetch_query = "SELECT img_url FROM tuition_img WHERE tuition_id = ?";
     $stmt = mysqli_prepare($con, $fetch_query);
     mysqli_stmt_bind_param($stmt, 'i', $tuition_id);
@@ -14,9 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tuition_id'])) {
     mysqli_stmt_fetch($stmt);
     mysqli_stmt_close($stmt);
 
-    // If an image URL was found
     if ($img_url) {
-        // Attempt to delete the file from the directory
         if (file_exists($img_url)) {
             if (unlink($img_url)) {
                 echo "Image file deleted successfully from the directory.<br>";
@@ -27,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tuition_id'])) {
             echo "File does not exist in the directory.<br>";
         }
 
-        // Now delete the database record
         $delete_query = "DELETE FROM tuition_img WHERE tuition_id = ?";
         $stmt = mysqli_prepare($con, $delete_query);
         mysqli_stmt_bind_param($stmt, 'i', $tuition_id);

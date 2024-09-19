@@ -5,7 +5,6 @@ require_once('../scripts/user_logs.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['info_id'])) {
     $info_id = $_POST['info_id'];
 
-    // Fetch the image URL associated with the info_id
     $selectQuery = "SELECT img_url FROM apc_certificates WHERE info_id = ?";
     $stmt = mysqli_prepare($con, $selectQuery);
     mysqli_stmt_bind_param($stmt, 'i', $info_id);
@@ -14,12 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['info_id'])) {
     mysqli_stmt_fetch($stmt);
     mysqli_stmt_close($stmt);
 
-    // Delete the image file from the directory if it exists
     if (!empty($imgUrl) && file_exists($imgUrl)) {
         unlink($imgUrl);
     }
 
-    // Delete the related data from apc_certificates table
     $deleteQuery = "DELETE FROM apc_certificates WHERE info_id = ?";
     $stmt = mysqli_prepare($con, $deleteQuery);
     mysqli_stmt_bind_param($stmt, 'i', $info_id);

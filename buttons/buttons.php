@@ -1,6 +1,5 @@
 <?php require_once('../verify_login.php')?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,8 +58,8 @@
                                     </div>
                                 </div>
                                 <h3>Entries</h3>
-                                <div id="entries-list">
-                                </div>
+                                <ul id="entries-list">
+                                </ul>
                                 <div id="new-entry-section" style="display: none;">
                                     <h4>Add New Entry</h4>
                                     <div>
@@ -75,100 +74,94 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            // Handle category change
+            $('#category').change(function() {
+                var category = $(this).val();
+                if (category) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'fetch_entries.php',
+                        data: { category: category },
+                        success: function(response) {
+                            $('#entries-list').html(response);
+                        },
+                        error: function(xhr, status, error) {
+                            $('#entries-list').html('<p>Error loading data.</p>');
+                        }
+                    });
+                } else {
+                    $('#entries-list').html('');
+                }
+            });
+
+            $('#add-entry-button').click(function() {
+                $('#new-entry-section').toggle(); 
+            });
+
+            $('#submit-new-entry').click(function() {
+                var newEntry = $('#new-entry').val();
+                var category = $('#category').val(); 
+
+                if (newEntry && category) {
+                    var newEntryHtml = "<li><input type='text' class='editable-entry' name='entries[]' value='" + newEntry + "'>";
+                    newEntryHtml += "<button type='button' class='delete-btn' data-column='" + category + "' data-value='" + newEntry + "'>Delete</button></li>";
+                    
+                    $('#entries-list').append(newEntryHtml);
+                    $('#new-entry').val(''); 
+                    $('#new-entry-section').hide();
+                } else {
+                    alert('Please enter a value for the new entry and select a category.');
+                }
+            });
+
+            $('#save-all-entries-button').click(function() {
+                var entries = [];
+                $('.editable-entry').each(function() {
+                    entries.push($(this).val());
+                });
+                
+                var category = $('#category').val();
+
+                if (category && entries.length > 0) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'update_entries.php',
+                        data: { category: category, entries: JSON.stringify(entries) }, // Convert entries to JSON
+                        success: function(response) {
+                            alert(response);
+                            $('#category').trigger('change');
+                        },
+                        error: function(xhr, status, error) {
+                            alert('Error saving entries: ' + xhr.responseText);
+                        }
+                    });
+                } else {
+                    alert('No entries to save or category not selected.');
+                }
+            });
+
+            $(document).on('click', '.delete-btn', function() {
+                var column = $(this).data('column');
+                var value = $(this).data('value');
+
+                if (confirm('Are you sure you want to delete this entry?')) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'delete_entry.php',
+                        data: { column: column, value: value },
+                        success: function(response) {
+                            alert(response);
+                            $('#category').trigger('change');
+                        },
+                        error: function(xhr, status, error) {
+                            alert('Error deleting entry.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
-
-<script>
-$(document).ready(function() {
-    $('#category').change(function() {
-        var category = $(this).val();
-        if (category) {
-            $.ajax({
-                type: 'POST',
-                url: 'fetch_entries.php',
-                data: { category: category },
-                success: function(response) {
-                    $('#entries-list').html(response);
-                },
-                error: function(xhr, status, error) {
-                    $('#entries-list').html('<p>Error loading data.</p>');
-                }
-            });
-        } else {
-            $('#entries-list').html('');
-        }
-    });
-
-    // Handle Save button click to save all entries
-    $('#save-all-entries-button').click(function() {
-        var entries = [];
-        $('.editable-entry').each(function() {
-            entries.push($(this).val());  // Collect all the current values in the input fields
-        });
-        
-        var category = $('#category').val();  // Get the selected category
-
-        if (category && entries.length > 0) {
-            $.ajax({
-                type: 'POST',
-                url: 'update_entries.php',
-                data: { category: category, entries: entries },
-                success: function(response) {
-                    alert(response);                        
-                    $('#category').trigger('change'); // Refresh the entries list
-                },
-                error: function(xhr, status, error) {
-                    alert('Error saving entries.');
-                }
-            });
-        } else {
-            alert('No entries to save or category not selected.');
-        }
-    });
-
-    // Handle the delete functionality for existing entries
-    $(document).on('click', '.delete-btn', function() {
-        var column = $(this).data('column');
-        var value = $(this).data('value');
-
-        if (confirm('Are you sure you want to delete this entry?')) {
-            $.ajax({
-                type: 'POST',
-                url: 'delete_entry.php',
-                data: { column: column, value: value },
-                success: function(response) {
-                    alert(response); // Handle response
-                    $('#category').trigger('change'); // Refresh the entries list
-                },
-                error: function(xhr, status, error) {
-                    alert('Error deleting entry.');
-                }
-            });
-        }
-    });
-
-    // Show the new entry section when Add Entry is clicked
-    $('#add-entry-button').click(function() {
-        $('#new-entry-section').toggle(); // Toggle visibility of the new entry section
-    });
-
-    // Handle new entry submission
-    $('#submit-new-entry').click(function() {
-        var newEntry = $('#new-entry').val();
-
-        if (newEntry) {
-            // Append the new entry with a delete button
-            var newEntryHtml = "<li><input type='text' class='editable-entry' name='entries[]' value='" + newEntry + "'>";
-            newEntryHtml += "<button type='button' class='delete-btn' data-column='new-column' data-value='" + newEntry + "'>Delete</button></li>";
-            
-            $('#entries-list-container').append(newEntryHtml);
-            $('#new-entry').val(''); // Clear the input
-        } else {
-            alert('Please enter a value for the new entry.');
-        }
-    });
-});
-
-
-</script>
-    

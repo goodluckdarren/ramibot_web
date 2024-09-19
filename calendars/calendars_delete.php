@@ -6,7 +6,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['calendar_id'])) {
         $calendar_id = $_POST['calendar_id'];
 
-        // Fetch the image URL associated with the calendar_id
         $selectQuery = "SELECT img_url FROM calendars_img WHERE calendar_id = ?";
         $stmt = mysqli_prepare($con, $selectQuery);
         mysqli_stmt_bind_param($stmt, 'i', $calendar_id);
@@ -15,12 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);
 
-        // Delete the image file from the directory if it exists
         if (!empty($imgUrl) && file_exists($imgUrl)) {
             unlink($imgUrl);
         }
 
-        // Delete the related data from calendars_img table
         $deleteQuery = "DELETE FROM calendars_img WHERE calendar_id = ?";
         $stmt = mysqli_prepare($con, $deleteQuery);
         mysqli_stmt_bind_param($stmt, 'i', $calendar_id);

@@ -5,7 +5,6 @@ require_once('../scripts/user_logs.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['img_id'])) {
     $img_id = $_POST['img_id'];
 
-    // Fetch the image URL before deleting the record
     $fetch_query = "SELECT img_url FROM programs_img WHERE img_id = ?";
     $stmt = mysqli_prepare($con, $fetch_query);
     mysqli_stmt_bind_param($stmt, 'i', $img_id);
@@ -14,9 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['img_id'])) {
     mysqli_stmt_fetch($stmt);
     mysqli_stmt_close($stmt);
 
-    // If an image URL was found
     if ($img_url) {
-        // Attempt to delete the file from the directory
         if (file_exists($img_url)) {
             if (unlink($img_url)) {
                 echo "Image file deleted successfully from the directory.<br>";

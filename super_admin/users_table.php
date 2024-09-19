@@ -1,21 +1,17 @@
 <?php
 require_once('../database_connect.php');
 
-// Number of records per page
 $rows_per_page = 3;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $rows_per_page;
 
-// Query to get total number of records for pagination
 $sql_total = "SELECT COUNT(*) as total FROM admin_accounts";
 $total_result = mysqli_query($con, $sql_total);
 $total_row = mysqli_fetch_assoc($total_result);
 $total_records = $total_row['total'];
 
-// Calculate total pages
 $total_pages = ceil($total_records / $rows_per_page);
 
-// Query to fetch the data with pagination
 $sql = "SELECT ac.user_id, ac.email, ac.username, 
                    rt.role_name, ac.user_status
             FROM admin_accounts ac
@@ -38,7 +34,6 @@ echo '<th>User Status</th>';
 echo '<th>Actions</th>';
 echo '</tr>';
 
-// Loop through the results and display each row
 while ($row = mysqli_fetch_assoc($result)) {
     $highlightClass = ($row['user_id'] == $_SESSION['user_id']) ? 'highlight-row' : '';
     $disabledClass = ($row['user_status'] == 0) ? 'disabled' : '';

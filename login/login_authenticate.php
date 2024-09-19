@@ -5,7 +5,6 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Prepare and execute the query to get user by email
     $stmt = $con->prepare("SELECT ac.*, r.role_url
                             FROM admin_accounts ac
                             JOIN role_type r ON ac.role = r.role_id
@@ -22,7 +21,6 @@
             exit;
         }
 
-        // Log successful login
         add_user_log($row['user_id'], "Logged in");
 
         $_SESSION['user_id'] = $row['user_id'];
@@ -36,7 +34,6 @@
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            // Log invalid login attempt
             $row = $result->fetch_assoc();
             add_user_log($row['user_id'], "Failed login attempt");
 

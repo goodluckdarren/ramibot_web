@@ -198,3 +198,13 @@ h3 {
 .editable-entry {
 width: 400px;
 }
+
+/* save all entry button */
+.save-all-entries-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #0275d8;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}

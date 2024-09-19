@@ -1,33 +1,63 @@
 <?php
 require_once('../database_connect.php');
+require_once('../scripts/user_logs.php');
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['category']) && isset($_POST['entries'])) {
         $category = $_POST['category'];
-        $entries = $_POST['entries'];
+        $entries = json_decode($_POST['entries'], true);
 
-        // Clear out all existing entries in the selected column
-        $delete_query = "UPDATE button_list SET `$category` = NULL";
-        if (!$con->query($delete_query)) {
-            echo "Error clearing old entries: " . $con->error;
+        if (!is_array($entries)) {
+            echo "Invalid data format for entries.";
             exit;
         }
 
-        // Re-insert the updated entries
+        $result = $con->query("DESCRIBE button_list");
+        $columns = [];
+        while ($row = $result->fetch_assoc()) {
+            $columns[] = $row['Field'];
+        }
+        if (!in_array($category, $columns)) {
+            echo "Column '$category' does not exist.";
+            exit;
+        }
+
+        $default_value = ''; 
+        $update_query = "UPDATE button_list SET $category = ?";
+        $stmt = $con->prepare($update_query);
+        if (!$stmt) {
+            echo "Prepare failed: " . $con->error;
+            exit;
+        }
+        $stmt->bind_param("s", $default_value);
+        if (!$stmt->execute()) {
+            echo "Error clearing old entries: " . $stmt->error;
+            exit;
+        }
+
+        // Insert new entries
+        $insert_query = $con->prepare("INSERT INTO button_list ($category) VALUES (?)");
+        if (!$insert_query) {
+            echo "Prepare failed: " . $con->error;
+            exit;
+        }
+
         foreach ($entries as $entry) {
             if (!empty($entry)) {
-                // Prepare and insert the new entry
-                $insert_query = $con->prepare("INSERT INTO button_list (`$category`) VALUES (?)");
                 $insert_query->bind_param("s", $entry);
-                
                 if (!$insert_query->execute()) {
-                    echo "Error inserting entries: " . $con->error;
+                    echo "Error inserting entries: " . $insert_query->error;
                     exit;
                 }
             }
         }
 
         echo "Entries updated successfully.";
+        add_user_log($_SESSION['user_id'], "Updated entries in column '$category'");
     } else {
         echo "Invalid request: Missing category or entries.";
     }

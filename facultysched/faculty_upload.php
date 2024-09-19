@@ -29,14 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Perform the file upload and update the record
             if (move_uploaded_file($_FILES['fileInput']['tmp_name'], $uploadFile)) {
                 $imgUrl = $uploadDir . $_FILES['fileInput']['name'];
-
                 // Update the existing record
                 $stmt = $con->prepare("UPDATE faculty_scheds SET school = ?, img_url = ? WHERE faculty_name = ?");
                 $stmt->bind_param("sss", $school, $imgUrl, $faculty_name);
 
                 if ($stmt->execute()) {
                     echo "Record updated successfully.";
-                    echo '<br><button onclick="goBack()">Okay</button>';
+                    echo 'alert("Record updated successfully.")';
                     add_user_log($_SESSION['user_id'], "Updated faculty schedule '" . $faculty_name . "'");
                 } else {
                     echo "Error: " . $stmt->error;

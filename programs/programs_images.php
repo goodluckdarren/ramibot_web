@@ -37,7 +37,6 @@ function deleteImage($img_Id) {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
                     alert(xhr.responseText);
-                    // Reload the page or update the image container after successful deletion
                     window.location.reload();
                 } else {
                     alert("Error deleting image: " + xhr.responseText);
