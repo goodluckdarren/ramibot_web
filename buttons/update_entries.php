@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit;
         }
 
+        // Verify if the column exists in the database
         $result = $con->query("DESCRIBE button_list");
         $columns = [];
         while ($row = $result->fetch_assoc()) {
@@ -26,21 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit;
         }
 
-        $default_value = ''; 
-        $update_query = "UPDATE button_list SET $category = ?";
-        $stmt = $con->prepare($update_query);
-        if (!$stmt) {
-            echo "Prepare failed: " . $con->error;
-            exit;
-        }
-        $stmt->bind_param("s", $default_value);
-        if (!$stmt->execute()) {
-            echo "Error clearing old entries: " . $stmt->error;
-            exit;
-        }
-
-        // Insert new entries
-        $insert_query = $con->prepare("INSERT INTO button_list ($category) VALUES (?)");
+        // Insert new entries only if they do not already exist
+        $insert_query = $con->prepare("INSERT INTO button_list ($category) VALUES (?) ON DUPLICATE KEY UPDATE $category=$category");
         if (!$insert_query) {
             echo "Prepare failed: " . $con->error;
             exit;

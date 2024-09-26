@@ -96,16 +96,18 @@
                 }
             });
 
+            // Toggle new entry section
             $('#add-entry-button').click(function() {
                 $('#new-entry-section').toggle(); 
             });
 
+            // Handle new entry submission
             $('#submit-new-entry').click(function() {
                 var newEntry = $('#new-entry').val();
                 var category = $('#category').val(); 
 
                 if (newEntry && category) {
-                    var newEntryHtml = "<li><input type='text' class='editable-entry' name='entries[]' value='" + newEntry + "'>";
+                    var newEntryHtml = "<li><span class='entry-value'>" + newEntry + "</span>";
                     newEntryHtml += "<button type='button' class='delete-btn' data-column='" + category + "' data-value='" + newEntry + "'>Delete</button></li>";
                     
                     $('#entries-list').append(newEntryHtml);
@@ -116,19 +118,20 @@
                 }
             });
 
+            // Handle saving all entries
             $('#save-all-entries-button').click(function() {
                 var entries = [];
-                $('.editable-entry').each(function() {
-                    entries.push($(this).val());
+                $('.entry-value').each(function() {
+                    entries.push($(this).text());
                 });
-                
+
                 var category = $('#category').val();
 
                 if (category && entries.length > 0) {
                     $.ajax({
                         type: 'POST',
                         url: 'update_entries.php',
-                        data: { category: category, entries: JSON.stringify(entries) }, // Convert entries to JSON
+                        data: { category: category, entries: JSON.stringify(entries) },
                         success: function(response) {
                             alert(response);
                             $('#category').trigger('change');
@@ -142,6 +145,7 @@
                 }
             });
 
+            // Handle delete button click
             $(document).on('click', '.delete-btn', function() {
                 var column = $(this).data('column');
                 var value = $(this).data('value');
@@ -161,7 +165,17 @@
                     });
                 }
             });
+
+            // Handle the Upload button click
+            $(document).on('click', '.upload-btn', function() {
+                var column = $(this).data('column');
+                var value = $(this).data('value');
+                
+                // Add your upload functionality here, e.g., trigger a file upload dialog or redirect
+                alert('Uploading for ' + value + ' in column ' + column);
+            });
         });
     </script>
+
 </body>
 </html>

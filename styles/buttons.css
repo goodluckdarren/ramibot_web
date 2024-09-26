@@ -1,30 +1,23 @@
-
+/* Container with auto overflow for the table */
 .button-table-container {
     overflow-y: auto;
 }
 
+/* Styling the edit button form */
 .edit-button-form {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 40%;
+    max-width: 70%;
     margin: 0 auto;
     margin-top: 15px;
-}
-
-.edit-button-form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 40%;
-    margin: 0 auto;
-    margin-top: 15px;
-    max-height: 800px; /* Set a maximum height for scrolling */
+    max-height: 800px; /* Max height for scrolling */
     overflow-y: auto; /* Enable vertical scrolling */
+    margin-left: 15px;
 }
 
+/* Styling the header */
 .form-header {
     display: flex;
     justify-content: space-between;
@@ -32,23 +25,27 @@
     margin-bottom: 0px;
 }
 
+/* Label styles */
 .edit-button-form label {
     font-weight: bold;
     margin-right: 10px;
     color: #333;
 }
 
+/* Category dropdown styles */
 #category {
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
+/* Styling the button group */
 .button-group {
     display: flex;
     gap: 10px;
 }
 
+/* Add entry and submit buttons */
 #add-entry-button,
 button[type="submit"] {
     padding: 10px 20px;
@@ -64,69 +61,36 @@ button[type="submit"]:hover {
     background-color: #025aa5;
 }
 
-#entries-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.input-group {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.input-group input {
-    padding: 8px;
-    flex: 1;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.input-group button {
-    padding: 8px;
-    background-color: #d9534f;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-h3 {
-    margin-bottom: 0;
-}
-
-/* Entries List Container */
+/* Entries list container styling */
 #entries-list {
     padding: 5px;
     border-radius: 6px;
-    background-color: #f4f4f4; /* Light background for contrast */
-    width: 500px; /* Compact width */
-    margin: 10px auto; /* Centering with less margin */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* Slight shadow */
+    background-color: #f4f4f4;
+    width: 500px;
+    margin: 10px auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    margin-left: 15px;
 }
 
-/* Styling the individual list items */
+/* Entries list styling */
 #entries-list ul {
-    list-style-type: none; /* Remove bullet points */
+    list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
 #entries-list li {
-    display: flex; /* Inline arrangement for text and button */
-    justify-content: space-between; /* Space between text and button */
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: #fff;
-    padding: 8px 15px; /* Less padding for compactness */
-    margin-bottom: 5px; /* Less space between list items */
-    border-radius: 4px; /* Small radius */
-    border: 1px solid #ddd; /* Thin border */
-    transition: background-color 0.2s ease; /* Quick background transition */
+    padding: 8px 15px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    transition: background-color 0.2s ease;
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem; /* Smaller font size */
+    font-size: 0.9rem;
 }
 
 /* Hover effect for list items */
@@ -134,72 +98,106 @@ h3 {
     background-color: #eaeaea;
 }
 
-/* Styling for the delete button */
+/* Styling for delete button */
 .delete-btn {
-    background-color: #e74c3c; /* Slightly lighter red */
+    background-color: #e74c3c;
     color: white;
-    padding: 4px 8px; /* Smaller button size */
+    padding: 4px 8px;
     border: none;
-    border-radius: 4px; /* Small button radius */
+    border-radius: 4px;
     margin-left: 10px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.2s ease;
+}
+
+/* Styling for upload button */
+.upload-btn {
+    background-color: #5bc0de;
+    color: white;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background-color 0.2s ease;
+}
+
+/* Styling for the preview button */
+.preview-btn {
+    background-color: #f0ad4e; /* Orange background */
+    color: white;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
     font-size: 0.8rem; /* Compact font size */
     transition: background-color 0.2s ease;
 }
 
-/* Hover effect for the delete button */
+/* Hover effect for the preview button */
+.preview-btn:hover {
+    background-color: #ec971f; /* Darker orange on hover */
+}
+
+
+/* Hover effect for delete and upload buttons */
 .delete-btn:hover {
-    background-color: #c0392b; /* Darker on hover */
+    background-color: #c0392b;
 }
 
+.upload-btn:hover {
+    background-color: #31b0d5;
+}
 
-/* General styles for the new entry section */
+/* New entry section styling */
 #new-entry-section {
-    margin-top: 20px; /* Space between entries and new entry section */
+    margin-top: 20px;
     padding: 15px;
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
 
-/* Header style for the new entry section */
+/* Header for new entry section */
 #new-entry-section h4 {
     margin-top: 0;
-    margin-bottom: 10px; /* Space below the header */
-    font-size: 18px; /* Slightly larger font size */
-    color: #333; /* Darker text color */
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
 }
 
-/* Styles for the dropdown and input field */
+/* Dropdown and input field styles */
 #new-entry-section select,
 #new-entry-section input[type="text"] {
-    width: 400px; /* Full width minus padding */
-    padding: 8px; /* Padding inside the fields */
-    margin: 5px 0; /* Margin around the fields */
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 4px; /* Rounded corners */
+    width: 400px;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-/* Styles for the submit button */
+/* Submit button styles */
 #new-entry-section button {
-    background-color: #28a745; /* Green background */
-    color: white; /* White text color */
-    border: none; /* Remove default border */
-    border-radius: 4px; /* Rounded corners */
-    padding: 10px 15px; /* Padding inside the button */
-    cursor: pointer; /* Change cursor to pointer */
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    cursor: pointer;
 }
 
-/* Hover effect for the submit button */
+/* Hover effect for submit button */
 #new-entry-section button:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #218838;
 }
 
+/* Styling for editable entries */
 .editable-entry {
-width: 400px;
+    width: 400px;
 }
 
-/* save all entry button */
+/* Styling for the save all entries button */
 .save-all-entries-button {
     padding: 10px 20px;
     border: none;
@@ -207,4 +205,9 @@ width: 400px;
     color: white;
     border-radius: 4px;
     cursor: pointer;
+}
+
+/* Save all entries button hover effect */
+.save-all-entries-button:hover {
+    background-color: #025aa5;
 }
